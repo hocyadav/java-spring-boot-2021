@@ -2,13 +2,11 @@ package io.hari.att.entity;
 
 import io.hari.att.convertor.AddressConvertor;
 import io.hari.att.convertor.CryptoConverter;
+import io.hari.att.convertor.MyJsonConvertor;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -36,6 +34,9 @@ public class Person extends BaseEntity {
 
     @Convert(converter = CryptoConverter.class)
     String creditCardNumber;
+
+    @Convert(converter = MyJsonConvertor.class)
+    JsonEntity jsonEntity;
 
     public Integer getAge() {
         if (dob != null) {

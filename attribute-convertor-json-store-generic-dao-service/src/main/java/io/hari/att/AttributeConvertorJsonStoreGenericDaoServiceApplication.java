@@ -5,6 +5,7 @@ import io.hari.att.convertor.CryptoConverter;
 import io.hari.att.dao.PersonDao;
 import io.hari.att.entity.Address;
 import io.hari.att.entity.AgeType;
+import io.hari.att.entity.JsonEntity;
 import io.hari.att.entity.Person;
 import io.hari.att.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -25,6 +27,7 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(AttributeConvertorJsonStoreGenericDaoServiceApplication.class, args);
     }
+
     @Autowired
     PersonDao personDao;
 
@@ -66,9 +69,16 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
         final Map<String, String> keyValues = keyA.getKeyValues();
         System.out.println("keyValues = " + keyValues);
 
+        Map<String, String> map = new HashMap<>();
+        map.put("key1", "value1");
+        map.put("key2", "value2");
+
         personDao.save(Person.builder().name("hari").ageType(AgeType.GENERATION2)
                 .dob(LocalDate.of(1989, Month.JUNE, 26))
                 .creditCardNumber("495452 560037 802220")
+                .jsonEntity(JsonEntity.builder().name("json name").rollNum("1234")
+                        .stringMap(map)
+                        .build())
                 .address(Address.builder().pincode("495452").build()).build());
 
         personDao.save(Person.builder().name("hariom yadav").ageType(AgeType.GENERATION1)
@@ -77,8 +87,19 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
                 .address(Address.builder().pincode("495452").build()).build());
 
         final List<Person> people = personDao.findAll();
-        people.forEach(i -> {
-            System.out.println("i = " + i);
+        people.forEach(people_ -> {
+            System.err.println("people_ = " + people_);
+            final JsonEntity jsonEntity = people_.getJsonEntity();
+            System.err.println("jsonEntity = " + jsonEntity);
+            //get json object form map
+            if (jsonEntity != null) {
+                final String name1 = jsonEntity.getName();
+                System.out.println("name1 = " + name1);
+                final String rollNum = jsonEntity.getRollNum();
+                System.out.println("rollNum = " + rollNum);
+                final Map<String, String> stringMap = jsonEntity.getStringMap();
+                System.out.println("stringMap = " + stringMap);
+            }
         });
 
         final Person person = people.get(0);
