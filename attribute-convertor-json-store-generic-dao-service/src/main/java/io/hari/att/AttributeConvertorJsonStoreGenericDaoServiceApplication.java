@@ -3,10 +3,7 @@ package io.hari.att;
 import io.hari.att.config.MyConfig;
 import io.hari.att.convertor.CryptoConverter;
 import io.hari.att.dao.PersonDao;
-import io.hari.att.entity.Address;
-import io.hari.att.entity.AgeType;
-import io.hari.att.entity.JsonEntity;
-import io.hari.att.entity.Person;
+import io.hari.att.entity.*;
 import io.hari.att.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +12,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.Month;
-import java.time.Period;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -81,9 +77,13 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
                         .build())
                 .address(Address.builder().pincode("495452").build()).build());
 
+        Map<AttributeKey, String> map2 = new HashMap<>();
+        map2.put(AttributeKey.cc_num, "495452 560037");
+        map2.put(AttributeKey.phone_num, "9887700499");
         personDao.save(Person.builder().name("hariom yadav").ageType(AgeType.GENERATION1)
                 .dob(LocalDate.of(1989, Month.JUNE, 26))
                 .creditCardNumber("495452 560037 802220")
+                .attribute(EntityAttribute.builder().attributes(map2).build())
                 .address(Address.builder().pincode("495452").build()).build());
 
         final List<Person> people = personDao.findAll();

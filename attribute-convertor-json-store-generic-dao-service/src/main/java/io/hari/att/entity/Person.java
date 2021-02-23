@@ -2,6 +2,7 @@ package io.hari.att.entity;
 
 import io.hari.att.convertor.AddressConvertor;
 import io.hari.att.convertor.CryptoConverter;
+import io.hari.att.convertor.MyJsonAttributeConvertor;
 import io.hari.att.convertor.MyJsonConvertor;
 import lombok.*;
 
@@ -37,6 +38,9 @@ public class Person extends BaseEntity {
 
     @Convert(converter = MyJsonConvertor.class)
     JsonEntity jsonEntity;
+
+    @Convert(converter = MyJsonAttributeConvertor.class)
+    EntityAttribute attribute;
 
     public Integer getAge() {
         if (dob != null) {

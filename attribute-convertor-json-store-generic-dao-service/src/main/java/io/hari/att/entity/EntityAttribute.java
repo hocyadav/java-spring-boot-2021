@@ -11,8 +11,6 @@ import java.util.Map;
 @Setter
 @Builder
 @ToString
-public class JsonEntity implements Serializable {
-    String name;
-    String rollNum;
-    Map<String, String>  stringMap;
+public class EntityAttribute implements Serializable {
+    Map<AttributeKey, String>  attributes;
 }
