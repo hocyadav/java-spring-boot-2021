@@ -5,6 +5,7 @@ import io.hari.att.dao.PersonDao;
 import io.hari.att.entity.Address;
 import io.hari.att.entity.AgeType;
 import io.hari.att.entity.Person;
+import io.hari.att.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,12 +24,14 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(AttributeConvertorJsonStoreGenericDaoServiceApplication.class, args);
     }
-
     @Autowired
     PersonDao personDao;
 
     @Autowired
     MyConfig myConfig;
+
+    @Autowired
+    PersonService personService;
 
     @PostConstruct
     public void foo() {
@@ -52,10 +55,6 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
         final Map<String, String> keyValues = keyA.getKeyValues();
         System.out.println("keyValues = " + keyValues);
 
-
-
-        System.err.println("AttributeConvertorJsonStoreGenericDaoServiceApplication.foo");
-
         personDao.save(Person.builder().name("hari").ageType(AgeType.GENERATION2)
                 .dob(LocalDate.of(1989, Month.JUNE, 26))
                 .address(Address.builder().pincode("495452").build()).build());
@@ -73,5 +72,7 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
         final List<Person> allByAgeType = personDao.findAllByAgeType(AgeType.GENERATION1);
         System.out.println("allByAgeType = " + allByAgeType);
 
+        final List<Person> personList = personService.findAll();
+        System.err.println("personList = " + personList);
     }
 }
