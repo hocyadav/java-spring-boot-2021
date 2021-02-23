@@ -1,6 +1,7 @@
 package io.hari.att;
 
 import io.hari.att.config.MyConfig;
+import io.hari.att.convertor.CryptoConverter;
 import io.hari.att.dao.PersonDao;
 import io.hari.att.entity.Address;
 import io.hari.att.entity.AgeType;
@@ -33,8 +34,18 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
     @Autowired
     PersonService personService;
 
+    @Autowired
+    CryptoConverter cryptoConverter;
+
     @PostConstruct
     public void foo() {
+        final String ccNumber = "495452 560037 802220 495452";
+        System.out.println("ccNumber = " + ccNumber);
+        final String cardNumberInDb = cryptoConverter.convertToDatabaseColumn(ccNumber);
+        System.err.println("cardNumberInDb = " + cardNumberInDb);
+        final String actualCardNum = cryptoConverter.convertToEntityAttribute(cardNumberInDb);
+        System.err.println("actualCardNum = " + actualCardNum);
+
         final String fieldNameSimple = myConfig.getFieldNameSimple();
         System.out.println("fieldNameSimple = " + fieldNameSimple);
 
@@ -57,6 +68,12 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
 
         personDao.save(Person.builder().name("hari").ageType(AgeType.GENERATION2)
                 .dob(LocalDate.of(1989, Month.JUNE, 26))
+                .creditCardNumber("495452 560037 802220")
+                .address(Address.builder().pincode("495452").build()).build());
+
+        personDao.save(Person.builder().name("hariom yadav").ageType(AgeType.GENERATION1)
+                .dob(LocalDate.of(1989, Month.JUNE, 26))
+                .creditCardNumber("495452 560037 802220")
                 .address(Address.builder().pincode("495452").build()).build());
 
         final List<Person> people = personDao.findAll();

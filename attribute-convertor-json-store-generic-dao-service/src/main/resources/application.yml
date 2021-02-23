@@ -6,6 +6,8 @@ spring.datasource.platform: h2
 spring.application.name: entity-relation
 logging.file.name: ${spring.application.name}.log
 
+secret.key.value: "MySuperSecretKey"
+
 #sql
 spring.jpa.show-sql: true
 

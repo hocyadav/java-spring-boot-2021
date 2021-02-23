@@ -1,4 +1,6 @@
-package io.hari.att.entity;
+package io.hari.att.convertor;
+
+import io.hari.att.entity.Address;
 
 import javax.persistence.AttributeConverter;
 
