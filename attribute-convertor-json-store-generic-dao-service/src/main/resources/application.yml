@@ -1,0 +1,33 @@
+#h2
+spring.datasource.url: jdbc:h2:mem:h2db
+spring.h2.console.enabled: true
+spring.datasource.platform: h2
+
+spring.application.name: entity-relation
+logging.file.name: ${spring.application.name}.log
+
+#sql
+spring.jpa.show-sql: true
+
+myconfig:
+  fieldNameSimple: "simple value"
+  fieldName: # field name in java class
+    key1 : "value1" # map key as string, value as string
+    key2 : "value2"
+  fieldNameObject:        # field name in java class
+    keyAd:                # map key : below is object as value
+      stringKey: "simple value"
+      listKey:
+        - bangalore
+        - delhi
+  fieldNameAdObject:
+    keyA:
+      name: "hariom yadav"
+      places:
+        - bangalore
+        - delhi
+        - patna
+        - patna
+      keyValues:
+        key1: "value1"
+        key2: "value2"
