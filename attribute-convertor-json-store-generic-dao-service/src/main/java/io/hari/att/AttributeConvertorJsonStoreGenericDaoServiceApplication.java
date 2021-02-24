@@ -1,5 +1,7 @@
 package io.hari.att;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.hari.att.config.MyConfig;
 import io.hari.att.convertor.CryptoConverter;
 import io.hari.att.dao.PersonDao;
@@ -86,9 +88,17 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
                 .attribute(EntityAttribute.builder().attributes(map2).build())
                 .address(Address.builder().pincode("495452").build()).build());
 
+        ObjectMapper objectMapper = new ObjectMapper();
+
         final List<Person> people = personDao.findAll();
         people.forEach(people_ -> {
             System.err.println("people_ = " + people_);
+            try {
+                final String valueAsString = objectMapper.writeValueAsString(people_);//option , use toString intead
+                System.err.println("valueAsString = " + valueAsString);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
             final JsonEntity jsonEntity = people_.getJsonEntity();
             System.err.println("jsonEntity = " + jsonEntity);
             //get json object form map
