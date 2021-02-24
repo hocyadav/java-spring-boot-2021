@@ -12,8 +12,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-//@ContextConfiguration(classes = {MyService2.class, TaxBracketService.class})// only loading 2 bean
+@SpringBootTest(classes = {MyService2.class, TaxBracketService.class})//only load 2 beans
+//@ContextConfiguration(classes = {MyService2.class, TaxBracketService.class})// only loading 2 bean : old annotaion not working
 class MyService2Test_adv_2 {
 
     @Autowired

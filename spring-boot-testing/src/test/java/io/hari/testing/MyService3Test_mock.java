@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = {MyService3.class})
 class MyService3Test_mock {
 
     @Autowired//spring will create actual bean

@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = {MyService3.class, NetwokCallOrDBCall_InOtherService.class})
 class MyService3Test {
 
     @Autowired
