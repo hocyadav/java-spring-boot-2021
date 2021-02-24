@@ -12,7 +12,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest // all beans loaded -> then below autowire takes place
+@SpringBootTest // all beans loaded -> then below autowire takes place,
+// if too many beans then it will take more time to initialize , so use contextCOnfiguration
 class MyService2Test_adv {
 
     @Autowired
