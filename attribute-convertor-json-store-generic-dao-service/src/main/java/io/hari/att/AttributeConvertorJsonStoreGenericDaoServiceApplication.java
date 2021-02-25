@@ -10,16 +10,16 @@ import io.hari.att.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @SpringBootApplication
+@EnableScheduling
 public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
 
     public static void main(String[] args) {
@@ -37,6 +37,27 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
 
     @Autowired
     CryptoConverter cryptoConverter;
+
+    @Scheduled(fixedDelay = 1000 * 10)//5 sec
+    public void scheduledFun() {
+        System.err.println("QuartzApplication.foo");
+        Map<String, String> map = new HashMap<>();
+        map.put("key1", "value1");
+        map.put("key2", "value2");
+
+        Map<AttributeKey, String> map2 = new HashMap<>();
+        map2.put(AttributeKey.cc_num, "495452 560037");
+        map2.put(AttributeKey.phone_num, "9887700499");
+
+        personDao.save(Person.builder().name("hari").ageType(AgeType.GENERATION2)
+                .dob(LocalDate.of(1989, Month.JUNE, 26))
+                .creditCardNumber("495452 560037 802220")
+                .jsonEntity(JsonEntity.builder().name("json name").rollNum("1234")
+                        .stringMap(map)
+                        .build())
+                .attribute(EntityAttribute.builder().attributes(map2).build())
+                .address(Address.builder().pincode("495452").build()).build());
+    }
 
     @PostConstruct
     public void foo() {

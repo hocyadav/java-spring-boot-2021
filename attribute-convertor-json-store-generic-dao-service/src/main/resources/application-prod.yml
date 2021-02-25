@@ -1,0 +1,41 @@
+#h2 working
+#spring.datasource.url: jdbc:h2:mem:h2db
+#spring.h2.console.enabled: true
+#spring.datasource.platform: h2
+#spring.jpa.show-sql: true
+
+# 1. Datasource config - mysql working
+spring.datasource.driver-class-name: com.mysql.cj.jdbc.Driver
+spring.datasource.url: jdbc:mysql://localhost:3306/test
+spring.datasource.username: root
+spring.datasource.password: hariom
+#
+### 2. Hibernate config
+spring.jpa.show-sql: true
+spring.jpa.hibernate.ddl-auto: create-drop
+spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+
+secret.key.value: "MySuperSecretKey"
+
+myconfig:
+  fieldNameSimple: "simple value"
+  fieldName: # field name in java class
+    key1 : "value1" # map key as string, value as string
+    key2 : "value2"
+  fieldNameObject:        # field name in java class
+    keyAd:                # map key : below is object as value
+      stringKey: "simple value"
+      listKey:
+        - bangalore
+        - delhi
+  fieldNameAdObject:
+    keyA:
+      name: "hariom yadav"
+      places:
+        - bangalore
+        - delhi
+        - patna
+        - patna
+      keyValues:
+        key1: "value1"
+        key2: "value2"

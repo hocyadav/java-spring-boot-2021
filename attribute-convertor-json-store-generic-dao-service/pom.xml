@@ -30,7 +30,17 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-<!--this is for mysql comment h2 optional-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <!-- quarzt scheduler -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+        <!--this is for mysql comment h2 optional-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
