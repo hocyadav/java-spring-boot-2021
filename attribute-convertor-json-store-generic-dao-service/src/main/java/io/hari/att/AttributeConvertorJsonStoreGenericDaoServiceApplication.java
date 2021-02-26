@@ -38,7 +38,7 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
     @Autowired
     CryptoConverter cryptoConverter;
 
-    @Scheduled(fixedDelay = 1000 * 10)//5 sec
+    @Scheduled(fixedDelay = 1000)//1000 = 1 sec
     public void scheduledFun() {
         System.err.println("QuartzApplication.foo");
         Map<String, String> map = new HashMap<>();
@@ -61,6 +61,18 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
 
     @PostConstruct
     public void foo() {
+        //native query test
+        final Person people1 = personDao.myOwnQueryNative("hari");
+        System.err.println("myOwnQueryNative people1 = " + people1);
+
+        final List<Person> people2 = personDao.finadAllByQuery();
+        System.err.println(" finadAllByQuery people2 = " + people2);
+
+        //not implemented
+        final List<Person> foo = personDao.createOwnMethodWithSQL();
+        System.err.println("foo = " + foo);
+
+
         final String ccNumber = "495452 560037 802220 495452";
         System.out.println("ccNumber = " + ccNumber);
         final String cardNumberInDb = cryptoConverter.convertToDatabaseColumn(ccNumber);
