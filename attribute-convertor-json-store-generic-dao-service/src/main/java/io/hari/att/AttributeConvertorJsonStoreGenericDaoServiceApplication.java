@@ -68,9 +68,6 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
         final List<Person> people2 = personDao.finadAllByQuery();
         System.err.println(" finadAllByQuery people2 = " + people2);
 
-        //not implemented
-        final List<Person> foo = personDao.createOwnMethodWithSQL();
-        System.err.println("foo = " + foo);
 
 
         final String ccNumber = "495452 560037 802220 495452";
@@ -155,5 +152,21 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
 
         final List<Person> personList = personService.findAll();
         System.err.println("personList = " + personList);
+
+        //not implemented, not working
+//        final List<Person> foo = personDao.createOwnMethodWithSQL();
+//        System.err.println("foo = " + foo);
+
+        final List<Person> all2 = personDao.findAll2();//working
+        System.err.println("all2 = " + all2);
+
+        final List<Person> all2native = personDao.findAll2native();//working
+        System.err.println("all2native = " + all2native);
+
+        final List<Person> hari = personDao.findPersonSQLByName("hari");
+        System.err.println("hari = " + hari);
+
+        final List<Person> hari1 = personDao.findPersonSQLByName2("hariom");
+        System.err.println("hari1 = " + hari1);
     }
 }
