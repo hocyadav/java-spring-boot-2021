@@ -38,7 +38,7 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
     @Autowired
     CryptoConverter cryptoConverter;
 
-    @Scheduled(fixedDelay = 1000)//1000 = 1 sec
+    @Scheduled(fixedDelay = 1000 * 100)//1000 = 1 sec
     public void scheduledFun() {
         System.err.println("QuartzApplication.foo");
         Map<String, String> map = new HashMap<>();
