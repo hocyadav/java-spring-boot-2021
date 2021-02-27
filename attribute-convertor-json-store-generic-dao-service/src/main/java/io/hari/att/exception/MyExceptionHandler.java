@@ -15,6 +15,7 @@ import java.util.Arrays;
 public class MyExceptionHandler {
     // https://youtu.be/PzK4ZXa2Tbc
 // https://dzone.com/articles/best-practice-for-exception-handling-in-spring-boo
+    // https://zetcode.com/springboot/controlleradvice/ ****
 
     @ExceptionHandler(value = {IllegalStateException.class, RuntimeException.class, Exception.class})
     public ResponseEntity<Object> handleException(Exception e, WebRequest webRequest) {
