@@ -19,8 +19,6 @@ public class BaseEntity {
 
     @PrePersist
     public void foo() {
-          if(createAt == null) {
-              createAt = LocalDateTime.now();
-          }
+        createAt = LocalDateTime.now();
     }
 }
