@@ -7,7 +7,6 @@ import io.hari.att.convertor.CryptoConverter;
 import io.hari.att.dao.PersonDao;
 import io.hari.att.entity.*;
 import io.hari.att.service.PersonService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -16,27 +15,34 @@ import org.springframework.scheduling.annotation.Scheduled;
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @SpringBootApplication
 @EnableScheduling
 public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
+    //autowire or pass in constructor both working fine, since we already added @Service annotaion so spring will send to our constructor
+    private final PersonDao personDao;
+    private final MyConfig myConfig;
+    private final PersonService personService;
+    private final CryptoConverter cryptoConverter;
+
+    public AttributeConvertorJsonStoreGenericDaoServiceApplication(final PersonDao personDao,
+                                                                   final MyConfig myConfig,
+                                                                   final PersonService personService,
+                                                                   final CryptoConverter cryptoConverter) {
+        this.personDao = personDao;
+        this.myConfig = myConfig;
+        this.personService = personService;
+        this.cryptoConverter = cryptoConverter;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(AttributeConvertorJsonStoreGenericDaoServiceApplication.class, args);
     }
 
-    @Autowired
-    PersonDao personDao;
-
-    @Autowired
-    MyConfig myConfig;
-
-    @Autowired
-    PersonService personService;
-
-    @Autowired
-    CryptoConverter cryptoConverter;
 
     @Scheduled(fixedDelay = 1000 * 100)//1000 = 1 sec
     public void scheduledFun() {
@@ -67,7 +73,6 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
 
         final List<Person> people2 = personDao.finadAllByQuery();
         System.err.println(" finadAllByQuery people2 = " + people2);
-
 
 
         final String ccNumber = "495452 560037 802220 495452";
