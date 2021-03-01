@@ -1,0 +1,2 @@
+This is file template
+I am name, My age is <<age>>
