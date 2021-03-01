@@ -1,0 +1,36 @@
+# command + n 		//new project creation from anywhere
+# shift + command + n //new file 
+
+First Open package explorer --> then create class 
+# option + command + p //select package explorer
+OR
+opion + command + p + n
+
+# shift + f10 //right click
+
+
+command + w //close current
+command + shift + w //close all
+
+
+command + s //save current
+command + shift +s //save all open files
+
+
+command + , //eclipse setting , vs code settings
+
+control + m //max screen
+
+
+command + d//delete line
+command + delete //delete 1 word
+command + arrow key //move fast left right, up down
+
+option + command + arrow down/up //copy lines
+option + arrrow up/down 		//move up and down code
+
+
+command + shift + o //auto import
+
+
+
