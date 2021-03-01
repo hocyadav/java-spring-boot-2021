@@ -1,0 +1,123 @@
+2021-02-28 13:05:38.018  INFO 6852 --- [main] torJsonStoreGenericDaoServiceApplication : Starting AttributeConvertorJsonStoreGenericDaoServiceApplication using Java 1.8.0_281 on MSI with PID 6852 (C:\java-spring-boot-2021\attribute-convertor-json-store-generic-dao-service\target\classes started by Hariom Yadav in C:\java-spring-boot-2021\attribute-convertor-json-store-generic-dao-service)
+2021-02-28 13:05:38.026  INFO 6852 --- [main] torJsonStoreGenericDaoServiceApplication : The following profiles are active: dev
+2021-02-28 13:05:38.916  INFO 6852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-02-28 13:05:38.978  INFO 6852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 1 JPA repository interfaces.
+2021-02-28 13:05:39.418  INFO 6852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-02-28 13:05:39.427  INFO 6852 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-28 13:05:39.428  INFO 6852 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-02-28 13:05:39.598  INFO 6852 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-28 13:05:39.598  INFO 6852 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1486 ms
+2021-02-28 13:05:39.706  INFO 6852 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-28 13:05:39.882  INFO 6852 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-28 13:05:39.887  INFO 6852 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:h2db'
+2021-02-28 13:05:40.032  INFO 6852 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-02-28 13:05:40.106  INFO 6852 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-02-28 13:05:40.350  INFO 6852 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-02-28 13:05:40.515  INFO 6852 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-02-28 13:05:40.711  WARN 6852 --- [main] o.h.t.d.java.JavaTypeDescriptorRegistry  : HHH000481: Encountered Java type [class io.hari.att.entity.Address] for which we could not locate a JavaTypeDescriptor and which does not appear to implement equals and/or hashCode.  This can lead to significant performance problems when performing equality/dirty checking involving this Java type.  Consider registering a custom JavaTypeDescriptor or at least implementing equals/hashCode.
+2021-02-28 13:05:41.269  INFO 6852 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-02-28 13:05:41.277  INFO 6852 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-02-28 13:05:42.393  WARN 6852 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-02-28 13:05:42.629  INFO 6852 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-28 13:05:42.841  INFO 6852 --- [main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2021-02-28 13:05:42.854  INFO 6852 --- [main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2021-02-28 13:05:42.855  INFO 6852 --- [main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2021-02-28 13:05:42.856  INFO 6852 --- [main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2021-02-28 13:05:42.856  INFO 6852 --- [main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2021-02-28 13:05:42.856  INFO 6852 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2021-02-28 13:05:42.857  INFO 6852 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2021-02-28 13:05:42.857  INFO 6852 --- [main] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@ff5d4f1
+2021-02-28 13:05:42.863  INFO 6852 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-02-28 13:05:42.899  INFO 6852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-28 13:05:42.900  INFO 6852 --- [main] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2021-02-28 13:05:42.900  INFO 6852 --- [main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2021-02-28 13:05:42.909  INFO 6852 --- [main] torJsonStoreGenericDaoServiceApplication : Started AttributeConvertorJsonStoreGenericDaoServiceApplication in 5.373 seconds (JVM running for 6.235)
+2021-02-28 13:06:18.790  INFO 3152 --- [main] torJsonStoreGenericDaoServiceApplication : Starting AttributeConvertorJsonStoreGenericDaoServiceApplication using Java 1.8.0_281 on MSI with PID 3152 (C:\java-spring-boot-2021\attribute-convertor-json-store-generic-dao-service\target\classes started by Hariom Yadav in C:\java-spring-boot-2021\attribute-convertor-json-store-generic-dao-service)
+2021-02-28 13:06:18.792  INFO 3152 --- [main] torJsonStoreGenericDaoServiceApplication : The following profiles are active: dev
+2021-02-28 13:06:19.414  INFO 3152 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-02-28 13:06:19.449  INFO 3152 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 1 JPA repository interfaces.
+2021-02-28 13:06:19.801  INFO 3152 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-02-28 13:06:19.806  INFO 3152 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-28 13:06:19.808  INFO 3152 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-02-28 13:06:19.886  INFO 3152 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-28 13:06:19.887  INFO 3152 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1059 ms
+2021-02-28 13:06:19.919  INFO 3152 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-28 13:06:20.013  INFO 3152 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-28 13:06:20.020  INFO 3152 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:h2db'
+2021-02-28 13:06:20.170  INFO 3152 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-02-28 13:06:20.198  INFO 3152 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-02-28 13:06:20.359  INFO 3152 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-02-28 13:06:20.457  INFO 3152 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-02-28 13:06:20.593  WARN 3152 --- [main] o.h.t.d.java.JavaTypeDescriptorRegistry  : HHH000481: Encountered Java type [class io.hari.att.entity.Address] for which we could not locate a JavaTypeDescriptor and which does not appear to implement equals and/or hashCode.  This can lead to significant performance problems when performing equality/dirty checking involving this Java type.  Consider registering a custom JavaTypeDescriptor or at least implementing equals/hashCode.
+2021-02-28 13:06:21.023  INFO 3152 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-02-28 13:06:21.033  INFO 3152 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-02-28 13:06:22.595  WARN 3152 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-02-28 13:06:22.737  INFO 3152 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-28 13:06:23.123  INFO 3152 --- [main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2021-02-28 13:06:23.133  INFO 3152 --- [main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2021-02-28 13:06:23.133  INFO 3152 --- [main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2021-02-28 13:06:23.134  INFO 3152 --- [main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2021-02-28 13:06:23.136  INFO 3152 --- [main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2021-02-28 13:06:23.136  INFO 3152 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2021-02-28 13:06:23.136  INFO 3152 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2021-02-28 13:06:23.136  INFO 3152 --- [main] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@9e50283
+2021-02-28 13:06:23.145  INFO 3152 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-02-28 13:06:23.194  INFO 3152 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-28 13:06:23.194  INFO 3152 --- [main] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2021-02-28 13:06:23.195  INFO 3152 --- [main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2021-02-28 13:06:23.207  INFO 3152 --- [main] torJsonStoreGenericDaoServiceApplication : Started AttributeConvertorJsonStoreGenericDaoServiceApplication in 4.751 seconds (JVM running for 5.333)
+2021-02-28 15:15:44.988  INFO 10952 --- [main] torJsonStoreGenericDaoServiceApplication : Starting AttributeConvertorJsonStoreGenericDaoServiceApplication using Java 1.8.0_281 on MSI with PID 10952 (C:\java-spring-boot-2021\attribute-convertor-json-store-generic-dao-service\target\classes started by Hariom Yadav in C:\java-spring-boot-2021\attribute-convertor-json-store-generic-dao-service)
+2021-02-28 15:15:44.992  INFO 10952 --- [main] torJsonStoreGenericDaoServiceApplication : The following profiles are active: dev
+2021-02-28 15:15:45.644  INFO 10952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-02-28 15:15:45.703  INFO 10952 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 1 JPA repository interfaces.
+2021-02-28 15:15:46.176  INFO 10952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-02-28 15:15:46.205  INFO 10952 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-28 15:15:46.207  INFO 10952 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-02-28 15:15:46.332  INFO 10952 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-28 15:15:46.333  INFO 10952 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1278 ms
+2021-02-28 15:15:46.395  INFO 10952 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-28 15:15:46.552  INFO 10952 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-28 15:15:46.559  INFO 10952 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:h2db'
+2021-02-28 15:15:46.761  INFO 10952 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-02-28 15:15:46.832  INFO 10952 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-02-28 15:15:47.039  INFO 10952 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-02-28 15:15:47.207  INFO 10952 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-02-28 15:15:47.390  WARN 10952 --- [main] o.h.t.d.java.JavaTypeDescriptorRegistry  : HHH000481: Encountered Java type [class io.hari.att.entity.Address] for which we could not locate a JavaTypeDescriptor and which does not appear to implement equals and/or hashCode.  This can lead to significant performance problems when performing equality/dirty checking involving this Java type.  Consider registering a custom JavaTypeDescriptor or at least implementing equals/hashCode.
+2021-02-28 15:15:47.947  INFO 10952 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-02-28 15:15:47.956  INFO 10952 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-02-28 15:15:49.090  WARN 10952 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-02-28 15:15:49.182  INFO 10952 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-28 15:15:49.488  INFO 10952 --- [main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2021-02-28 15:15:49.500  INFO 10952 --- [main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2021-02-28 15:15:49.500  INFO 10952 --- [main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2021-02-28 15:15:49.501  INFO 10952 --- [main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2021-02-28 15:15:49.502  INFO 10952 --- [main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2021-02-28 15:15:49.502  INFO 10952 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2021-02-28 15:15:49.502  INFO 10952 --- [main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2021-02-28 15:15:49.502  INFO 10952 --- [main] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@7752c0e7
+2021-02-28 15:15:49.508  INFO 10952 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-02-28 15:15:49.543  INFO 10952 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-28 15:15:49.544  INFO 10952 --- [main] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2021-02-28 15:15:49.544  INFO 10952 --- [main] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2021-02-28 15:15:49.559  INFO 10952 --- [main] torJsonStoreGenericDaoServiceApplication : Started AttributeConvertorJsonStoreGenericDaoServiceApplication in 5.018 seconds (JVM running for 5.662)
