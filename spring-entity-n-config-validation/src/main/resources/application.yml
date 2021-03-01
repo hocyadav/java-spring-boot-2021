@@ -1,0 +1,25 @@
+app-name:
+  all-users:
+    default:
+      name: "om"
+      userType: new_user
+      visited:
+        - "bangalore"
+        - "delhi"
+      phone-number:
+        - 9887700499
+        - 9887700400
+      decimal-test: 10
+      bigDecimal: 50.10
+    user-1:
+      name: "user-1"
+      userType: old_user
+      visited:
+        - "bangalore"
+      decimal-test: 100
+  new-config:
+    - "type1"
+    - "type1"
+    - "type1"
+    - "type2"
+  new-config2: 495452
