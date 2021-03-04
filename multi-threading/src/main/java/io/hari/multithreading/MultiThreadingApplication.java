@@ -2,6 +2,7 @@ package io.hari.multithreading;
 
 import io.hari.multithreading.sync.MySyncTask;
 import io.hari.multithreading.sync.MySyncTaskToAync;
+import io.hari.multithreading.sync.MySyncTaskToAync_Callable;
 
 import java.util.List;
 import java.util.concurrent.*;
@@ -9,7 +10,7 @@ import java.util.concurrent.*;
 
 public class MultiThreadingApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         System.out.println("main thread name : --> " + Thread.currentThread().getName());//main
         //test sync tasks, create a class obj -> call method
         MySyncTask syncTask = new MySyncTask();
@@ -107,5 +108,14 @@ public class MultiThreadingApplication {
 
         final List<Runnable> runnables = threadPoolExecutor.shutdownNow();// complete in progress task + return task that are present in Queue, we can do other operation with pending tasks
         System.out.println("runnables.size() = " + runnables.size());
+
+        //TODO : async task that returns
+        MySyncTaskToAync_Callable asyncTask_Callable = new MySyncTaskToAync_Callable();
+        final ExecutorService executorService = Executors.newFixedThreadPool(10);
+        final Future<Integer> future = executorService.submit(asyncTask_Callable);
+        final Integer integer = future.get();
+        System.out.println("integer = " + integer);
+
+
     }
 }
