@@ -12,15 +12,26 @@ import java.util.concurrent.Callable;
  * Step 1: add impl callable
  * Step 2: add logic that I want to run async in run method of Runnable
  */
-public class MySyncTaskToAync_Callable implements Callable<Integer> {//here we are sending return as Integer,
+public class MySyncTaskToAync_Callable_sendOwn implements Callable<Integer> {//integer is output
+
+    String myService;
+
+    public MySyncTaskToAync_Callable_sendOwn(String myService) {//string is input
+        this.myService = myService;
+    }
+
     public void foo() {// some async tasks
         System.out.println("some async CPU/DB/HTTP... task \n");
         return;
     }
     @Override
     public Integer call() throws Exception {
+        final String inputType = myService;
+
         System.out.println("callable thread name --> "+Thread.currentThread().getName());
         foo();
-        return new Random().nextInt();
+
+        final int outputType = new Random().nextInt();
+        return outputType;
     }
 }

@@ -1,14 +1,15 @@
 package io.hari.multithreading;
 
-import io.hari.multithreading.sync.MySyncTask;
-import io.hari.multithreading.sync.MySyncTaskToAync;
-import io.hari.multithreading.sync.MySyncTaskToAync_Callable;
+import io.hari.multithreading.sync.*;
 
 import java.util.List;
 import java.util.concurrent.*;
+import java.util.stream.IntStream;
 
 
 public class MultiThreadingApplication {
+
+    public static Semaphore semaphore = new Semaphore(3);
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         System.out.println("main thread name : --> " + Thread.currentThread().getName());//main
@@ -115,6 +116,23 @@ public class MultiThreadingApplication {
         final Future<Integer> future = executorService.submit(asyncTask_Callable);
         final Integer integer = future.get();
         System.out.println("integer = " + integer);
+
+        //TODO : semaphore  - test
+
+//        MySyncTaskToAync_Semaphore semaphore = new MySyncTaskToAync_Semaphore();
+//        final ExecutorService executorService1 = Executors.newFixedThreadPool(50);
+//        IntStream.of(100).forEach(i -> executorService1.submit(semaphore));
+
+        IntStream.range(0, 10).forEach(i -> System.out.println(i));
+        IntStream.of(0, 10, -1 , 6).forEach(i -> System.out.println(i));
+
+
+        //TODO : callable with send our own Type + get return different type
+        final String inputToCallable = "serviceObj";
+        MySyncTaskToAync_Callable_sendOwn task = new MySyncTaskToAync_Callable_sendOwn(inputToCallable);
+        ExecutorService  service = Executors.newFixedThreadPool(1);
+        final Future<Integer> futureOutputFrmCallable = service.submit(task);
+
 
 
     }
