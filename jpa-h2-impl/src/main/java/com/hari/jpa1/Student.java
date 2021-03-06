@@ -14,6 +14,8 @@ public class Student {
 	int rollNumber;
 	@Column
 	String name;
+
+	StudentType studentType;
 	
 	public Student(int rollNumber, String name) {
 		super();
@@ -35,6 +37,13 @@ public class Student {
 		this.name = name;
 	}
 
+	public StudentType getStudentType() {
+		return studentType;
+	}
+
+	public void setStudentType(StudentType studentType) {
+		this.studentType = studentType;
+	}
 
 	@Override
 	public boolean equals(Object o) {
@@ -47,5 +56,13 @@ public class Student {
 	@Override
 	public int hashCode() {
 		return Objects.hash(rollNumber, name);
+	}
+
+	@Override
+	public String toString() {
+		return "Student{" +
+				"rollNumber=" + rollNumber +
+				", name='" + name + '\'' +
+				'}';
 	}
 }
