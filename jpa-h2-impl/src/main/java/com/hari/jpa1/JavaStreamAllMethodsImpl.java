@@ -4,7 +4,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import javax.swing.text.html.Option;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.function.Function;
@@ -13,10 +12,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @SpringBootApplication
-public class Jpa1Application implements CommandLineRunner {
+public class JavaStreamAllMethodsImpl implements CommandLineRunner {
 
     public static void main(String[] args) {
-        SpringApplication.run(Jpa1Application.class, args);
+        SpringApplication.run(JavaStreamAllMethodsImpl.class, args);
     }
 
     @Override
