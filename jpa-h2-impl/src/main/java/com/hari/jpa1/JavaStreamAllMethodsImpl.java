@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -232,7 +233,9 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
         final Map<StudentType, Integer> collect13 = Stream.of(student, student2, student3)
                 .collect(Collectors.groupingBy(
                         i -> i.getStudentType(),
-                        Collectors.reducing(0, a -> a.getRollNumber(), (a, b) -> a + b))
+                        Collectors.reducing(0, //initial/default value for below selected field
+                                a -> a.getRollNumber(), //select field that we want to perform binaryOperator/accumulator
+                                (a, b) -> a + b))//accumulator/binary oprator operation or static method
                 );
         System.out.println("collect13 = " + collect13);
 //        {mtech=25, btech=100}
@@ -281,9 +284,154 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
 //        {false=[Student{rollNumber=25, name='hari'}], true=[Student{rollNumber=75, name='chandan'}, Student{rollNumber=25, name='hari'}]}
 
 
+        //reduce and reducing : reduce means "reduction operation"
+        final Entity name1 = Entity.builder().name("name1").entityType(Entity_type.type1).id(1).priceBigDecimal(BigDecimal.valueOf(100)).list(Arrays.asList("str 1", "str 2")).build();
+        final Entity name2 = Entity.builder().name("name2").entityType(Entity_type.type2).id(2).priceBigDecimal(BigDecimal.valueOf(200)).list(Arrays.asList("str 3", "str 4")).build();
+        final Entity name3 = Entity.builder().name("name3").entityType(Entity_type.type3).id(3).priceBigDecimal(BigDecimal.valueOf(300)).list(Arrays.asList("str 4", "str 5")).build();
+        final Entity name4 = Entity.builder().name("name4").entityType(Entity_type.type3).id(4).priceBigDecimal(BigDecimal.valueOf(200)).list(Arrays.asList("str 4", "str 5")).build();
+
+        final int identity = 10;//initial value / default value of "reduction operation", return default value when stream is empty
+        final BinaryOperator<Integer> accumulator = (a, b) -> a + b; //partial result + next element in stream
+//        final BinaryOperator<Integer> accumulator2 = (partialResult, nextElement) -> partialResult + nextElement; //partial result + next element in stream
+        final Integer reduce3 = Stream.of(name1, name2, name3).map(i -> i.getId())
+                                        .reduce(identity, accumulator);//T reduce(T identity, BinaryOperator<T> accumulator);
+        System.out.println("reduce3 = " + reduce3);
+
+        final BinaryOperator<Integer> accumulator1 = Integer::sum;
+        final Integer reduce4 = Stream.of(name1, name2, name3).map(i -> i.getId()).reduce(identity, accumulator1);//same as above
+        System.out.println("reduce4 = " + reduce4);
+        // sum internal impl its a static method that takes 2 arg and sum that, 1st arg is like partialResult and next is like nextElement in stream
+//        public static int sum(int a, int b) {
+//            return a + b;
+//        }
+
+        final Optional<Integer> reduce5 = Stream.of(name1, name2, name3).map(i -> i.getId()).reduce(accumulator);//simply adding all stream data
+        System.out.println("reduce5 = " + reduce5.get());
+
+        BinaryOperator<BigDecimal> accumulator3 = new BinaryOperator<BigDecimal>() {
+            @Override
+            public BigDecimal apply(BigDecimal decimal, BigDecimal decimal2) {
+                return decimal.add(decimal2);
+            }
+        };
+        final Optional<BigDecimal> reduce6 = Stream.of(name1, name2, name3).map(i -> i.getPriceBigDecimal())
+                                                    .filter(Objects::nonNull)//if we not add this one then throw error, since we dont know which obj has this field value and some may have null
+                                                    .reduce(accumulator3);//or we can pass static method that will take inpu Bigdecimal
+        System.out.println("reduce6 = " + reduce6);
+
+        final BigDecimal deliveryCharge = BigDecimal.valueOf(10);
+        final BigDecimal reduce7 = Stream.of(name1, name2, name3).map(i -> i.getPriceBigDecimal())
+                .filter(Objects::nonNull)
+                .reduce(deliveryCharge, ResponseDto::staticMethodSumAndAddDiscount);
+        System.out.println("reduce7 = " + reduce7);
+
+        final BigDecimal discount = BigDecimal.valueOf(50).negate();
+        final BigDecimal reduce8 = Stream.of(name1, name2, name3).map(i -> i.getPriceBigDecimal()).filter(Objects::nonNull)
+                .reduce(discount, ResponseDto::staticMethodSumAndAddDiscount);
+        System.out.println("reduce8 = " + reduce8);
+
+        final BigDecimal reduce9 = Stream.of(name1, name2, name3).map(i -> i.getPriceBigDecimal()).filter(Objects::nonNull)
+                .reduce(discount.add(deliveryCharge), ResponseDto::staticMethodSumAndAddDiscount);
+        System.out.println("reduce9 = " + reduce9);
+
+        //TODO : 3 below find sum of field give same output
+        final BinaryOperator<BigDecimal> sumAccumulator = BigDecimal::add;
+        final Optional<BigDecimal> allSum_AllPrice = Stream.of(name1, name2, name3)
+                .map(i -> i.getPriceBigDecimal()).filter(Objects::nonNull)//always use map + filter non null
+                .reduce(sumAccumulator);//output is optional since there is not intial default value
+        System.out.println("allSum_AllPrice = " + allSum_AllPrice);
+
+        final BigDecimal AllSum_AllPrice2 = Stream.of(name1, name2, name3)
+                .map(i -> i.getPriceBigDecimal()).filter(Objects::nonNull)//always use map + filter non null
+                .reduce(BigDecimal.ZERO, sumAccumulator);// initial value so there is no optional in return in worst case it will return 0 is no stream
+        System.out.println("AllSum_AllPrice2 = " + AllSum_AllPrice2);
+
+        final BigDecimal collect19 = Stream.of(name1, name2, name3)
+                .map(i -> i.getPriceBigDecimal()).filter(Objects::nonNull)//always use map + filter non null
+                .collect(Collectors.reducing(BigDecimal.ZERO, sumAccumulator));
+        System.out.println("collect19 = " + collect19);
+
+        System.out.println("original price or sum : " + allSum_AllPrice + " or " + AllSum_AllPrice2 + " or " + collect19);
+        System.out.println("price or sum after discount = " + reduce9);
+
+        //use case : based on type i want price sum
+        final Map<Entity_type, List<Entity>> collect20 = Stream.of(name1, name2, name3, name4)
+                .collect(Collectors.groupingBy( //internally it will call groupingBy(classifier, toList());
+                            i -> i.getEntityType()
+                     ));
+        System.out.println("collect20 = " + collect20);
+
+        final BinaryOperator<String> operatorOrAccumulator = (a, b) -> a + b;
+        final Map<Entity_type, String> collect21 = Stream.of(name1, name2, name3, name4)
+                .collect(Collectors.groupingBy(
+                        i -> i.getEntityType(),
+                        Collectors.reducing("",//initial value or default value
+                                a -> a.getName(), // in stream obj which getter field we want to add
+                                operatorOrAccumulator) // for above selected getter what operation we want to do
+                ));
+        System.out.println("collect21 = " + collect21);
+
+        final BigDecimal identity1 = BigDecimal.ZERO;
+        final BinaryOperator<BigDecimal> binaryOperatorOrAccumulator = BigDecimal::add;
+        final Map<Entity_type, BigDecimal> collect22 = Stream.of(name1, name2, name3, name4)
+                .collect(Collectors.groupingBy(
+                        i -> i.getEntityType(),
+                        Collectors.reducing(
+                                identity1,
+                                a -> a.getPriceBigDecimal(),//select field type for accumulator
+                                binaryOperatorOrAccumulator //this accumulator is for above field type
+                        )
+                ));
+        System.out.println("collect22 = " + collect22);
+
+
+        //reducing all 3 types : all will give same output
+        //m1
+//        name1.setPriceBigDecimal(null);//working for null field coz we have added filter object non null
+        final Optional<BigDecimal> collect23 = Stream.of(name1, name2, name3, name4).map(i -> i.getPriceBigDecimal()).filter(Objects::nonNull)
+                .collect(Collectors.reducing(binaryOperatorOrAccumulator));//optional coz no initial value
+        System.out.println("collect23 = " + collect23);
+        //m2
+//        name1.setPriceBigDecimal(null);
+//        name2.setPriceBigDecimal(null);
+//        name3.setPriceBigDecimal(null);
+//        name4.setPriceBigDecimal(null);//working
+        final BigDecimal collect24 = Stream.of(name1, name2, name3, name4).map(Entity::getPriceBigDecimal).filter(Objects::nonNull)
+                .collect(Collectors.reducing(BigDecimal.ZERO, binaryOperatorOrAccumulator));// extension of above, adding default value for empty stream
+        System.out.println("collect24 = " + collect24);
+        //m3 : in all above we have perform map before calling collect reducing , here we can call inside reducing method
+//        name1.setPriceBigDecimal(null);
+//        name2.setPriceBigDecimal(null);
+//        name3.setPriceBigDecimal(null);
+//        name4.setPriceBigDecimal(null);
+        //if obje field(price field) is null then below mapper will break since no object null check
+        //todo : not work if any field price contain null, so if above code testing for null then comment this stream
+        final BigDecimal collect25 = Stream.of(name1, name2, name3, name4)
+                .collect(Collectors.reducing(BigDecimal.ZERO, i -> i.getPriceBigDecimal(), BigDecimal::add));
+        System.out.println("collect25 = " + collect25);
+
+        // <R> Stream<R> map(Function<? super T, ? extends R> mapper); // this is from internal  map() method
+         //        Function<? super T, ? extends U> mapper,// this is internal from reducing argument
+        //we can see both are taking same type argument
+
+        // filter non null working
+        name1.setPriceBigDecimal(null);
+        name2.setPriceBigDecimal(null);
+        name3.setPriceBigDecimal(null);
+        name4.setPriceBigDecimal(null);
+        final List<BigDecimal> collect26 = Stream.of(name1, name2, name3, name4).map(Entity::getPriceBigDecimal).filter(Objects::nonNull)
+                .collect(Collectors.toList());
+
+        System.out.println("collect26 = " + collect26);
+
+        final BigDecimal collect27 = Stream.of(name1, name2, name3, name4).map(Entity::getPriceBigDecimal).filter(Objects::nonNull)
+                .collect(Collectors.reducing(BigDecimal.ZERO, BigDecimal::add));
+        System.out.println("collect27 = " + collect27);
+
+
+
     }
 }
-
 
 class ResponseDto {
 	String name;
@@ -297,5 +445,9 @@ class ResponseDto {
         return "ResponseDto{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+
+    public static BigDecimal staticMethodSumAndAddDiscount(BigDecimal value1, BigDecimal value2) {
+        return value1.add(value2);
     }
 }
