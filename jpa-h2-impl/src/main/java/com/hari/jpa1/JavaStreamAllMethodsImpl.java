@@ -6,8 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -429,6 +431,101 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
         System.out.println("collect27 = " + collect27);
 
 
+
+
+        //todo https://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/
+        //DONE : stream from supplier
+        //anyMatch, all, none
+        //best practice order : flatmap, sorted, map, foreach
+        //DONE : parallel stream : list.parallelStream().forEach(element -> doWork(element));
+        //count stream: long count = list.stream().distinct().count();
+        //DONE : stream to stream , flatmap : details.stream().flatMap(detail -> detail.getParts().stream());
+        //DONE : stream averaging and summarizing
+         List<Detail> details = Arrays.asList(
+                 Detail.builder().name("hari").parts(Arrays.asList(Part.builder().name("part 1").build())).age(30).build(),
+                 Detail.builder().name("om").parts(Arrays.asList(Part.builder().name("part 2").build())).age(20).build(),
+                 Detail.builder().name("yadav").parts(Arrays.asList(Part.builder().name("part 3").build())).age(10).build(),
+                 Detail.builder().name("omprakash").parts(Arrays.asList(Part.builder().name("part 4").build())).age(10).build());
+        final Stream<Part> partStream = details.parallelStream().filter(Objects::nonNull).flatMap(i -> i.getParts().stream());
+        System.out.println("partStream = " + partStream);
+
+        //problem if we use stream multiple times then IllegalStateException change error, create a supplier for stream
+        final Supplier<Stream<Part>> streamSupplier = () -> partStream;
+
+        Stream<String> stringStream1 =
+                Stream.of("d2", "a2", "b1", "b3", "c")
+                        .filter(s -> s.startsWith("a"));
+        stringStream1.anyMatch(s -> true);    // ok
+//        stringStream1.noneMatch(s -> true);   // exception
+
+        final Stream<Part> partStream1 = streamSupplier.get();
+        final Stream<Part> partStream2 = streamSupplier.get();
+
+        final Supplier<Stream<Detail>> supplierDetailStream = () -> details.parallelStream();
+        final Double averageAge = supplierDetailStream.get()
+                .collect(Collectors.averagingInt(i -> i.getAge()));
+        System.out.println("averageAge = " + averageAge);
+        final IntSummaryStatistics statistics = supplierDetailStream.get().collect(Collectors.summarizingInt(i -> i.getAge()));
+        System.out.println("statistics = " + statistics);
+        System.out.println("statistics.getSum() = " + statistics.getSum());
+        System.out.println("statistics.getMax() = " + statistics.getMax());
+        System.out.println("statistics.getMin() = " + statistics.getMin());
+        System.out.println("statistics.getAverage() = " + statistics.getAverage());
+
+//        final Map<Integer, String> collect29 = supplierDetailStream.get()
+//                .collect(Collectors.toMap(k -> k.getAge(), v -> v.getName()));//this will work fine when keys are unique
+//        System.out.println("collect29 = " + collect29);
+
+        final Map<Integer, String> collect28 = supplierDetailStream.get()
+                .collect(Collectors.toMap(k -> k.getAge(), v -> v.getName(),
+                        (a, b) -> a +","+ b));//this binary operation /accumulaor is applied on above value type
+        //3rd argument is optional use when keys are not unique, this is only when same key can have 2 value then
+                                            // state exception to avoid that we need to add how to merge those value into one
+        System.out.println("collect28 = " + collect28);
+
+
+        //awesome
+        final HashMap<String, String> collect29 = supplierDetailStream.get().collect(Collectors.toMap(
+                k -> k.getName(), //mapper
+                v -> v.getName(), //mapper
+                (a, b) -> a + ";" + b, //accumulator for value mapper, i.e. for 2nd argument
+                () -> new HashMap<>()));//this is for what type of map u want, hashmap or concurrentMap etc
+        System.out.println("collect29 = " + collect29);
+
+        final ConcurrentHashMap<Integer, String> collect31 = supplierDetailStream.get().collect(Collectors.toMap(
+                k -> k.getAge(),
+                v -> v.getName(),
+                (a, b) -> a + "," + b,
+                () -> new ConcurrentHashMap<>()//what type of map u want in output
+        ));
+        System.out.println("collect31 = " + collect31);
+
+        final TreeMap<Integer, String> collect32 = supplierDetailStream.get().collect(Collectors.toMap(
+                k -> k.getAge(),
+                v -> v.getName(),
+                (a, b) -> a + "-" + b,
+                () -> new TreeMap<>()//sorted order on key
+        ));
+        System.out.println("collect32 = " + collect32);
+
+        List<Detail> details2 = null;
+        //if we are not sure collection list is null then always use below line to create a empty collection if it is null
+        final List<Detail> details1 = Optional.ofNullable(details2).orElse(Collections.emptyList());//IMP : null check for above collection
+        final Map<Integer, String> collect30 = details1.stream().filter(Objects::nonNull).collect(Collectors.toMap(
+                k -> k.getAge(),
+                v -> v.getName(),
+                (a, b) -> b + "," + b));//if keys are not same
+        System.out.println("collect30 = " + collect30);
+
+        //todo own collectors
+//        Collector< Detail, StringJoiner, String> ownCollector = Collector.of(
+//                () -> new StringJoiner(" | "),
+//                (a, b) -> a + " " + b,
+//                (c, d) -> c.merge(d),
+//                i -> i.toString()
+//        );
+//
+//        supplierDetailStream.get().collect(ownCollector);
 
     }
 }
