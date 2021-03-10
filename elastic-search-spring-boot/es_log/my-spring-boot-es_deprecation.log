@@ -1,0 +1,2 @@
+[2020-09-26T13:25:35,482][WARN ][o.e.d.r.a.a.i.RestGetIndexTemplateAction] [Harioms-MacBook-Pro.local] [types removal] Specifying include_type_name in get index template requests is deprecated.
+[2020-09-26T18:58:33,997][WARN ][o.e.d.r.a.d.RestGetAction] [Harioms-MacBook-Pro.local] [types removal] Specifying types in document get requests is deprecated, use the /{index}/_doc/{id} endpoint instead.
