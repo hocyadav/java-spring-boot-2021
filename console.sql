@@ -271,10 +271,10 @@ select *
 from emp_dept t1, emp_dept t2
 where t1.manager_id = t2.id; -- we added manager details
 
-select *
+select * -- all column of 2 table : 4 + 4 = 8
 from emp_dept t1, emp_dept t2
 where t1.manager_id = t2.id and t1.salary > t2.salary; -- manager details + t1 salary > t2 salary
 
-select t1.ename as emp_name, t2.ename as manager_name
+select t1.ename as emp_name, t2.ename as manager_name -- select limited column
 from emp_dept t1, emp_dept t2 -- join , here same table 2 times so self join
 where t1.manager_id = t2.id;
