@@ -261,9 +261,9 @@ create table emp_dept(
 
 insert into emp_dept(id, ename, manager_id, salary)
 values (1, 'hariom', null, 4000),
- (2, 'chandan', 1, 3000),
- (3, 'omp', 1, 5000),
- (4, 'neha', 2, 5000);
+ (2, 'chandan', 1, 3000), -- manager id 1 hariom
+ (3, 'omp', 1, 5000), -- manager id 1 hariom
+ (4, 'neha', 2, 5000); -- manager id 2 chandan
 
 -- find emp with salary greater than manager
 -- both are same entity, so self join required
