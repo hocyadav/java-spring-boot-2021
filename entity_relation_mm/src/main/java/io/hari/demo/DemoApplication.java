@@ -122,7 +122,7 @@ public class DemoApplication implements CommandLineRunner {
 		silver.setShow(show2);
 		showDao.save(show2);//total 1 + 2 + 2 = 5 sql query
 
-		//todo : not working : fetch show and iterate seats
+		//todo : working : fetch show and iterate seats
 		final List<Show> shows = showDao.findAll();
 		shows.forEach(s -> {
 			final List<Seat> seats = s.getSeats();
@@ -144,6 +144,10 @@ public class DemoApplication implements CommandLineRunner {
 //		2nd
 //		@ManyToOne Show show;//m1
 //		@ManyToOne(fetch = FetchType.EAGER) Show show;//m2
+
+		//todo : change string data type length varchar length , and check in h2 and mysql
+		showDao.save(Show.builder().name("123456789012345678901").build());
+
 
 	}
 }
