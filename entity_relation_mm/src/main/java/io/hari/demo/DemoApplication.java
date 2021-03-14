@@ -3,6 +3,8 @@ package io.hari.demo;
 import io.hari.demo.config.AppConfig;
 import io.hari.demo.dao.*;
 import io.hari.demo.entity.*;
+import io.hari.demo.entity.onetomanybi.Seat;
+import io.hari.demo.entity.onetomanybi.Show;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,9 +12,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -39,6 +46,12 @@ public class DemoApplication implements CommandLineRunner {
 	@Autowired
 	UsersDao usersDao;
 
+	@Autowired
+	ShowDao showDao;
+
+	@Autowired
+	SeatDao seatDao;
+
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -51,7 +64,7 @@ public class DemoApplication implements CommandLineRunner {
 
 		//STEP 2: use case 1 : grp can have same users
 		//different grp can store same user: M:M in owner side + fetch eager type and other side simple entity no annotaion
-		//we will not use cascade since we we store obj before passing to owner side, see above we are storing other entity
+		//we will not use cascade since we will store obj before passing to owner side, see above we are storing other entity
 		groupsDao.save(Group.builder().name("grp 1")
 				.users(Arrays.asList(hari, om)).build());
 		groupsDao.save(Group.builder().name("grp 2")
@@ -88,5 +101,49 @@ public class DemoApplication implements CommandLineRunner {
 
 		final List<Order> allByItems_id = orderDao.findAllByItems_id(1L);
 		System.out.println("allByItems_id = " + allByItems_id);
+
+		//todo 2 way - bidirectional entity test
+		final Show show = Show.builder().name("show 01")//1 sql for show
+				.seats(Arrays.asList(Seat.builder().type("gold").build(), Seat.builder().type("silver").build()))//2 sql query + 2 sql for show_seats table for mapping
+				.build();
+		showDao.save(show);//total 1 + 2 + 2 = 5 sql query
+
+		// now add @JoinColumn(name = "show_id") below oneToMany mapping
+
+//		show.getSeats().remove(0);
+//		showDao.save(show);
+
+		final Seat gold = Seat.builder().type("gold2").build();
+		final Seat silver = Seat.builder().type("silver2").build();
+		final Show show2 = Show.builder().name("show 012")//1 sql for show
+				.seats(Arrays.asList(gold, silver))//2 sql query + 2 sql for show_seats table for mapping
+				.build();
+		gold.setShow(show2);
+		silver.setShow(show2);
+		showDao.save(show2);//total 1 + 2 + 2 = 5 sql query
+
+		//todo : not working : fetch show and iterate seats
+		final List<Show> shows = showDao.findAll();
+		shows.forEach(s -> {
+			final List<Seat> seats = s.getSeats();
+			System.out.println("seats = " + seats);
+		});
+		//todo : fetch seats and iterate shows
+		final List<Seat> seats = seatDao.findAll();
+		seats.forEach(s -> {
+			final Show show1 = s.getShow();
+			System.out.println("show1 = " + show1);
+		});
+
+		//bi directional : my old uni directional working + add bwlow 2 things 1st add mapped by in 1:M side
+		//and 2nd add new field in other side with annotation manyToOne and (fetch = eager) this is optional
+//		1st
+//		@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)//old
+//		@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "show")//new
+
+//		2nd
+//		@ManyToOne Show show;//m1
+//		@ManyToOne(fetch = FetchType.EAGER) Show show;//m2
+
 	}
 }
