@@ -14,10 +14,11 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "groups")
-public class Group extends BaseEntity{
+public class Group extends BaseEntity {
     String name;
 
-//    @ManyToMany(fetch = FetchType.EAGER)
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "users_id")//not working here, try with one to many
+//    @OneToMany(fetch = FetchType.EAGER)
     List<User> users = new ArrayList<>();
 }

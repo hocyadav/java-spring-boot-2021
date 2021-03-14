@@ -14,10 +14,12 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "orders")
-public class Order extends BaseEntity{
+public class Order extends BaseEntity {
     String cusId;
     Integer price;
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)//m1
+//    @JoinColumn(name = "orders_id")//working - this will not change any code change , only change in db side ,
+    // remove order_item table and add new column in item table as "orders_id"
     List<Item> items = new ArrayList<>();
 }
