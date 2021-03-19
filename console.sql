@@ -278,3 +278,180 @@ where t1.manager_id = t2.id and t1.salary > t2.salary; -- manager details + t1 s
 select t1.ename as emp_name, t2.ename as manager_name -- select limited column
 from emp_dept t1, emp_dept t2 -- join , here same table 2 times so self join
 where t1.manager_id = t2.id;
+
+
+-- practice union + union all + join + inner join + self join
+select t1.name
+from emp as t1
+union
+select t2.name
+from emp2 as t2;
+
+select t1.name
+from emp t1
+union all
+select t2.name
+from emp2 t2;
+-- 1st union all between 2 result set and then group by
+select min(t3.salary), t3.name
+from (select t1.name, t1.salary from emp t1 union all select t2.name, t2.salary from emp2 t2) t3
+group by t3.name;
+
+select *
+from emp, dept;
+
+select *
+from emp, dept
+where
+emp.depid = dept.id;
+
+select *
+from emp, dept
+where emp.depid = dept.id and dept.dept_location = 'delhi';
+
+select count(*), dept.id -- each dept what is the num of emp
+from emp, dept
+where emp.depid = dept.id
+group by dept.id;
+
+select *
+from emp_dept t1, emp_dept t2
+where t1.manager_id = t2.id; -- self join , add managers details to table t1
+
+select *
+from emp_dept t1, emp_dept t2
+where t1.manager_id = t2.id and t1.salary > t2.salary; -- emp that have higher salary than there manager
+
+-- left join : contains left all data , final result length is same number as left table
+select * from emp; -- left table 9 rows
+
+select *
+from emp left join dept on emp.depid = dept.id; -- final 9 rows (adding where condition in from)
+
+select *
+from emp, dept
+where emp.depid = dept.id; -- same output as above
+
+select *
+from emp left join emp_dept on emp.salary = emp_dept.salary; -- salary matching in t2 table : contain matches + non matches data
+
+select *
+from emp, emp_dept
+where emp.salary = emp_dept.salary; -- same as above but clean result - remove null matches
+
+-- right join
+select * from dept;
+
+select *
+from emp right join dept on emp.depid = dept.id; -- show all rows of right side table + matching condition from left side
+
+select *
+from emp right join dept on emp.depid = dept.id and dept.id = 10; -- only that matched condition that values are shown from left, but right side all values are shows
+
+select *
+from emp right join dept on emp.depid = dept.id and dept.dept_location = 'singapore';
+
+select *
+from emp, dept
+where emp.depid = dept.id and dept_location = 'singapore';
+
+select count(*), t2.id
+from emp t1 right join dept t2 on t1.depid = t2.id
+group by t2.id;
+
+-- full join = left join union right join, but no full join in MYSQL, we can using union
+select * from emp left join dept on emp.depid = dept.id; -- left join
+select * from emp right join dept on emp.depid = dept.id; -- right join
+
+select * from emp left join dept on emp.depid = dept.id -- left join
+union
+select * from emp right join dept on emp.depid = dept.id; -- right join
+
+select *
+from emp cross join emp_dept;
+
+select *
+from emp, emp_dept;
+
+-- first n rows, last n rows
+select * from emp_dept;
+
+select *
+from (select row_number() over (order by id) rn, emp_dept.* from emp_dept) t1
+where t1.rn <= 2;
+
+select *
+from (select row_number() over (order by id desc) rn, emp_dept.* from emp_dept ) t1
+where t1.rn <= 2
+order by t1.id; -- optional sort
+
+-- display 1st and last row, i.e rn = 1 OR rn = total number
+select *
+from (select row_number() over (order by id) rn, emp_dept.* from emp_dept) t1
+where rn = 1 OR rn = (select count(*) from emp_dept);
+
+-- display last 2 row if total is 7 then: all - 1st five
+-- 1st 2 rows
+select *
+from (select row_number() over (order by id) rn , emp_dept.* from emp_dept) t1
+where t1.rn in (1, 2); -- row num condition 1st 2 row
+
+-- find last 2 row , same as above but only change in condition
+select * from (select row_number() over (order by id)rn, emp_dept.* from emp_dept) t1 -- create row num
+where rn > (select count(*)-2 from emp_dept); -- condition on row num using count : rn > total - 2
+
+-- 1st 2 row + last 2 row, take or of above 2 row num condition
+select *
+from (select row_number() over (order by id) rn, emp_dept.* from emp_dept) t1
+where rn in (1, 2)
+   OR rn > (select count(*)-2 from emp_dept);
+
+-- even odd records, only change rn condition, use mod
+select *
+from (select row_number() over (order by id) rn, emp_dept.* from emp_dept) t1
+where mod(rn, 2) = 0; -- even , for odd use != 0
+
+-- first n row using order by n limit concept
+select *
+from emp_dept
+order by id; -- sort ,+ take all n rows
+
+select *
+from emp_dept
+order by id -- 1 sort
+limit 2; -- 2 take top 2 element, default it will take n element
+
+select *
+from emp_dept
+order by id desc -- 1. sort
+limit 2; -- 2. take top 2 element
+
+
+select *
+from emp_dept
+order by id
+limit 3; -- take 1st 3 row, but where to start, default it will start from 0th index, i.e. offset = 0
+
+select *
+from emp_dept
+order by id
+limit 0, 3; -- same as above one, we can use "limit 3" also
+
+-- IMP : order of execution : FROM -> WHERE -> SELECT -> ORDER & LIMIT
+select *
+from emp_dept
+order by id -- 1. sort
+limit 1, 3; -- 2. after sorting start from 1st array index , index start from 0
+
+-- https://www.mysqltutorial.org/mysql-limit.aspx
+-- LIMIT : top 5 customer who have highest credit,
+-- sort based on credit using ORDER BY, then take 1st 5 using LIMIT
+-- .... order by cusLimit desc limit 5
+
+-- nth highest or lowest using LIMIT
+-- order by ... LIMIT n-1, 1; //skip n-1 element i.e. nothing but all element except one and 1 means show one element
+-- order by ... desc LIMIT n-1, 1; //nth highest element
+
+
+
+
