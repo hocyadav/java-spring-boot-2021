@@ -29,6 +29,13 @@ public class AttributeConvertorJsonStoreGenericDaoServiceApplication {
     private final PersonService personService;
     private final CryptoConverter cryptoConverter;
 
+    /**
+     *
+     * @param personDao person dao
+     * @param myConfig config instance
+     * @param personService
+     * @param cryptoConverter
+     */
     public AttributeConvertorJsonStoreGenericDaoServiceApplication(final PersonDao personDao,
                                                                    final MyConfig myConfig,
                                                                    final PersonService personService,
