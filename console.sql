@@ -452,6 +452,32 @@ limit 1, 3; -- 2. after sorting start from 1st array index , index start from 0
 -- order by ... LIMIT n-1, 1; //skip n-1 element i.e. nothing but all element except one and 1 means show one element
 -- order by ... desc LIMIT n-1, 1; //nth highest element
 
+select distinct salary
+from emp_dept
+order by salary;
+-- output
+# 3000
+# 3002
+# 4000
+# 4005
+# 4008
+# 4009
+# 5000
+# 5002
+# 5004
+select distinct salary
+from emp_dept
+order by salary
+# limit 0, 1; -- 3000 : 0th index value in sorted array i.e. nothing but 1st min salary
+# limit 1, 1; -- 3002 : 1st index value in sorted array i.e. nothing but 2nd min salary
+limit 2, 1; -- 4000 : 2nd index value in sorted array i.e. nothing but 3rd min salary..and so on..
+-- we can find nth lowest by knowing where to start ,i.e. in array start from n-1 index then pick only one element after that i.e 1, so final SQL is limit n-1, 1;
 
 
-
+-- group by above SQL
+-- 1st : find nth lowest salary using LIMIT n-1, 1, 2nd apply group by to know how many row conts for that salary
+select salary, count(*)
+from emp_dept
+group by salary
+order by salary
+limit 2, 1; -- 3rd lowest = 3-1 array index + pick only one element so 1, same as above but with count how many row have salary
