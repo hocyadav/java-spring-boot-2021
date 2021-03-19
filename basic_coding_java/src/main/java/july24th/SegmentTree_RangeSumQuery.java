@@ -33,7 +33,7 @@ class TreeImpl {
 			int mid = start + (end - start)/2; //start + jump to mid..mid is (end-start)/2
 			root_.left = rec(arr, start, mid);
 			root_.right = rec(arr, mid+1, end);
-			root_.sum = root_.left.sum + root_.right.sum;//1
+			root_.sum = root_.left	.sum + root_.right.sum;//1
 		}
 		return root_;
 	}
@@ -96,6 +96,8 @@ public class SegmentTree_RangeSumQuery {
 		int[] arr = {1,0,2,5,3};
 		tree.buildSegmentTree(arr, 0, arr.length - 1);
 		tree.printSegmentTree_inorder();
+		int i = tree.sumRange(1, 4);
+		System.out.println(i);
 	}
 }
 /**
