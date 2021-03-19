@@ -7,7 +7,7 @@ import java.util.concurrent.*;
 import java.util.stream.IntStream;
 
 
-public class MultiThreadingApplication {
+public class MultiThreading_Executor {
 
     public static Semaphore semaphore = new Semaphore(3);
 

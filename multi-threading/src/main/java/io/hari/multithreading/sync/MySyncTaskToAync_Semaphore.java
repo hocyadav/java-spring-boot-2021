@@ -1,6 +1,6 @@
 package io.hari.multithreading.sync;
 
-import io.hari.multithreading.MultiThreadingApplication;
+import io.hari.multithreading.MultiThreading_Executor;
 import lombok.SneakyThrows;
 
 /**
@@ -21,9 +21,9 @@ public class MySyncTaskToAync_Semaphore implements Runnable{
     @SneakyThrows
     public void run() {//pass async task
         System.out.println("thread name --> "+Thread.currentThread().getName());
-        MultiThreadingApplication.semaphore.acquire();//slow service call start
+        MultiThreading_Executor.semaphore.acquire();//slow service call start
         foo();
 //        Thread.sleep(2000);
-        MultiThreadingApplication.semaphore.release();// slow service call end
+        MultiThreading_Executor.semaphore.release();// slow service call end
     }
 }
