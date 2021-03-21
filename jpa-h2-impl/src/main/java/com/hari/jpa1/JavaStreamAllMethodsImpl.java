@@ -101,6 +101,11 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
         //convert array to stream :
         // primitive type,
         final Stream<int[]> stream = Stream.of(arr);
+
+        //int arr to Integer Stream or Integer Array
+        final Stream<Integer> boxed = Arrays.stream(arr).boxed();
+        final List<Integer> integerList = Arrays.stream(arr).boxed().collect(Collectors.toList());
+
         // collection type
         final Stream<Integer> stream1 = list.stream();//stream() method is added to Collection interface
 
@@ -189,6 +194,15 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
 		System.out.println("collect7 = " + collect7);
 //        {25=[Student{rollNumber=25, name='hari'}], 75=[Student{rollNumber=75, name='chandan'}]}
 
+        //above grop by collect6 and 7 are same as below
+        final Map<Integer, List<Student>> collect33 = Stream.of(student, student2).collect(Collectors.groupingBy(m,
+                Collectors.mapping(i -> i, Collectors.toList())//value we can use what we want , by default in above it is calling this same logic
+        ));
+        System.out.println("collect33 = " + collect33);
+        // collect33 = {25=[Student{rollNumber=25, name='hari'}], 75=[Student{rollNumber=75, name='chandan'}]}
+
+
+
 		//m3 : in that collectors interface if we want other getter not that whole obj in list
 		// then we can replace collectors interface above with anotehr collectors mapping method
 		final Map<Integer, List<String>> collect8 = Stream.of(student, student2)
@@ -197,7 +211,8 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
 		System.out.println("collect8 = " + collect8);
 //        {25=[hari], 75=[chandan]}
 
-		//m1 adv #1:  in different use case : goal is to convert key to some other type : https://www.baeldung.com/java-groupingby-collector
+
+        //m1 adv #1:  in different use case : goal is to convert key to some other type : https://www.baeldung.com/java-groupingby-collector
         final Map<ResponseDto, List<Student>> collect9 = Stream.of(student, student2)
                                     .collect(Collectors.groupingBy(i -> new ResponseDto(i.getName())));//modifying key
         System.out.println("collect9 = " + collect9);
