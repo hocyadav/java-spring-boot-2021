@@ -580,6 +580,29 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
         System.out.println("collect37 = " + collect37);
 
 
+        //todo : group by using own map class - using supplier parameters
+        final HashMap<String, Long> collect38 = Stream.of(student, student2).collect(Collectors.groupingBy(
+                i -> i.getName(),
+                () -> new HashMap<>(),//output new hashmap type implementation
+                Collectors.counting()
+        ));
+        System.out.println("collect38 = " + collect38);
+
+        final TreeMap<StudentType, List<Student>> collect39 = Stream.of(student, student2).collect(Collectors.groupingBy(
+                i -> i.getStudentType(),
+                () -> new TreeMap<>(),//output new TreeMap type implementation
+                Collectors.toList()
+        ));
+        System.out.println("collect39 = " + collect39);//sorted order based on default ??
+
+        final LinkedHashMap<String, List<Student>> collect40 = Stream.of(student, student2).collect(Collectors.groupingBy(
+                i -> i.getName(),
+                () -> new LinkedHashMap<>(),
+                Collectors.toList()
+        ));
+        System.out.println("collect40 = " + collect40);
+
+
     }
 
     private List<String> readAllLines(Path path) {
