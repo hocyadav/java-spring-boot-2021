@@ -561,23 +561,27 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
                     return null;
                 }).collect(Collectors.toList());
         System.out.println("collect34 = " + collect34);
+        // collect34 = [[hariom yadav, chandan yadav, neha], [omprakash yadav, neha]]
 
         final List<List<String>> collect35 = list1.stream()
                 .map(file -> Paths.get(file))
                 .map(path -> this.readAllLines(path))
                 .collect(Collectors.toList());
         System.out.println("collect35 = " + collect35);
+        // collect35 = [[hariom yadav, chandan yadav, neha], [omprakash yadav, neha]]
 
         final List<List<String>> collect36 = list1.stream().map(file -> Paths.get(file))
                 .map(path -> this.readLinesFrom2(path))
                 .collect(Collectors.toList());
         System.out.println("collect36 = " + collect36);
+        // collect36 = [[hariom yadav, chandan yadav, neha], [omprakash yadav, neha]]
 
         final List<List<String>> collect37 = list1.stream()
                 .map(f -> Paths.get(f))
                 .map(p -> this.readLinesFrom3(p))
                 .collect(Collectors.toList());
         System.out.println("collect37 = " + collect37);
+        // collect37 = [[hariom yadav, chandan yadav, neha], [omprakash yadav, neha]]
 
 
         //todo : group by using own map class - using supplier parameters
@@ -587,6 +591,7 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
                 Collectors.counting()
         ));
         System.out.println("collect38 = " + collect38);
+        // collect38 = {hari=1, chandan=1}
 
         final TreeMap<StudentType, List<Student>> collect39 = Stream.of(student, student2).collect(Collectors.groupingBy(
                 i -> i.getStudentType(),
@@ -594,6 +599,7 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
                 Collectors.toList()
         ));
         System.out.println("collect39 = " + collect39);//sorted order based on default ??
+        // collect39 = {btech=[Student{rollNumber=75, name='chandan'}], mtech=[Student{rollNumber=25, name='hari'}]}
 
         final LinkedHashMap<String, List<Student>> collect40 = Stream.of(student, student2).collect(Collectors.groupingBy(
                 i -> i.getName(),
@@ -601,6 +607,7 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
                 Collectors.toList()
         ));
         System.out.println("collect40 = " + collect40);
+        // collect40 = {chandan=[Student{rollNumber=75, name='chandan'}], hari=[Student{rollNumber=25, name='hari'}]}
 
 
     }
