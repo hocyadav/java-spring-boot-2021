@@ -1,10 +1,15 @@
 package com.hari.jpa1;
 
+import lombok.SneakyThrows;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BinaryOperator;
@@ -542,6 +547,66 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
 //
 //        supplierDetailStream.get().collect(ownCollector);
 
+
+        //TODO DONE : stream with Checked exceptions
+        final List<String> list1 = Arrays.asList("file1.txt");
+        final List<List<String>> collect34 = list1.stream()
+                .map(file -> Paths.get(file))
+                .map(path -> {
+                    try {
+                        return Files.readAllLines(path);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                }).collect(Collectors.toList());
+        System.out.println("collect34 = " + collect34);
+
+        final List<List<String>> collect35 = list1.stream()
+                .map(file -> Paths.get(file))
+                .map(path -> this.readAllLines(path))
+                .collect(Collectors.toList());
+        System.out.println("collect35 = " + collect35);
+
+        final List<List<String>> collect36 = list1.stream().map(file -> Paths.get(file))
+                .map(path -> this.readLinesFrom2(path))
+                .collect(Collectors.toList());
+        System.out.println("collect36 = " + collect36);
+
+        final List<List<String>> collect37 = list1.stream()
+                .map(f -> Paths.get(f))
+                .map(p -> this.readLinesFrom3(p))
+                .collect(Collectors.toList());
+        System.out.println("collect37 = " + collect37);
+
+
+    }
+
+    private List<String> readAllLines(Path path) {
+        List<String> strings = new LinkedList<>();
+        try {
+            strings = Files.readAllLines(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return strings;
+    }
+
+    //wrap unchecked exception to run time exception
+    public List<String> readLinesFrom3(Path path) {//convert unchecked exceptions to runtime exceptions
+        List<String> strings = new ArrayList<>();
+        try {
+            strings = Files.readAllLines(path);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return strings;
+    }
+
+
+    @SneakyThrows
+    public List<String> readLinesFrom2(Path path) {//throw unchecked exception using Lombok
+        return Files.readAllLines(path);
     }
 }
 
