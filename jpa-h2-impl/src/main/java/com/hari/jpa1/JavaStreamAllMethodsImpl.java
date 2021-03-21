@@ -549,7 +549,7 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
 
 
         //TODO DONE : stream with Checked exceptions
-        final List<String> list1 = Arrays.asList("file1.txt");
+        final List<String> list1 = Arrays.asList("file1.txt", "file2.txt");
         final List<List<String>> collect34 = list1.stream()
                 .map(file -> Paths.get(file))
                 .map(path -> {
