@@ -23,8 +23,8 @@ public class BlockingQueueImpl {
     }
 }
 /**
- blockingQueue = [1]
- blockingQueue = []
- blockingQueue = [2]
- take = 1
+ * blockingQueue = [1]
+ * blockingQueue = []
+ * blockingQueue = [2]
+ * take = 1
  */
