@@ -9,6 +9,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * @Author Hariom Yadav
  * @create 22-03-2021
+ * http://tutorials.jenkov.com/java-util-concurrent/blockingqueue.html
+ * https://www.youtube.com/watch?v=d3xb1Nj88pw&list=PLL8woMHwr36EDxjUoCzboZjedsnhLP1j4&index=17
  */
 public class BlockingQueueImpl_ProducerConsumer {
     @SneakyThrows
