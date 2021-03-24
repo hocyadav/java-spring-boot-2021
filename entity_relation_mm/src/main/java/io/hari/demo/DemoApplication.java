@@ -3,6 +3,8 @@ package io.hari.demo;
 import io.hari.demo.config.AppConfig;
 import io.hari.demo.dao.*;
 import io.hari.demo.entity.*;
+import io.hari.demo.entity.cab.Location;
+import io.hari.demo.entity.cab.Rider;
 import io.hari.demo.entity.onetomanybi.Seat;
 import io.hari.demo.entity.onetomanybi.Show;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +32,12 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Autowired
 	PersonDao personDao;
+
+	@Autowired
+	RiderDao riderDao;
+
+	@Autowired
+	LocationDao locationDao;
 
 	@Autowired
 	AddressDao addressDao;
@@ -146,7 +151,55 @@ public class DemoApplication implements CommandLineRunner {
 //		@ManyToOne(fetch = FetchType.EAGER) Show show;//m2
 
 		//todo : change string data type length varchar length , and check in h2 and mysql
-		showDao.save(Show.builder().name("123456789012345678901").build());
+		showDao.save(Show.builder().name("12345678901234567890").build());
+
+
+		// not working
+//		EntityManagerFactory emf=Persistence.createEntityManagerFactory("Student_details");
+//		EntityManager em=emf.createEntityManager();
+//
+//		em.getTransaction().begin();
+//
+//		StudentEntity s1=new StudentEntity();
+//		s1.setS_id(101);
+//		s1.setS_name("Gaurav");
+//		s1.setS_age(24);
+//
+//		StudentEntity s2=new StudentEntity();
+//		s2.setS_id(102);
+//		s2.setS_name("Ronit");
+//		s2.setS_age(22);
+//
+//		StudentEntity s3=new StudentEntity();
+//		s3.setS_id(103);
+//		s3.setS_name("Rahul");
+//		s3.setS_age(26);
+//
+//		em.persist(s1);
+//		em.persist(s2);
+//		em.persist(s3);
+//
+//		em.getTransaction().commit();
+//
+//		emf.close();
+//		em.close();
+
+
+		//todo : test update from one entity to another
+		//logic if we have PK id then we can update obj and save using dao
+		final Location location = Location.builder().x(Double.valueOf(1)).y(Double.valueOf(2)).build();
+		final Rider rider = Rider.builder().location(location).build();
+		riderDao.save(rider);
+		System.out.println("rider = " + rider);
+		System.out.println("location = " + location);
+		location.setX(Double.valueOf(20));
+		location.setY(Double.valueOf(30));
+		locationDao.save(location);//save using dao
+		System.out.println("location = " + location);
+
+		final Rider rider1 = riderDao.findById(1L).get();
+		final Location location1 = rider1.getLocation();
+		System.out.println("location1 = " + location1);
 
 
 	}

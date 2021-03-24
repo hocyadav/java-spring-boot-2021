@@ -1,0 +1,16 @@
+<persistence>
+    <persistence-unit name="Student_details">
+
+        <class>io.hari.demo.entity.StudentEntity</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/test"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="hariom"/>
+            <property name="eclipselink.logging.level" value="SEVERE"/>
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+        </properties>
+
+    </persistence-unit>
+</persistence>
