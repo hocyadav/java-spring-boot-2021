@@ -1,4 +1,4 @@
-package io.hari.multithreading.blocking_queue;
+package io.hari.multithreading.blocking_queue.producer_consumer;
 
 import lombok.SneakyThrows;
 
