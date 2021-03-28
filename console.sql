@@ -442,6 +442,8 @@ select *
 from emp_dept
 order by id -- 1. sort
 limit 1, 3; -- 2. after sorting start from 1st array index , index start from 0
+-- in above we are excluding 0th index, i.e. remove first element after sorting
+-- if limit 2, 3 : then remove 0th n 1st index from final result, and after that show 3 values
 
 -- https://www.mysqltutorial.org/mysql-limit.aspx
 -- LIMIT : top 5 customer who have highest credit,
@@ -475,9 +477,24 @@ limit 2, 1; -- 4000 : 2nd index value in sorted array i.e. nothing but 3rd min s
 
 
 -- group by above SQL
--- 1st : find nth lowest salary using LIMIT n-1, 1, 2nd apply group by to know how many row conts for that salary
+-- 1st : find nth lowest salary using LIMIT n-1, 1, 2nd apply group by to know how many row counts for that salary
 select salary, count(*)
-from emp_dept
-group by salary
-order by salary
+from emp_dept -- 1
+group by salary -- 2
+order by salary -- 3
 limit 2, 1; -- 3rd lowest = 3-1 array index + pick only one element so 1, same as above but with count how many row have salary
+
+select *
+from emp_dept;
+
+update emp_dept
+set salary = 5555 -- 2nd this will run
+where id = 1; -- 1st this will run
+
+# update
+# set  =
+# where;
+
+-- no where clause so this will update all rows : https://www.w3schools.com/sql/sql_update.asp
+# update emp_dept
+# set salary = 4001;
