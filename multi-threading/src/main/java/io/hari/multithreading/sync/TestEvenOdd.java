@@ -9,6 +9,7 @@ import lombok.SneakyThrows;
 public class TestEvenOdd {
     public static void main(String[] args) {
         PrintEvenOdd2Thread evenOdd2Thread = new PrintEvenOdd2Thread();
+
         Thread thread1 = new Thread(new Runnable() {
             @SneakyThrows // throw check exception
             public void run() {
@@ -27,3 +28,16 @@ public class TestEvenOdd {
         thread2.start();
     }
 }
+/**
+ even number : 0 Thread-0
+ odd number : 1 my-thread-name-odd
+ even number : 2 Thread-0
+ odd number : 3 my-thread-name-odd
+ even number : 4 Thread-0
+ odd number : 5 my-thread-name-odd
+ even number : 6 Thread-0
+ odd number : 7 my-thread-name-odd
+ even number : 8 Thread-0
+ odd number : 9 my-thread-name-odd
+ even number : 10 Thread-0
+ */
