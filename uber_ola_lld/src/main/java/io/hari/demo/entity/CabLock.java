@@ -1,5 +1,6 @@
 package io.hari.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -26,6 +27,7 @@ public class CabLock extends BaseEntity{
     LocalDateTime lockTime;
     Long timeout;
 
+    @JsonIgnore
     public synchronized boolean isLockTimeout() {
         final Duration between = Duration.between(lockTime, LocalDateTime.now());
         if (between.getSeconds() >= timeout) return true;
