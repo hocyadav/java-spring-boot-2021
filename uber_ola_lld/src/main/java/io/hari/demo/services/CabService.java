@@ -35,8 +35,9 @@ public class CabService {
                     CabLock.builder()
                             .cabId(cab1.getId())
                             .lockStatus(CabLockStatus.available)
-                            .lockTime(LocalDateTime.now())
-                            .timeout(Long.valueOf(120)).build());
+//                            .lockTime(LocalDateTime.now())
+//                            .timeout(Long.valueOf(10))
+                            .build());
             System.out.println("newly added cabLock1 = " + cabLock1);
         }
     }

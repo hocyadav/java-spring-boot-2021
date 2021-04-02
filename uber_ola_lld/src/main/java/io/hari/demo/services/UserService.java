@@ -5,6 +5,8 @@ import io.hari.demo.dao.CabDao;
 import io.hari.demo.dao.CabLockDao;
 import io.hari.demo.dao.TripDao;
 import io.hari.demo.entity.*;
+import io.hari.demo.services.otherservices_icm.CabSelectionService;
+import io.hari.demo.services.otherservices_icm.PriceSelectionStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,12 @@ public class UserService {
 
     @Autowired
     CabDao cabDao;
+
+    @Autowired
+    CabSelectionService cabSelectionService;
+
+    @Autowired
+    PriceSelectionStrategy priceSelectionStrategy;
 
     public List<Trip> fetchTripsHistory(Long userId) {
         final List<Trip> trips = tripDao.findAllByUserId(userId);
@@ -55,15 +63,18 @@ public class UserService {
         return cabs;
     }
 
-    public Trip bookTrip(User user, List<Cab> cabs, Location toLocation) {
-        final Optional<Cab> optionalCab = cabs.stream().findAny();//TODO ICM
+    public synchronized Trip bookTrip(User user, List<Cab> cabs, Location toLocation) {
+//        final Optional<Cab> optionalCab = cabs.stream().findAny();//TODO ICM
+        final Optional<Cab> optionalCab = cabSelectionService.selectSingleBestCab(user, cabs);//done TODO ICM
+
         if (!optionalCab.isPresent()) {
             System.out.println("no cab");
             return null;
         }
 
         final Cab cab = optionalCab.get();
-        final double price = user.getLocation().distanceBetweenLocation(toLocation) * 10;//TODO ICM
+//        final double price = user.getLocation().distanceBetweenLocation(toLocation) * 10;//TODO done ICM
+        final double price = priceSelectionStrategy.getBestPrice(user, toLocation);
         final Trip trip = Trip.builder()
                 .cabId(cab.getId())
                 .userId(user.getId())
