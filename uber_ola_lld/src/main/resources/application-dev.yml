@@ -6,6 +6,7 @@ spring.datasource.platform: h2
 #spring.jpa.properties.hibernate.format_sql: true
 
 app-config:
-  simpleKey: "value"
+  perKmPrice: 100
+  tempCabLockTime: 30
 
 

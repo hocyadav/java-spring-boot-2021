@@ -25,7 +25,6 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Autowired
 	AppConfig config;
-
 	@Autowired
 	UserService userService;
 	@Autowired
@@ -101,7 +100,7 @@ public class DemoApplication implements CommandLineRunner {
 		final List<Trip> cabHistory2 = cabService.fetchCabHistory(cab2.getId());
 		System.out.println("cabHistory = " + cabHistory2);
 
-		//end trip and change the cab status back to available
+		//todo done : end trip and change the cab status back to available
 		Thread.sleep(1000*40);
 		cabService.endTrip(trip);
 
