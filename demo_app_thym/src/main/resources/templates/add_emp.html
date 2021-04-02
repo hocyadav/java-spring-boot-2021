@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Add new emp</title>
+</head>
+<body>
+
+<div class="container">
+<!-- get empty employee obj from backend [Placeholder] -> set values -> send to backend using POST using submit button ->
+in backend write post method to accept and save to db -->
+    <form action="#" th:action="@{/controllerMethod3}" th:object="${employee}" method="post">
+<!--  call getter to fill initial value, initially it has nothing for all fields-->
+        <input type="text" th:field="*{name}" placeholder="emp name" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{email}" placeholder="emp email" class="form-control mb-4 col-4">
+
+        <button type="submit">Save emp</button>
+    </form>
+</div>
+
+</body>
+</html>
