@@ -1,12 +1,12 @@
 package io.hari.demo.entity;
 
-import com.sun.javafx.css.parser.LadderConverter;
 import io.hari.demo.convertor.LocationConverter;
 import io.hari.demo.convertor.TripStatus;
 import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 /**
@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 @Builder
 @Entity
 @Table(name = "trips")
-public class Trip extends BaseEntity{
+public class Trip extends BaseEntity {
     Long userId;
     Long cabId;
     BigDecimal price;
@@ -32,8 +32,19 @@ public class Trip extends BaseEntity{
     @Convert(converter = LocationConverter.class)
     Location toLocation;
 
+    //metadata
     LocalDateTime endTripTime;
 
     @Enumerated(EnumType.STRING)
     TripStatus tripStatus;
+    LocalDateTime startTripTime;
+
+    public Duration getTotalTimeToCompleteTrip() {
+        if (startTripTime != null && endTripTime != null) {
+            final Duration between = Duration.between(startTripTime, endTripTime);
+            final long minutes = between.toMinutes();
+            return between;
+        }
+        return null;
+    }
 }

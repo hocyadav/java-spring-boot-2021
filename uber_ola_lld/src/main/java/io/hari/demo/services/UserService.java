@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -81,6 +82,7 @@ public class UserService {
                 .fromLocation(user.getLocation())
                 .toLocation(toLocation)
                 .tripStatus(TripStatus.STARTED_FROM_SOURCE)
+                .startTripTime(LocalDateTime.now())
                 .price(BigDecimal.valueOf(price)).build();
 
         final Trip trip1 = tripDao.save(trip);

@@ -68,6 +68,8 @@ public class CabService {
     private synchronized void unlockCab(Long cabId) {
         final CabLock cabLock = cabLockDao.findByCabId(cabId);
         cabLock.setLockStatus(CabLockStatus.available);
+        cabLock.setTimeout(null);
+        cabLock.setLockTime(null);
         cabLockDao.save(cabLock);
     }
 

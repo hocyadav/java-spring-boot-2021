@@ -101,7 +101,7 @@ public class DemoApplication implements CommandLineRunner {
 		System.out.println("cabHistory = " + cabHistory2);
 
 		//todo done : end trip and change the cab status back to available
-		Thread.sleep(1000*40);
+		Thread.sleep(1000*20);
 		cabService.endTrip(trip);
 
 	}
