@@ -12,5 +12,6 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "app-config")
 public class AppConfig {
-    String simpleKey;
+    Double perKmPrice;
+    Long tempCabLockTime;
 }
