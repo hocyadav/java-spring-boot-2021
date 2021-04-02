@@ -94,5 +94,6 @@ public class UserService {
         final CabLock cabLock = cabLockDao.findByCabId(cab.getId());
         cabLock.setLockStatus(cabLockStatus);
         cabLockDao.save(cabLock);
+        //todo : send event to scheduler - if trip creation fail and cab status is in locked then no other user can book
     }
 }
