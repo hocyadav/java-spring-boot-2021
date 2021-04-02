@@ -19,13 +19,14 @@ import java.util.Optional;
  * @create 02-04-2021
  */
 @Service
-public class CabSelectionService {//ICM : interface, class and method
+public class CabSelectionImpl implements ICabSelection {//ICM : interface, class and method
 
     @Autowired
     CabLockDao cabLockDao;
     @Autowired
     AppConfig config;
 
+    @Override
     @SneakyThrows
     public Optional<Cab> selectSingleBestCab(User user, List<Cab> cabs) {
 

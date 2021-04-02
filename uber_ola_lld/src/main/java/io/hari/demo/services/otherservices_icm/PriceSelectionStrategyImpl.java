@@ -11,13 +11,14 @@ import org.springframework.stereotype.Service;
  * @create 02-04-2021
  */
 @Service
-public class PriceSelectionStrategy {
+public class PriceSelectionStrategyImpl implements IPriceSelectionStrategy {
 
     public static final int PER_KM_RATE = 10;
 
     @Autowired
     AppConfig config;
 
+    @Override
     public double getBestPrice(User user, Location toLocation) {
 //        final double price = user.getLocation().distanceBetweenLocation(toLocation) * PER_KM_RATE;
         final double price = user.getLocation().distanceBetweenLocation(toLocation) * config.getPerKmPrice();//read from config

@@ -5,8 +5,9 @@ import io.hari.demo.dao.CabDao;
 import io.hari.demo.dao.CabLockDao;
 import io.hari.demo.dao.TripDao;
 import io.hari.demo.entity.*;
-import io.hari.demo.services.otherservices_icm.CabSelectionService;
-import io.hari.demo.services.otherservices_icm.PriceSelectionStrategy;
+import io.hari.demo.services.otherservices_icm.CabSelectionImpl;
+import io.hari.demo.services.otherservices_icm.IPriceSelectionStrategy;
+import io.hari.demo.services.otherservices_icm.PriceSelectionStrategyImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,10 +33,10 @@ public class UserService {
     CabDao cabDao;
 
     @Autowired
-    CabSelectionService cabSelectionService;
+    CabSelectionImpl cabSelection;
 
     @Autowired
-    PriceSelectionStrategy priceSelectionStrategy;
+    PriceSelectionStrategyImpl priceSelectionStrategy;
 
     public List<Trip> fetchTripsHistory(Long userId) {
         final List<Trip> trips = tripDao.findAllByUserId(userId);
@@ -66,7 +67,7 @@ public class UserService {
 
     public synchronized Trip bookTrip(User user, List<Cab> cabs, Location toLocation) {
 //        final Optional<Cab> optionalCab = cabs.stream().findAny();//TODO ICM
-        final Optional<Cab> optionalCab = cabSelectionService.selectSingleBestCab(user, cabs);//done TODO ICM
+        final Optional<Cab> optionalCab = cabSelection.selectSingleBestCab(user, cabs);//done TODO ICM
 
         if (!optionalCab.isPresent()) {
             System.out.println("no cab");
