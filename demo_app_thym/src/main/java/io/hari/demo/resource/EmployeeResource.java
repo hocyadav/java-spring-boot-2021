@@ -58,7 +58,7 @@ public class EmployeeResource {
     @GetMapping("/" + "index2")
     public String getAllEmployeesBy(Model model) {
         model.addAttribute("employees", employeeDao.findAll());
-        return OPEN_HOME_PAGE;
+        return "index2-view";
     }
 
     @GetMapping("/controllerMethod1")
@@ -67,7 +67,7 @@ public class EmployeeResource {
         final Map<String, Object> stringObjectMap = model.asMap();
         System.out.println("stringObjectMap = " + stringObjectMap);
 //        model.addAttribute("employees", employeeDao.findAll());//if we comment than model will not contain any key value
-        return OPEN_HOME_PAGE;
+        return "index2-view";
     }
 
     //create a empty placeholder for saving new emp data
@@ -79,7 +79,7 @@ public class EmployeeResource {
 
         final Employee employee = new Employee();//empty object and send to front end to set value in its field
         model.addAttribute("employee", employee);
-        return OPEN_ADD_EMP_PAGE;
+        return "add_emp";
     }
 
     //save new emp data from frontend
