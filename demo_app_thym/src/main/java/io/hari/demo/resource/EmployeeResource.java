@@ -18,7 +18,7 @@ import java.util.Map;
  */
 @Controller
 public class EmployeeResource {
-    public static final String OPEN_HOME_PAGE = "index2";
+    public static final String OPEN_HOME_PAGE = "index2-view";
     public static final String OPEN_ADD_EMP_PAGE = "add_emp";
     public static final String REDIRECT_TO_HOME = "redirect:/" + OPEN_HOME_PAGE;
 
@@ -33,9 +33,29 @@ public class EmployeeResource {
         model.addAttribute("name", "hariom");
         return "index";//return view name
     }
+    @GetMapping("/hello")
+    public String helloWorld(Model model) {
+        model.addAttribute("hello", "hello world");
+        return "hello";
+    }
+
+    @GetMapping("/hello2")
+    public String helloWorldWithoutModel() {
+        return "hello2";
+    }
+
+    @GetMapping("/style")
+    public String style() {
+        return "css-js-page";
+    }
+
+    @GetMapping("/bootstrap")
+    public String bootstratTest() {
+        return "bootstrap-test";
+    }
 
     //show all emp data
-    @GetMapping("/" + OPEN_HOME_PAGE)
+    @GetMapping("/" + "index2")
     public String getAllEmployeesBy(Model model) {
         model.addAttribute("employees", employeeDao.findAll());
         return OPEN_HOME_PAGE;
@@ -70,6 +90,6 @@ public class EmployeeResource {
 
         employeeDao.save(employee);
 //        return REDIRECT_TO + OPEN_HOME_PAGE;
-        return REDIRECT_TO_HOME;
+        return "redirect:/" + "index2";//return to controller end point and that controller will return to html view
     }
 }

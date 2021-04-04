@@ -11,25 +11,24 @@
 
 <div align="center" class="container my-2">
     <h1>All employees..</h1>
+    <!-- go to another page-->
+    <!--The <a> tag defines a hyperlink, which is used to link from one page to another.-->
     <a th:href="@{/controllerMethod1}"> add - redirect to controller method - redirect to html page</a>
     <br>
     <a th:href="@{/controllerMethod2}"> add emp</a>
 
     <table border="1" class="table table-striped table-responsive-md">
         <thead>
-        <tr>
-            <th>name</th>
-            <th>email</th>
-        </tr>
+            <tr><th>name</th><th>email</th></tr>
         </thead>
         <tbody>
-        <tr th:each="e : ${employees}">
-            <td th:text="${e.getName()}"></td>
-            <td th:text="${e.getEmail()}"></td>
-        </tr>
+            <tr th:each="e : ${employees}">
+                <td th:text="${e.getName()}"></td>
+                <td th:text="${e.getEmail()}"></td>
+            </tr>
         </tbody>
     </table>
-<!--    <div th:replace="fragments/footer :: footer">&copy; 2016 The Static Templates</div>-->
+    <!--    <div th:replace="fragments/footer :: footer">&copy; 2016 The Static Templates</div>-->
 </div>
 
 </body>
