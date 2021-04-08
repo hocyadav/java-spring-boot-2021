@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User page - welcome</title>
+</head>
+<body>
+<h1 th:text=" 'username : ' + ${name} "></h1>
+<p>User page .. </p>
+<div sec:authorize="isAuthenticated()"> Authenticated as <span sec:authentication="name"> </span></div>
+</body>
+</html>
