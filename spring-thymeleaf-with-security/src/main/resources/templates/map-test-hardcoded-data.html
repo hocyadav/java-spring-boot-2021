@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map test</title>
+    <!--Load the AJAX API-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+<body>
+<!--<div id="map_id_1"></div>-->
+<div id="map_id_1" style="width: 900px; height: 500px;"></div>
+
+<script th:inline="javascript">
+    var input_data = /*[[${all_data}]]*/'noValue';
+    $(document).ready(
+        function () {
+            google.charts.load('current', {
+                'packages':['geochart'],
+                // Note: you will need to get a mapsApiKey for your project.
+                // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+                'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+            });
+            google.charts.setOnLoadCallback(drawChart);
+        });
+    //1st data, 2nd create options and chart and draw
+    function drawChart() {
+        //step 1
+        // let dataTable = new google.visualization.DataTable();
+        var data = google.visualization.arrayToDataTable([
+            ['Country', 'Popularity'],
+            ['Germany', 200],
+            ['United States', 300],
+            ['Brazil', 400],
+            ['Canada', 500],
+            ['France', 600],
+            ['RU', 700]
+        ]);
+        //step 2
+        var options = {};
+        var chart = new google.visualization.GeoChart(document.getElementById('map_id_1'));
+        chart.draw(data, options);
+    }
+</script>
+</body>
+</html>
