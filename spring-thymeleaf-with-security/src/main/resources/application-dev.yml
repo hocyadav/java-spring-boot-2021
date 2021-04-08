@@ -1,0 +1,15 @@
+#  https://stackoverflow.com/questions/58275418/live-reload-for-thymeleaf-template
+#  https://attacomsian.com/blog/spring-boot-auto-reload-thymeleaf-templates
+
+spring:
+  # Templates reloading during development
+  thymeleaf:
+    prefix: file:src/main/resources/templates/
+    cache: false
+
+#  # Static resources reloading during development
+#  resources:
+#    static-locations: file:src/main/resources/static/
+#    cache-period: 0
+
+
