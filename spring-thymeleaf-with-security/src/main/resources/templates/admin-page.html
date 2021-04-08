@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page - welcome</title>
+</head>
+<body>
+<h1 th:text=" 'username : ' + ${name} "></h1>
+<p>Admin page .. </p>
+<!--below details we can access by adding 1. thymeleaf extra security dependency 2. add above sec tag -->
+<div sec:authorize="isAuthenticated()">
+    Authenticated as name : <span sec:authentication="name"></span><br>
+    authorities : <span sec:authentication="authorities"></span><br>
+    principal : <span sec:authentication="principal"></span><br>
+    details : <span sec:authentication="details"></span><br>
+    details session id : <span sec:authentication="details.sessionId"></span><br>
+</div>
+
+</body>
+</html>
