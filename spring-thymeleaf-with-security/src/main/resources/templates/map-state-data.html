@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map test</title>
+    <!--Load the AJAX API-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+<body>
+<h1> India data </h1>
+<div id="map_id_1" style="width: 900px; height: 600px;"></div>
+<!--<div id="map_id_1"></div>-->
+
+<script th:inline="javascript">
+    var real_data = /*[[${all_data}]]*/'noValue';
+    $(document).ready(
+        function () {
+            google.charts.load('current', {
+                'packages':['geochart'],
+                'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+            });
+            google.charts.setOnLoadCallback(drawChart);
+        });
+    function drawChart() {
+        //1st data, 2nd create options and chart and draw
+        //m1 - not working
+        // let dataTable = new google.visualization.DataTable();
+        // dataTable.addColumn('string', 'Country');
+        // dataTable.addColumn('number', 'Popularity');
+        // Object.keys(real_data).forEach(
+        //   function (key) {
+        //       data.addRow([key, real_data[key]]);
+        //   });
+
+        //m2 - not working
+        // var data = google.visualization.arrayToDataTable(real_data);
+
+        var arr2 = [];
+        Object.keys(real_data).forEach(function (key) {
+            var r_data_value = real_data[key];
+            Object.keys(r_data_value).forEach(function (k2) {
+                var t = [key, k2, r_data_value[k2]];
+                arr2.push(t);
+            })
+        })
+        // alert(arr2);
+
+        //https://en.wikipedia.org/wiki/ISO_3166-2:IN
+        //working
+        var newVar = [
+            ['State Code', 'State', 'Population or Cases'],
+            ['IN-UT', 'Uttarakhand', 10116752],
+            ['IN-CT', 'Chhattisgarh', 101167],
+            ['IN-KA', 'Karnataka ', 101167],
+            ['IN-MN', 'Manipur ', 100],
+            ['IN-PB', 'Panjab ', 101167]
+            //rest of states
+        ];
+        // var data = google.visualization.arrayToDataTable(newVar);
+        var data = google.visualization.arrayToDataTable(arr2);
+
+        //step 2
+        var options = {
+            region: 'IN',
+            displayMode: 'regions',
+            resolution: 'provinces',
+            // width: 640,
+            // height: 480,
+            // width: 750,
+            // height: 600,
+            colorAxis: {colors: ['green', 'red']}
+        };
+        var chart = new google.visualization.GeoChart(document.getElementById('map_id_1'));
+        chart.draw(data, options);
+    }
+</script>
+</body>
+</html>
