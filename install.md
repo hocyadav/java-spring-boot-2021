@@ -1,5 +1,5 @@
 
-**mysql install : 3min**
+**mysql install on win 10: 3min**
 https://www.youtube.com/watch?v=OM4aZJW_Ojs
 
 **step 1:**
