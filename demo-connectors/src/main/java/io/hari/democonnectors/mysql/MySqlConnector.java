@@ -35,6 +35,8 @@ public class MySqlConnector {
         if (resultSet.next()) {
             System.out.println("resultSet.getString(1) = " + resultSet.getString(1));
         }
+        resultSet.close();
+        connectionStatement.close();
         return connection;
     }
 
