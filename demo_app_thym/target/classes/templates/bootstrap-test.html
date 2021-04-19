@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- add thymeleaf engine -->
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Title</title>
+<!--    load css file-->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <table class="table table-striped table-responsive-md">
+        <thead>
+            <tr>
+                <th>col1</th>
+                <th>col2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>data1</td><td>data2</td></tr>
+            <tr><td>data3</td><td>data4</td></tr>
+        </tbody>
+    </table>
+
+
+</div>
+</body>
+</html>
