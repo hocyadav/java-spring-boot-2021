@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * @Author hayadav
  * @create 4/19/2021
+ * https://zetcode.com/db/mysqljava/
  */
 @Slf4j
 public class MySqlConnector {
