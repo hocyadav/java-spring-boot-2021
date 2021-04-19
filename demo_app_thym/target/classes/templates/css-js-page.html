@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS and JS Title</title>
+<!--    load css before sending page to brower -->
+    <link th:href="@{/css/css-file.css}" rel="stylesheet">
+<!--    load js and then send page to browser-->
+    <script type="text/javascript" th:src="@{/js/js-file.js}"></script>
+</head>
+<body>
+<!-- read css file and change color : working-->
+    <h1>hariom</h1>
+    <h2>yadav</h2>
+<!--read js file when we click on button-->
+<!-- explore different type of button creation -->
+<button type="button" th:onclick="demo()"> string field </button>
+</body>
+</html>

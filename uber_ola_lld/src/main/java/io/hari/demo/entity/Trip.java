@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.TemporalUnit;
 
 /**
  * @Author Hariom Yadav
@@ -48,3 +49,4 @@ public class Trip extends BaseEntity {
         return null;
     }
 }
+

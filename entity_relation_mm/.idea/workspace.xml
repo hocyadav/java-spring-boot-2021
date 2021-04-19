@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="483e7497-e08f-49cd-8bc4-6fc94348c352" name="Default Changelist" comment="ebtity relation and save other entity value using dao">
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_google_guava_failureaccess_1_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_google_guava_guava_30_1_jre.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_h2database_h2_1_4_200.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_mchange_mchange_commons_java_0_2_15.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_sun_activation_jakarta_activation_1_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__com_zaxxer_HikariCP_3_4_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__jakarta_persistence_jakarta_persistence_api_2_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__jakarta_transaction_jakarta_transaction_api_1_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__junit_junit_4_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_10_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_13_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_13_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_43.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_43.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_assertj_assertj_core_3_18_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_atteo_evo_inflector_1_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_checkerframework_checker_qual_3_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_dom4j_dom4j_2_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_glassfish_jakarta_el_3_0_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_hamcrest_hamcrest_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_hamcrest_hamcrest_core_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_1_2_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_hibernate_hibernate_core_5_4_28_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_1_7_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_javassist_javassist_3_27_0_GA.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_jboss_jandex_2_2_3_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_mockito_mockito_core_3_6_28.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_3_6_28.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_objenesis_objenesis_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_projectlombok_lombok_1_18_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_quartz_scheduler_quartz_2_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_30.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_30.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_rest_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_quartz_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_4_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_4_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_data_spring_data_rest_core_3_4_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_data_spring_data_rest_webmvc_3_4_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_hateoas_spring_hateoas_1_2_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_2_0_0_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_aop_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_aspects_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_beans_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_context_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_context_support_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_core_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_expression_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_jcl_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_jdbc_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_orm_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_test_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_tx_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_web_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_springframework_spring_webmvc_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/libraries/Maven__org_yaml_snakeyaml_1_27.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/demo-app.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/file.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../alert_notification_lld/src/main/java/io/hari/demo/LogEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_11_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_google_guava_failureaccess_1_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_google_guava_guava_30_1_jre.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_h2database_h2_1_4_200.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_mchange_mchange_commons_java_0_2_15.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_sun_activation_jakarta_activation_1_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__com_zaxxer_HikariCP_3_4_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__jakarta_persistence_jakarta_persistence_api_2_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__jakarta_transaction_jakarta_transaction_api_1_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_2_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__junit_junit_4_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_10_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_13_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_13_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_43.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_43.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_assertj_assertj_core_3_18_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_atteo_evo_inflector_1_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_checkerframework_checker_qual_3_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_dom4j_dom4j_2_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_glassfish_jakarta_el_3_0_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_hamcrest_hamcrest_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_hamcrest_hamcrest_core_2_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_1_2_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_hibernate_hibernate_core_5_4_28_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_1_7_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_javassist_javassist_3_27_0_GA.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_jboss_jandex_2_2_3_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_7_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_mockito_mockito_core_3_6_28.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_3_6_28.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_objenesis_objenesis_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_projectlombok_lombok_1_18_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_quartz_scheduler_quartz_2_3_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_30.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_30.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_rest_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_quartz_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_4_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_4_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_4_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_data_spring_data_rest_core_3_4_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_data_spring_data_rest_webmvc_3_4_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_hateoas_spring_hateoas_1_2_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_2_0_0_RELEASE.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_aop_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_aspects_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_beans_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_context_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_context_support_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_core_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_expression_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_jcl_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_jdbc_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_orm_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_test_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_tx_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_web_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_springframework_spring_webmvc_5_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/libraries/Maven__org_yaml_snakeyaml_1_27.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/demo-app.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/src/main/java/io/hari/demo/EvictionPolicy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cache-lru-lld/src/main/java/io/hari/demo/Storage_HashMap_n_DLL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../multi-threading/src/main/java/io/hari/multithreading/semaphore/SemaphoreTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Java-eclipse-2-folder/JavaBasicConcepts/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/../Java-eclipse-2-folder/JavaBasicConcepts/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/band.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/car.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/data.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/data2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/file.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/file2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/file23.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/flatMap.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/newfile.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug13th_exception/BankAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug13th_exception/OwnException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug13th_exception/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug14th_enum_interface/Enum1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug14th_enum_interface/Enum2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug14th_enum_interface/Enum3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug14th_enum_interface/Enum3Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug14th_enum_interface/MyInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug14th_enum_interface/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug14th_reflectionAPI/Guru99Base.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug14th_reflectionAPI/Guru99MethodMetaData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug14th_reflectionAPI/Guru99VariableMetaData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug14th_reflectionAPI/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug14th_reflectionAPI/Test2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug14th_reflectionAPI/Test4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug14th_reflectionAPI/Test5.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug15th_stream/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug19th/StreamFlatMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug1st/CollectionsSingleton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug24th/CollectionsSingleton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug24th/StreamTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug25th/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug29th/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug29th/PersonStream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug29th/STreamToMap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug29th/StreamGroupBy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug2nd/CollectionsSingleton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug2nd/Entity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/aug31st/GoogleString.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/defaultP/TestClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july10th/BT_Vertical_Right_Left_View.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july11th/decorator/IceCream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july11th/decorator/IceCreamDecorator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july11th/decorator/impl/BasicIceCream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july11th/decorator/impl/TestDecorator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july11th/decorator/impl/VanillaIceCream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july11th/factory/Child1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july11th/factory/Child2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july11th/factory/FactoryClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july11th/factory/ParentClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july11th/factory/TestFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july13th/LocalDateTime_Ex.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july13th/LocalDate_Example.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july13th/LocalTime_Example.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july16th/completableFuture/Future_test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july16th/completableFuture/Future_test2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july16th/condition/Condition_Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july16th/condition/Condition_Test2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july16th/condition/Condition_Test3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july16th/condition/Producer_Consumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july17th/LongestSubstring_with_Only_k_char.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july17th/LongestSubstring_with_all_uniqueChar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july17th/MoveZeros_leftRight.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july1st/CustomPair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july1st/CustomPair_Generic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july1st/CustomPair_Generic2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july1st/Pair_javafx.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july1st/Stream_findFisrt_findAny.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july1st/TestCustomPair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july1st/TestCustomPair_Generic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july1st/TestCustomPair_Generic2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july1st/UUID_try.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july20th/Count1Digit2DigitChar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july24th/SegmentTree_RangeSumQuery.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/Connection1Producer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/ConnectionImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/ConnectionImpl2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/ConnectionImpl2Consumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/ConnectionImpl3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/Test2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy/Connection1Producer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy/ConnectionImpl2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy/ConnectionImpl2Consumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy/ConnectionImpl2_connObjIMPL.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy/ProducerIMPL.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy/Test2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy/Test3_connOBJ.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy2/Connection1Producer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy2/ConnectionImpl2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy2/ConnectionImpl2Consumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy2/ConnectionImpl2_connObjIMPL.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy2/ProducerIMPL.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy2/Test2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy2/Test3_connOBJ.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy3/ConnConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy3/ConnProducer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy3/ConnProducerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy3/ConnectionImpl2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy3/MyConnectionPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy3/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy3/Test2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july25th/copy3/Test3_connOBJ.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july26th/ConnConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july26th/ConnProducer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july26th/ConnProducerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july26th/MyConnectionPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july26th/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july26th/Test2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july28th/Collection_nCopies_String_Join.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july28th/Encoding_Decode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july28th/LongestSubstring_K_Unique.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july28th/LongestSubstring_allUnique.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july28th/Rotated.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july28th/RotatedArrayPivot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july28th/SmallestSubarray_sumGE_K.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july28th/TestEncodingDecoding.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july29th/SlidingWindow_fixedWindow_withMinimunSUm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july29th/SlidingWindow_sumGE_K.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july2nd/PrintAllSubstring.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july2nd/ReadFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july2nd/Stream_ReplaceTag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july2nd/Stream_ReplaceTag2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july2nd/Stream_of_Arrays_stream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july2nd/Stream_of_Arrays_stream2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july2nd/Stream_of_Arrays_stream3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july2nd/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july2nd/WriteInFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july3rd/System_out_println.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/BinarySearch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/RotatedSortedArray.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/RotatedSortedArray2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/builder/BuilderExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/builder/Vehicle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/exception/Amount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/exception/AmountAdder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/exception/AmountAdder2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/exception/CheckedExpTEST_throwException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/exception/CheckedExpTEST_tryCatch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/exception/UnCheckedExpTEST1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/factory/Bike.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/factory/Car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/factory/FactoryExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/factory/Vehicle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/factory/VehicleFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/immutableClass/Engine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/immutableClass/ImmutableClassE.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/immutableClass/ImmutableClassETest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/immutableClass/ImmutableExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/immutableClass/StudentImmutableClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/singleton/SingletonExample.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/singleton/SingletonExample2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/singleton/SingletonExample3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july4th/singleton/SingletonExample4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july5th/Car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july5th/EnumTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july5th/LargestBST_Subtree_InBS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july5th/Trie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july5th/bst/BST_DFS_BFS_Delete_Insert.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july6th/AmazonFindTargetSumIndex.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july6th/GoldmanEncodeDecode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july6th/GoldmanToyDistribution.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july6th/Largest_subarry_TargetSumK.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july6th/Smallest_subarry_TargetSumK.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july7th/Amazon_MeetingRoom2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july7th/MeetingRoom_leetcode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july7th/RotateMatrix_Rotate_image.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july7th/SlidingWindowConcept.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july7th/Stream_List_Integer_to_String.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july7th/Stream_Max_Optional_orElse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july7th/TriesImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july8th/ClassA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july8th/Inter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july9th/BT_VerticalPrint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july9th/LRUCacheIMPL.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/july9th/MergeSortImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june/_2020/LL_FindLoop_SlowFastPointer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june/_2020/LL_Generic_Impl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june/_2020/LL_Impl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june/_2020/LL_deleteNode_NoHeadPointer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june/_2020/leetcode/NxM_Maze_DP.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june/_2020/leetcode/NxM_Maze_Recursion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june11th/GenericClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june11th/GenericClass2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june11th/Generic_Interface_MultipleTypeParameter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june11th/LL_impl_insert1st_last_delete1st_last.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june11th/LinkListGeneric.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june11th/eclipse_commands.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june12th/Leetcode_Coin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june12th/Stack_Generic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june12th/Stack_LL_impl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june12th/Stack_impl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june13th/LongestSubstring_IN_STRING_1_2_or_K_Different.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june13th/LongestSubstring_IN_STRING_ALLDifferent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june13th/Queue_Impl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june13th/SlidingWindow_concept.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june14th/Android.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june14th/AppleIOS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june14th/FactoryDesign.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june14th/Os.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june14th/TestOS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june15th/factory/AbstractPhone.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june15th/factory/Android.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june15th/factory/Iphone.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june15th/factory/PhoneFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june15th/factory/PhoneType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june15th/factory/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june15th/singleton/Singleton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june15th/singleton/TestSIngleton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june16th/thread/CachedThreadPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june16th/thread/FixedThreadPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june16th/thread/FixedThreadPool_shutdown.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june16th/thread/Fixed_SingleThreadPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june16th/thread/ScheduleThreadPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june16th/thread/SimpleThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june16th/thread/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june17th/IntStream_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june18th/UnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june18th/UnitTest2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june24/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june24/Notifier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june24/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june24/Waiter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june24/producerConsumer/ProducerConsumeer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june24/producerConsumer/lockCondition/MyBlockingQueue_LockCondition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june24/producerConsumer/lockCondition/MyBlockingQueue_WaitNotify.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june24/producerConsumer/lockCondition/Test_LockCondition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june24/producerConsumer/lockCondition/Test_WaitNotify.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june26/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june26/Lambda_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june26/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june26/TestConsumer__.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june26/TestFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june26/TestForEach.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june26/TestPredicate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june26/TestSort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june26/TestStudent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june26/TestSupplier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june27th/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june27th/TestS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june28thInterruptThreadAfter10min/StopTask_using1Thread_interrupt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june28thInterruptThreadAfter10min/StopTask_using1Thread_interrupt_Callable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june28thInterruptThreadAfter10min/StopTask_using1Thread_interrupt_Runnable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june28thInterruptThreadAfter10min/StopTask_using2Volatile_atomic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/june28thInterruptThreadAfter10min/StopTask_using2Volatile_atomic2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/oldDefault/ClassAB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/oldDefault/ClassABC.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/oldDefault/Output.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/oldDefault/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/oldDefault/Test2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/oldDefault/Test_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/oldDefault/Test___.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/sep17th/HashUtil_.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/sep17th/MessageDigest_1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/sep17th/MessageDigest_halodoc.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/sep3rd/Stack_1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/sep6th_http/HttpTestGet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/sept20th/MyBlockingQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/sept20th/ProducerConsumerIMPL.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java/sept20th/TestMyBlockingQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java2/com/dummy/ClassC.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java2/com/hari/ClassA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java2/com/hari1/ClassB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java2/com/hari1/file.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java2/com/hariom/TestClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java2/com/hariom/file.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/src/main/java2/com/test/ClassC.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding_basic_impl_java/template.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring_bean_and_application_context/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring_bean_and_application_context/src/main/java/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring_bean_and_application_context/src/main/java/com/service/ServiceClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring_bean_and_application_context/src/main/java/com/service/annotationOrJavaBases/MyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spring_bean_and_application_context/src/main/resources/spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-cache-impl/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-cache-impl/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-cache-impl/src/main/java/com/hari/springbootcacheimpl/SpringbootCacheImplApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-cache-impl/src/main/java/com/hari/springbootcacheimpl/controller/PersonController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-cache-impl/src/main/java/com/hari/springbootcacheimpl/dao/PersonDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-cache-impl/src/main/java/com/hari/springbootcacheimpl/entity/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-cache-impl/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springboot-cache-impl/src/test/java/com/hari/springbootcacheimpl/SpringbootCacheImplApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1p3YAcY23D6blt473PNrvdzhwgj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="flattenPackages" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/truecaller/truecaller-lld" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="io.hari.demo.entity.cab" />
+      <recent name="io.hari.demo" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="io.hari.demo.dao" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.DemoApplication">
+    <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.hari.demo.DemoApplication" />
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.hari.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="io.hari.demo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DemoApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="483e7497-e08f-49cd-8bc4-6fc94348c352" name="Default Changelist" comment="" />
+      <created>1614413099224</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614413099224</updated>
+      <workItem from="1614413100417" duration="1377000" />
+      <workItem from="1614416935676" duration="2768000" />
+      <workItem from="1614419722190" duration="76000" />
+      <workItem from="1614419993150" duration="140000" />
+      <workItem from="1614429052799" duration="19000" />
+      <workItem from="1615625192359" duration="4017000" />
+      <workItem from="1615629715511" duration="1427000" />
+      <workItem from="1615693863776" duration="2019000" />
+      <workItem from="1615698454283" duration="55000" />
+      <workItem from="1615813764201" duration="354000" />
+      <workItem from="1615817945542" duration="4000" />
+      <workItem from="1615862115248" duration="10000" />
+      <workItem from="1616551965474" duration="1462000" />
+      <workItem from="1616561371780" duration="2000" />
+    </task>
+    <task id="LOCAL-00001" summary="updated">
+      <created>1615693904986</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1615693904986</updated>
+    </task>
+    <task id="LOCAL-00002" summary="entity added">
+      <created>1615693917701</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1615693917701</updated>
+    </task>
+    <task id="LOCAL-00003" summary="dao added">
+      <created>1615693926068</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1615693926068</updated>
+    </task>
+    <task id="LOCAL-00004" summary="dao added">
+      <created>1615693932374</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1615693932374</updated>
+    </task>
+    <task id="LOCAL-00005" summary="test">
+      <created>1615693949852</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1615693949852</updated>
+    </task>
+    <task id="LOCAL-00006" summary="validation varchar testing">
+      <created>1615694660570</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1615694660570</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ebtity relation and save other entity value using dao">
+      <created>1616553073035</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1616553073036</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="updated" />
+    <MESSAGE value="entity added" />
+    <MESSAGE value="dao added" />
+    <MESSAGE value="test" />
+    <MESSAGE value="validation varchar testing" />
+    <MESSAGE value="ebtity relation and save other entity value using dao" />
+    <option name="LAST_COMMIT_MESSAGE" value="ebtity relation and save other entity value using dao" />
+  </component>
+</project>

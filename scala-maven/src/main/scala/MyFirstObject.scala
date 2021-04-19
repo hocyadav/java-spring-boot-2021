@@ -24,5 +24,4 @@ object MyFirstObject extends App {
   val t: Boolean = true;
   val t2: Boolean = false;
   println(t + " " + t2);
-
 }
