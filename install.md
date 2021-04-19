@@ -11,3 +11,7 @@ open again mysql installer search in all program -> click configure just right a
 
 **step 3:**
 now open workbench -> enter password hariom -> enjoy
+
+**step 4:** 
+setup and yml config 
+https://github.com/hocyadav/demo-local-mysql-n-h2/blob/926cd1b2d2c3daf71e4620be9b6f47f5c215f797/src/main/resources/application.properties
