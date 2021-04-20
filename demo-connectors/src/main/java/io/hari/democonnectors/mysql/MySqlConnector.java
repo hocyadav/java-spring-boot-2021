@@ -16,7 +16,6 @@ import java.util.List;
 @Slf4j
 public class MySqlConnector {
     public static final String SCHEMA_NAME = "testdb";
-
     public static final String URL = "jdbc:mysql://localhost:3306/" + SCHEMA_NAME + "?useSSL=false";
     public static final String USERNAME = "root";
     public static final String PASSWORD = "hariom";
