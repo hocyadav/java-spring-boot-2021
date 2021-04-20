@@ -2,10 +2,12 @@ package io.hari.demo.entity;
 
 import lombok.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author Hariom Yadav
@@ -14,7 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString(exclude = {})
+@ToString(exclude = {"replies"}, callSuper = true)
 @AllArgsConstructor
 @Builder
 @Entity
@@ -22,6 +24,11 @@ import java.util.List;
 public class Discussion extends BaseEntity{
     String title;
     String body;
-    @OneToMany
+
+    @OneToMany(cascade = CascadeType.ALL)
     List<Reply> replies;
+
+    public List<String> getAllReply() {
+        return replies.stream().map(i -> i.getReply()).collect(Collectors.toList());
+    }
 }

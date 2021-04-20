@@ -14,5 +14,6 @@ import lombok.*;
 @ToString
 public class QuestionSolution {
     Long questionId;
+    Integer score;
     String myCode;
 }

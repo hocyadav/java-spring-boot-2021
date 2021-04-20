@@ -19,13 +19,11 @@ import java.util.List;
 @Table(name = "questions")
 public class Question extends BaseEntity{
     String question;
-    QuestionStatus status;
     Integer totalScore;
-    String codeSubmission;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<TestCase> testCases;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     List<Discussion> discussions;
 }
