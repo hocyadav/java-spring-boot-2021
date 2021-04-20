@@ -12,6 +12,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 //@SpringBootTest(classes = {})
 class DemoApplicationTests {
 
+	public void test1() {
+
+	}
+
 	@Test
 	void contextLoads() {
 		assertThat("hari om yadav")
