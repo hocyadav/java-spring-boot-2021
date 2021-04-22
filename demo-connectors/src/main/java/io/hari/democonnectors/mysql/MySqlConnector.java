@@ -8,6 +8,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Author hayadav
@@ -25,6 +28,7 @@ public class MySqlConnector {
     public static final String SCHEMA_NAME2 = "testdb";
     public static final String URL2 = "jdbc:mysql://localhost:3306/" + SCHEMA_NAME2 + "?useSSL=false";
     public static final String SHOW_TABLES_SQL = "show tables";
+    public static final String INSERT_EMP_SQL = "insert into emp(name) values(?)";
 
     @Test
     public void testConnection() {
@@ -232,12 +236,12 @@ public class MySqlConnector {
     @Test
     public void testPageWise() {
         final List<String> tables = getAllTablesInsideSchema(getConnection());
-        tables.stream().peek(t -> System.out.println("table : "+t))
-                .forEach(table -> getPageWise(table, "id", 0, 10));
+        tables.stream().peek(t -> System.out.println("table : " + t))
+                .forEach(table -> getPageWiseReadingData(table, "id", 0, 10));
     }
 
     @SneakyThrows
-    public void getPageWise(String tableName, String sortBy, int pageNumber, int perPageSize) {
+    public void getPageWiseReadingData(String tableName, String sortBy, int pageNumber, int perPageSize) {
 //        final String sql = "select * from emp order by id limit 0, 3";//start from 0th index and total it will pick 3 item
         final String sql2 = "select * from " + tableName + " order by " + sortBy + " limit " + pageNumber + ", " + perPageSize;//start from 0th index and total it will pick 3 item
 
@@ -247,10 +251,86 @@ public class MySqlConnector {
         while (resultSet.next()) {
             final int anInt = resultSet.getInt(1);
             final String string = resultSet.getString(2);
-            System.out.println(anInt+" "+string);
+            System.out.println(anInt + " " + string);
         }
         connection.close();
     }
+
+    @Test
+    public void testBatchStatement() {
+        batchInsertDataUsingStatement();
+    }
+
+    @SneakyThrows
+    public void batchInsertDataUsingStatement() {
+        final Connection connection = getConnection();
+        final Statement statement = connection.createStatement();
+        statement.addBatch("insert into emp(name) values('hariom yadav')");
+        statement.addBatch("insert into emp(name) values('hariom yadav2')");
+        statement.addBatch("insert into emp(name) values('hariom yadav3')");
+        statement.executeBatch();
+        statement.close();
+        connection.close();
+    }
+
+    @Test
+    public void testBatchPreparedStatement() {
+        batchInsertDataUsingPreparedStatement(27, 5);
+    }
+
+    @SneakyThrows
+    public void batchInsertDataUsingPreparedStatement(final int totalRows, final int batchSize) {
+        final Connection connection = getConnection();
+        final PreparedStatement preparedStatement = connection.prepareStatement(INSERT_EMP_SQL);
+        int count = 0;
+        for (int i = 0; i < totalRows; i++) {
+            count++;
+            preparedStatement.setString(1, "mac book - " + i);
+            preparedStatement.addBatch();
+            if (count >= batchSize) {
+                preparedStatement.executeBatch();
+                count = 0;
+            }
+        }
+        preparedStatement.executeBatch();//execute all sql
+        preparedStatement.close();
+        connection.close();
+    }
+
+    @Test
+    public void testBatchThreadPool() {
+        batchInsertDataUsingPreparedStatement2(17, 5);
+    }
+
+    @SneakyThrows
+    public void batchInsertDataUsingPreparedStatement2(final int totalRows, final int batchSize) {
+        final ExecutorService threadPool = Executors.newFixedThreadPool(4);
+        final Connection connection = getConnection();
+        final PreparedStatement preparedStatement = connection.prepareStatement(INSERT_EMP_SQL);
+        final AtomicInteger count = new AtomicInteger(0);
+        for (int i = 0; i < totalRows; i++) {
+            count.getAndIncrement();
+            preparedStatement.setString(1, "thinkpad-laptop - " + i);
+            preparedStatement.addBatch();
+            if (count.get() >= batchSize) {
+                executeBatch(threadPool, preparedStatement);
+                count.set(0);
+            }
+        }
+        preparedStatement.executeBatch();//execute all sql
+        connection.close();
+    }
+
+    private void executeBatch(final ExecutorService threadPool, final PreparedStatement preparedStatement) {
+        threadPool.submit(() -> {
+            try {
+                preparedStatement.executeBatch();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
 
     @SneakyThrows
     private String getAllColumnList(String table_name) {
