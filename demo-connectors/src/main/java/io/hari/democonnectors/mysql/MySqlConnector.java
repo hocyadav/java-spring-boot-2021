@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,8 +18,13 @@ import java.util.List;
 public class MySqlConnector {
     public static final String SCHEMA_NAME = "testdb";
     public static final String URL = "jdbc:mysql://localhost:3306/" + SCHEMA_NAME + "?useSSL=false";
+
     public static final String USERNAME = "root";
     public static final String PASSWORD = "hariom";
+
+    public static final String SCHEMA_NAME2 = "testdb";
+    public static final String URL2 = "jdbc:mysql://localhost:3306/" + SCHEMA_NAME2 + "?useSSL=false";
+    public static final String SHOW_TABLES_SQL = "show tables";
 
     @Test
     public void testConnection() {
@@ -26,10 +32,14 @@ public class MySqlConnector {
         closeConnection(connection);
     }
 
+    @SneakyThrows
     @Test
     public void testTableName() {
-        readAllTables();
-        readTablesInsideSchema();
+        final Connection connection = getConnection();
+        readAllTables(connection);
+        final Connection connection1 = getConnection();
+        final List<String> tables = getAllTablesInsideSchema(connection1);
+        System.out.println("tables = " + tables);
     }
 
     @Test
@@ -53,7 +63,6 @@ public class MySqlConnector {
         getColumnInformation();
     }
 
-
     @SneakyThrows
     public Connection createConnection() {
         log.info("MySqlConnector.createConnection");
@@ -75,8 +84,7 @@ public class MySqlConnector {
     }
 
     @SneakyThrows
-    public void readAllTables() {
-        final Connection connection = getConnection();
+    public void readAllTables(Connection connection) {
         final DatabaseMetaData connectionMetaData = connection.getMetaData();
         String[] table = {"TABLE"};
         final ResultSet resultSet = connectionMetaData.getTables(null, null, null, table);//working
@@ -91,15 +99,17 @@ public class MySqlConnector {
     }
 
     @SneakyThrows
-    public void readTablesInsideSchema() {
-        final Connection connection = getConnection();
-        final Statement connectionStatement = connection.createStatement();
-        final ResultSet resultSet = connectionStatement.executeQuery("show tables");
+    public List<String> getAllTablesInsideSchema(final Connection connection) {
+        final Statement statement = connection.createStatement();
+        final ResultSet resultSet = statement.executeQuery(SHOW_TABLES_SQL);
+        final List<String> tables = new ArrayList<>();
         while (resultSet.next()) {
-            final String resultSetString = resultSet.getString(1);
-            System.out.println("resultSetString = " + resultSetString);
+            final String tableName = resultSet.getString(1);
+            tables.add(tableName);
+            log.info("tableName = " + tableName);
         }
         connection.close();
+        return tables;
     }
 
     @SneakyThrows
@@ -128,7 +138,6 @@ public class MySqlConnector {
         preparedStatement.setString(2, "neha");
         final int executeUpdate = preparedStatement.executeUpdate();
         System.out.println("executeUpdate = " + executeUpdate);
-
     }
 
     @SneakyThrows
@@ -204,6 +213,50 @@ public class MySqlConnector {
         final Statement statement = connection.createStatement();
         final ResultSet resultSet = statement.executeQuery(tableSQL);
         connection.close();
+    }
+
+    public String createDDLForInsertData() {
+        final String table_name = "table_name";
+        final String all_columns_list = "all_columns_list";//id, name, ...
+        String allColumn = getAllColumnList(table_name);
+        final String all_column_values = "all_column_values";
+        String templateSQL = "insert into " + table_name + "(" + all_columns_list + ") values(" + all_column_values + ")";
+        return templateSQL;
+    }
+
+    public void getAllTables() {
+
+    }
+
+    @SneakyThrows
+    @Test
+    public void testPageWise() {
+        final List<String> tables = getAllTablesInsideSchema(getConnection());
+        tables.stream().peek(t -> System.out.println("table : "+t))
+                .forEach(table -> getPageWise(table, "id", 0, 10));
+    }
+
+    @SneakyThrows
+    public void getPageWise(String tableName, String sortBy, int pageNumber, int perPageSize) {
+//        final String sql = "select * from emp order by id limit 0, 3";//start from 0th index and total it will pick 3 item
+        final String sql2 = "select * from " + tableName + " order by " + sortBy + " limit " + pageNumber + ", " + perPageSize;//start from 0th index and total it will pick 3 item
+
+        final Connection connection = getConnection();
+        final Statement statement = connection.createStatement();
+        final ResultSet resultSet = statement.executeQuery(sql2);
+        while (resultSet.next()) {
+            final int anInt = resultSet.getInt(1);
+            final String string = resultSet.getString(2);
+            System.out.println(anInt+" "+string);
+        }
+        connection.close();
+    }
+
+    @SneakyThrows
+    private String getAllColumnList(String table_name) {
+        final Connection connection = getConnection();
+        connection.close();
+        return null;
     }
 
     @SneakyThrows
