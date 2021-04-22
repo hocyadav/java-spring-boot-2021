@@ -1,0 +1,24 @@
+app-config:
+  simpleKey: "value"
+  source:
+    datasource: mysql
+    url: "jdbc:mysql://localhost:3306/testdb?useSSL=false"
+    username: root
+    password: hariom
+    schema:
+      schemaName: testdb
+      tableName: emp
+      tableColumns:
+        - id
+        - name
+  target:
+    datasource: mysql
+    url: "jdbc:mysql://localhost:3306/testdb?useSSL=false"
+    username: root
+    password: hariom
+    schema:
+      schemaName: testdb
+      tableName: emp
+      tableColumns:
+        - id
+        - name
