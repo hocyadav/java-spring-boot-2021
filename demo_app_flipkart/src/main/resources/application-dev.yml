@@ -1,8 +1,9 @@
-# H2 SQL in-memory database config
+# database config
 spring.datasource.url: jdbc:h2:mem:h2db
 spring.h2.console.enabled: true
 spring.jpa.show-sql: true
 
+# app config
 app-config:
   simpleKey: "value"
   list:
