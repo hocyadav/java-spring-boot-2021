@@ -1,4 +1,4 @@
-package io.hari.demo.entity;
+package io.hari.demo.constant;
 
 /**
  * @Author Hariom Yadav

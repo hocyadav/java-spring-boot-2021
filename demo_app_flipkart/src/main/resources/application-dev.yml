@@ -1,0 +1,35 @@
+# H2 SQL in-memory database config
+spring.datasource.url: jdbc:h2:mem:h2db
+spring.h2.console.enabled: true
+spring.jpa.show-sql: true
+
+app-config:
+  simpleKey: "value"
+  list:
+    - name1
+    - name2
+  map:
+    key1: value1
+    key2: value2
+  object:
+    #make one key as default
+    key1:
+      username:
+      password:
+      list:
+        - name1
+        - name2
+      map:
+        key1: value1
+        key2: value2
+    key2:
+      username:
+      password:
+      list:
+        - name1
+        - name2
+      map:
+        key1: value1
+        key2: value2
+
+
