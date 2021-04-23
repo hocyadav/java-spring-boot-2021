@@ -1,7 +1,6 @@
 package io.hari.demo.entity;
 
 import lombok.*;
-import org.springframework.data.repository.NoRepositoryBean;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
