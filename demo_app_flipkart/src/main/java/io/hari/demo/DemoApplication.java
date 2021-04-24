@@ -3,7 +3,10 @@ package io.hari.demo;
 import io.hari.demo.config.AppConfig;
 import io.hari.demo.constant.AppConstant;
 import io.hari.demo.dao.Entity1Dao;
+import io.hari.demo.dao.Entity2Dao;
 import io.hari.demo.entity.Entity1;
+import io.hari.demo.entity.Entity2;
+import io.hari.demo.service.Entity1Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,6 +21,9 @@ import java.util.stream.IntStream;
 public class DemoApplication implements CommandLineRunner {
     private final AppConfig config;
     private final Entity1Dao entity1Dao;
+    private final Entity2Dao entity2Dao;
+    private final Entity1Service entity1Service;
+
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
@@ -37,12 +43,17 @@ public class DemoApplication implements CommandLineRunner {
         final AppConfig.ClassA key1 = config.getObject().get("key1");
         System.out.println("key1 = " + key1);
         IntStream.range(0, 10)
-                .forEach(i -> entity1Dao.save(Entity1.builder().name("name-"+i).build()));
+                .forEach(i -> entity1Dao.save(Entity1.builder().name("name-" + i).build()));
         final List<Entity1> entity1s = entity1Dao.sqlMethod();
         System.out.println("entity1s = " + entity1s);
 
         final List<Entity1> entity1s1 = entity1Dao.sqlMethod2("name", 0, 3);
         System.out.println("entity1s1 = " + entity1s1);
+
+        final List<Entity2> all = entity2Dao.findAll();
+        System.out.println("all = " + all);
+        final List<Entity1> tets = entity1Service.test("null");
+        System.out.println("tets = " + tets);
 
     }
 }
