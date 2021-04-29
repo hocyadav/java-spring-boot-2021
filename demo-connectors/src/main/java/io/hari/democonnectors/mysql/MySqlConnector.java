@@ -16,6 +16,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Author hayadav
  * @create 4/19/2021
  * https://zetcode.com/db/mysqljava/
+ * https://www.baeldung.com/jdbc-batch-processing
+ * https://www.jackrutorial.com/2018/03/spring-boot-batch-read-from-mysql-database-and-write-into-a-csv-file-tutorial.html
  */
 @Slf4j
 public class MySqlConnector {
@@ -77,7 +79,7 @@ public class MySqlConnector {
             System.out.println("resultSet.getString(1) = " + resultSet.getString(1));
         }
         resultSet.close();
-        connectionStatement.close();
+        System.out.println("Connection info retrieved successfully :" + connection.getSchema());
         return connection;
     }
 
