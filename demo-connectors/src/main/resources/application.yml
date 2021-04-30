@@ -1,5 +1,11 @@
 app-config:
   simpleKey: "value"
+  remotemysql:
+    username: "oizyqsewr5"
+    password: "eFoJkeAxvz"
+    server: "remotemysql.com"
+    port: 3600
+    databaseSchemaName: ${remotemysql.username}
   source:
     datasource: mysql
     url: "jdbc:mysql://localhost:3306/testdb?useSSL=false"
