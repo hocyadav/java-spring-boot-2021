@@ -26,5 +26,7 @@ public class DemoConnectorsApplication implements CommandLineRunner {
 		System.out.println("schema = " + schema);
 		final List<String> columns = schema.getTableColumns();
 		System.out.println("columns = " + columns);
+		final AppConfig.RemoteMySQL remotemySQL = appConfig.getRemotemySQL();
+		System.out.println("remotemySQL = " + remotemySQL);
 	}
 }
