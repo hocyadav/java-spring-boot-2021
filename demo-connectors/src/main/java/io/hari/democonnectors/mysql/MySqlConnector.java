@@ -333,6 +333,29 @@ public class MySqlConnector {
         });
     }
 
+    @Test
+    public void testCloudDB() {
+        cloudDbConnection();
+    }
+
+    @SneakyThrows
+    public void cloudDbConnection() {
+        final String username = "oizyqsewr5";
+        final String password = "eFoJkeAxvz";
+        final String server = "remotemysql.com";
+        final String databaseSchemaName = username;
+        final String url = "jdbc:mysql://" + server + ":3306/" + databaseSchemaName + "?useSSL=false";
+        final Connection connection = DriverManager.getConnection(url, username, password);
+
+        final Statement connectionStatement = connection.createStatement();
+        final ResultSet resultSet = connectionStatement.executeQuery("SELECT VERSION()");
+        if (resultSet.next()) {
+            System.out.println("resultSet.getString(1) = " + resultSet.getString(1));
+        }
+        resultSet.close();
+        System.out.println("Connection info retrieved successfully :" + connection.getSchema());
+    }
+
 
     @SneakyThrows
     private String getAllColumnList(String table_name) {
