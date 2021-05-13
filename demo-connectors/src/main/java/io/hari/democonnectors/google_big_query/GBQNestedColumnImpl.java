@@ -4,7 +4,10 @@ import com.google.cloud.bigquery.*;
 import lombok.SneakyThrows;
 import org.junit.Test;
 
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -15,28 +18,29 @@ public class GBQNestedColumnImpl {
     public static final String DATASET_NAME = "hariom_dataset";
     public static final String TABLE_NAME = "nested_table";
     public static final String DOT = ".";
+    public static final BigQuery BIG_QUERY = BigQueryOptions.getDefaultInstance().getService();
 
 
     @Test //todo : create nested column
-    public void nestedColumn() {
-        createTableWithNestedRepeatedSchema(DATASET_NAME, TABLE_NAME);
+    public void createTableWithNestedRepeatedSchemaTest() {
+        final Schema schema = getSchema();
+        createTableWithNestedRepeatedSchema(DATASET_NAME, TABLE_NAME, schema);
     }
 
-    private void createTableWithNestedRepeatedSchema(String datasetName, String tableName) {
+    private void createTableWithNestedRepeatedSchema(String datasetName, String tableName, Schema schema) {
         //step 1 : create table info obj -> required 2 things : table id + table definitions
         final TableId tableId = TableId.of(datasetName, tableName);
-        final StandardTableDefinition tableDefinition = StandardTableDefinition.of(getSchema());//table definition required schema
+        final StandardTableDefinition tableDefinition = StandardTableDefinition.of(schema);//table definition required schema
         final TableInfo tableInfo = TableInfo.of(tableId, tableDefinition);
 
         //step 2 : BQ instance + call create()
-        final BigQuery bigQuery = BigQueryOptions.getDefaultInstance().getService();
-        bigQuery.create(tableInfo);
+        BIG_QUERY.create(tableInfo);
 
         System.out.println("Table with nested field created successful !!");
     }
 
     @Test //todo : fetch data from nested column or from any table
-    public void fetchDataFromNestedTable() {
+    public void fetchDataFromNestedTableSQLTest() {
         String sql1 = "select * from " + DATASET_NAME + DOT + TABLE_NAME;
         String sql2 = "select * from hariom_dataset.source_table t limit 50";
         fetchDataFromNestedTableSQL(sql1);
@@ -48,9 +52,7 @@ public class GBQNestedColumnImpl {
         JobConfiguration jobConfig = QueryJobConfiguration.newBuilder(sql).setUseLegacySql(false).build();
         final JobInfo jobInfo = JobInfo.of(jobId, jobConfig);
 
-        final BigQuery bigQuery = BigQueryOptions.getDefaultInstance().getService();
-        final BigQueryOptions.Builder builder = BigQueryOptions.newBuilder();
-        Job job = bigQuery.create(jobInfo);
+        Job job = BIG_QUERY.create(jobInfo);
         job = job.waitFor();
         System.out.println("job.getStatus() = " + job.getStatus());
         printTableDataFromJob(job);
@@ -89,7 +91,7 @@ public class GBQNestedColumnImpl {
     }
 
     @Test //todo: add new column
-    public void updateColumnCRUD() {
+    public void addEmptyColumnTest() {
         String newColumnName = "new_column";
         LegacySQLTypeName newColumnType = LegacySQLTypeName.STRING;
         addEmptyColumn(DATASET_NAME, TABLE_NAME, newColumnName, newColumnType);
@@ -97,8 +99,7 @@ public class GBQNestedColumnImpl {
 
     private void addEmptyColumn(String datasetName, String tableName, String newColumnName, LegacySQLTypeName newColumnType) {
         //step 1: get table object -> get schema object -> get field object -> create new field and add it
-        final BigQuery bigQuery = BigQueryOptions.getDefaultInstance().getService();
-        final Table oldTable = bigQuery.getTable(datasetName, tableName);
+        final Table oldTable = BIG_QUERY.getTable(datasetName, tableName);
         final Schema schema = oldTable.getDefinition().getSchema();
         final FieldList oldSchemaField = schema.getFields();
 
@@ -118,5 +119,64 @@ public class GBQNestedColumnImpl {
         newTable.update();
 
         System.out.println("empty column added successfully !!");
+    }
+
+    @Test
+    public void fetchSchemaTest() {
+        fetchSchema(DATASET_NAME, TABLE_NAME);
+    }
+
+    private void fetchSchema(String datasetName, String tableName) {
+        final Table table = BIG_QUERY.getTable(datasetName, tableName);
+        final Schema schema = table.getDefinition().getSchema();
+        System.out.println("schema = " + schema);
+        final FieldList fields = schema.getFields();
+        final Iterator<Field> allColumns = fields.iterator();
+        Schema schema1 = Schema.of(fields);
+        while (allColumns.hasNext()) {
+            final Field field = allColumns.next();
+            System.out.println("field = " + field);
+        }
+    }
+
+    @Test
+    public void createReplicaTableWithOldSchemaTest() {
+        final Table table = BIG_QUERY.getTable(DATASET_NAME, TABLE_NAME);
+        final Schema schema = table.getDefinition().getSchema();
+        createReplicaTableWithOldSchema(schema);
+    }
+
+    private void createReplicaTableWithOldSchema(Schema schema) {
+        final Schema newSchema = Schema.of(schema.getFields());
+        final String newTableName = TABLE_NAME + "_01_new_table";
+        createTableWithNestedRepeatedSchema(DATASET_NAME, newTableName, newSchema);
+    }
+
+    @Test // todo testing pending
+    public void createTableWithOldSchemaButRemoveFewRecordTypeFieldTest() {
+        createTableWithOldSchemaButRemoveFewRecordTypeField();
+    }
+
+    public void createTableWithOldSchemaButRemoveFewRecordTypeField() {
+        final Table table = BIG_QUERY.getTable(DATASET_NAME, TABLE_NAME);
+        final Schema schema = table.getDefinition().getSchema();
+        final Schema newSchema = Schema.of(schema.getFields());
+        final FieldList fields = newSchema.getFields();
+        final List<Field> fieldList = fields.stream().collect(Collectors.toList());
+        System.out.println("fieldList = " + fieldList);
+        for (Field field : fieldList) {
+            if (Objects.nonNull(field.getSubFields()) && field.getSubFields().size() > 0) {
+                final FieldList subFields = field.getSubFields();
+                System.out.println("subFields = " + subFields);
+                final Iterator<Field> iterator = subFields.iterator();//we cant get field list object - class is final and only we can get iterator object of inside list, but we can apply on stream
+                List<Field> newList= new LinkedList<>();
+                subFields.stream().forEach(fetchedField -> {
+                    if (!fetchedField.getName().equalsIgnoreCase("zip")) {
+                        newList.add(fetchedField);
+                    }
+                });
+                System.out.println("newList = " + newList);
+            }
+        }
     }
 }
