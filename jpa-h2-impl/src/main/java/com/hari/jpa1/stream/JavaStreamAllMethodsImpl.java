@@ -1,5 +1,6 @@
-package com.hari.jpa1;
+package com.hari.jpa1.stream;
 
+import com.hari.jpa1.*;
 import lombok.SneakyThrows;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,8 +29,6 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
-
         String value = "hariom";
 
         Optional.of(value);//this is used inside optional of nullable, when value is not null
@@ -608,7 +607,6 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
         ));
         System.out.println("collect40 = " + collect40);
         // collect40 = {chandan=[Student{rollNumber=75, name='chandan'}], hari=[Student{rollNumber=25, name='hari'}]}
-
 
     }
 
