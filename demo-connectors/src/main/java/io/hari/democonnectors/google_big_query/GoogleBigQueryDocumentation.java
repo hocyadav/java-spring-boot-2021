@@ -26,8 +26,15 @@ public class GoogleBigQueryDocumentation {
         executeQuery_getFlatRows_AndRecordType_1(bigQuery, QUERY_SELECT_2COLUMN);
         executeQuery_getFlatRows_AndRecordType_1(bigQuery, QUERY_RECORD_TYPE);
     }
+
+    @Test
+    public void testMyDatasetTables() {
+        final BigQuery bigQuery = getBigQuery();
+        String sql = "select * from hariom_dataset.source_table t limit 50";
+        executeQuery_getFlatRows_AndRecordType_1(bigQuery, sql);
+    }
     @SneakyThrows
-    private static void executeQuery_getFlatRows_AndRecordType_1(BigQuery bigQuery, String query) {
+    public static void executeQuery_getFlatRows_AndRecordType_1(BigQuery bigQuery, String query) {
         //step 1: create query job
         final QueryJobConfiguration queryJobConfiguration = QueryJobConfiguration.newBuilder(query)
                 .setUseLegacySql(false).build();// See: https://cloud.google.com/bigquery/sql-reference/
@@ -133,7 +140,7 @@ public class GoogleBigQueryDocumentation {
      * 1. Set the environment variable GOOGLE_APPLICATION_CREDENTIALS to the path of the JSON file that contains your service account key
      * https://cloud.google.com/bigquery/docs/quickstarts/quickstart-client-libraries
      */
-    private static BigQuery getBigQuery() {
+    private static BigQuery getBigQuery() {//todo : singleton instance
         return BigQueryOptions.getDefaultInstance().getService();
     }
 }
