@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static io.hari.democonnectors.google_big_query.UtilityHelper.getCurrentTimeAsSuffix;
+
 /**
  * @Author Hariom Yadav
  * @create 5/13/2021
@@ -19,6 +21,7 @@ public class GBQNestedColumnImpl {
     public static final String TABLE_NAME = "nested_table";
     public static final String DOT = ".";
     public static final BigQuery BIG_QUERY = BigQueryOptions.getDefaultInstance().getService();
+    public static final String UNDERSCORE = "_";
 
 
     @Test //todo : create nested column
@@ -92,14 +95,14 @@ public class GBQNestedColumnImpl {
 
     @Test //todo: add new column
     public void addEmptyColumnTest() {
-        String newColumnName = "new_column";
+        String newColumnName = "new_column" + getCurrentTimeAsSuffix();
         LegacySQLTypeName newColumnType = LegacySQLTypeName.STRING;
-        addEmptyColumn(DATASET_NAME, TABLE_NAME, newColumnName, newColumnType);
+        addEmptyColumn(newColumnName, newColumnType);
     }
 
-    private void addEmptyColumn(String datasetName, String tableName, String newColumnName, LegacySQLTypeName newColumnType) {
+    private void addEmptyColumn(String newColumnName, LegacySQLTypeName newColumnType) {
         //step 1: get table object -> get schema object -> get field object -> create new field and add it
-        final Table oldTable = BIG_QUERY.getTable(datasetName, tableName);
+        final Table oldTable = BIG_QUERY.getTable(DATASET_NAME, TABLE_NAME);
         final Schema schema = oldTable.getDefinition().getSchema();
         final FieldList oldSchemaField = schema.getFields();
 
@@ -119,6 +122,63 @@ public class GBQNestedColumnImpl {
         newTable.update();
 
         System.out.println("empty column added successfully !!");
+    }
+
+    @Test
+    public void addRecordTypeColumnTest() {
+        String newColumnName = "new_column_record" + getCurrentTimeAsSuffix();
+        StandardSQLTypeName newColumnType = StandardSQLTypeName.STRUCT;
+        addRecordTypeColumn(newColumnName, newColumnType);
+    }
+
+    //1 : get table schema -> old fields -> create new field -> create a new schema -> update table
+    private void addRecordTypeColumn(String newColumnName, StandardSQLTypeName newColumnType) {
+        final Table oldTable = BIG_QUERY.getTable(DATASET_NAME, TABLE_NAME);
+        final Schema oldSchema = oldTable.getDefinition().getSchema();
+        final List<Field> oldFields = oldSchema.getFields().stream().collect(Collectors.toList());
+
+        final Field newFieldRecordType = recordTypeField(newColumnName, newColumnType);
+        oldFields.add(newFieldRecordType);
+
+        final Schema newSchema = Schema.of(oldFields);
+        TableDefinition tableDefinition = StandardTableDefinition.of(newSchema);
+        final Table newTable = oldTable.toBuilder()
+                .setDefinition(tableDefinition)
+                .build();
+        newTable.update();
+        System.out.println("table updated successfully !!");
+    }
+
+    public Field recordTypeField(String newColumnName, StandardSQLTypeName newColumnType) {
+        final Field.Builder fieldBuilder = Field.newBuilder(newColumnName, newColumnType,
+                Field.of("address", LegacySQLTypeName.STRING),
+                Field.of("city", LegacySQLTypeName.STRING));
+        return fieldBuilder.setMode(Field.Mode.REPEATED).build();
+    }
+
+    @Test //todo : not working -> GBQ support manual delete -> ALTER TABLE DROP COLUMN
+    public void deleteFieldTest() {
+        deleteFieldUsingJAVA("new_column");
+    }
+
+    public void deleteFieldUsingJAVA(String columnName) {
+        final Table oldTable = BIG_QUERY.getTable(DATASET_NAME, TABLE_NAME);
+        final Schema oldSchema = oldTable.getDefinition().getSchema();
+        final List<Field> oldFieldsWithRemovedInputField = oldSchema.getFields().stream()
+                .filter(field -> !field.getName().equalsIgnoreCase(columnName))
+                .collect(Collectors.toList());
+
+        final Schema newSchema = Schema.of(oldFieldsWithRemovedInputField);
+        TableDefinition tableDefinition = StandardTableDefinition.of(newSchema);
+        final Table newTable = oldTable.toBuilder()
+                .setDefinition(tableDefinition)
+                .build();
+        newTable.update();
+        System.out.println("Field deleted successfully");
+    }
+
+    public void deleteColumnUsingSQL(String columnName) {
+
     }
 
     @Test
@@ -169,7 +229,7 @@ public class GBQNestedColumnImpl {
                 final FieldList subFields = field.getSubFields();
                 System.out.println("subFields = " + subFields);
                 final Iterator<Field> iterator = subFields.iterator();//we cant get field list object - class is final and only we can get iterator object of inside list, but we can apply on stream
-                List<Field> newList= new LinkedList<>();
+                List<Field> newList = new LinkedList<>();
                 subFields.stream().forEach(fetchedField -> {
                     if (!fetchedField.getName().equalsIgnoreCase("zip")) {
                         newList.add(fetchedField);
