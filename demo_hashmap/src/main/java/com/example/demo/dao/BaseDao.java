@@ -7,6 +7,6 @@ package com.example.demo.dao;
 public interface BaseDao<T> {
     T save(T entity);
     T findById(Long id);
-    T update(Long id);
+    T update(T entity);
     void delete(Long id);
 }

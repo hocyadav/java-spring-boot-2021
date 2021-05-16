@@ -11,36 +11,37 @@ import java.util.Optional;
  * @create 5/16/2021
  */
 public class UserDao implements BaseDao<User>{
-    private Map<Long, User> USER_DB = new HashMap<>();
+    private Map<Long, User> userMap = new HashMap<>();
 
     @Override
     public User save(User user) {
-        USER_DB.putIfAbsent(user.getId(), user);
-        return findById(user.getId());
+        return userMap.putIfAbsent(user.getId(), user);
     }
 
     @Override
     public User findById(Long id) {
-        final User user = Optional.ofNullable(USER_DB.get(id))
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        return user;
+        validateUser(id);
+        return userMap.get(id);
     }
 
     @Override
-    public User update(Long id) {
-        final User user = Optional.ofNullable(USER_DB.get(id))
-                .orElseThrow(() -> new RuntimeException("User not found"));
+    public User update(User user) {
+        validateUser(user.getId());
         return save(user);
     }
 
     @Override
     public void delete(Long id) {
-        final User user = Optional.ofNullable(USER_DB.get(id))
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        USER_DB.remove(user.getId());
+        validateUser(id);
+        userMap.remove(id);
     }
 
     public Map<Long, User> getAll() {
-        return USER_DB;
+        return userMap;
+    }
+
+    private void validateUser(Long id) {
+        Optional.ofNullable(userMap.get(id))
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
 }

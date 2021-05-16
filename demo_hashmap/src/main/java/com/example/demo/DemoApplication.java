@@ -31,8 +31,5 @@ public class DemoApplication {
 		System.out.println("user1 = " + user1);
 
 		System.out.println("user2 = " + userDao.findById(2L));
-
-
 	}
-
 }
