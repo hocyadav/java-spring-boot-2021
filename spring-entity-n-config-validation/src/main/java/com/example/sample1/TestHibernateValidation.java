@@ -15,6 +15,10 @@ public class TestHibernateValidation implements CommandLineRunner {
     private final ConfigClassValidation config;
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("config = " + config);
+        System.out.println(
+                "test hibernate validation = " + config
+        );
+
+        System.out.println("third party = " + config.thirdParty());
     }
 }

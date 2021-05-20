@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
@@ -15,6 +16,7 @@ import java.math.BigInteger;
  * @Author Hariom Yadav
  * @create 5/20/2021
  * https://docs.jboss.org/hibernate/validator/4.2/reference/en-US/html_single/#validator-defineconstraints-spec
+ https://reflectoring.io/validate-spring-boot-configuration-parameters-at-startup/
  */
 @Getter
 @Setter
@@ -46,5 +48,18 @@ public class ConfigClassValidation {
     @DecimalMin(value = "10.10")
     @Digits(integer = 2, fraction = 2) //working inter part length max 3, and fraction part length 2
     BigDecimal digit2;
+
+    //set default value in config
+    Boolean defaultValue = Boolean.FALSE;
+
+
+    //todo : testing pending
+    @Bean
+    @ConfigurationProperties(prefix = "third-party-jar-class-validation")
+    @Validated
+    public ThirdPartyClass thirdParty() {
+        return new ThirdPartyClass();
+    }
+
 }
 

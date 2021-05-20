@@ -31,3 +31,6 @@ app-validation:
   decimalMin: 201
   digit: 211.12
   digit2: 99.99
+  futureDate:
+third-party-jar-class-validation:
+  email: hoc.yadav@gmail.com
