@@ -23,3 +23,11 @@ app-name:
     - "type1"
     - "type2"
   new-config2: 495452
+app-validation:
+  boolean1: true
+  boolean2: false
+  boolean3: true
+  decimalMax: 99
+  decimalMin: 201
+  digit: 211.12
+  digit2: 99.99
