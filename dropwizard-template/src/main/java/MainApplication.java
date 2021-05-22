@@ -1,4 +1,6 @@
 import config.AppConfig;
+import health.MyHealthCheck;
+import health.MyHealthCheck2;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
 import lombok.SneakyThrows;
@@ -16,9 +18,36 @@ public class MainApplication extends Application<AppConfig> {
     public static void main(String[] args) {
         new MainApplication().run(args);
     }
+
     @Override
     public void run(AppConfig appConfig, Environment environment) throws Exception {
         final MyResource myResource = new MyResource(appConfig);
+        final MyHealthCheck myHealthCheck = new MyHealthCheck();
+
+        environment.healthChecks().register("my-health-check-class-1", myHealthCheck);//app will start but we can see status of this health check http://localhost:8081/healthcheck
+        environment.healthChecks().register("health-check-2", new MyHealthCheck2());
         environment.jersey().register(myResource);
     }
 }
+
+/** Output:   http://localhost:8081/healthcheck
+ {
+ "deadlocks": {
+ "healthy": true,
+ "duration": 0,
+ "timestamp": "2021-05-22T13:04:30.100+05:30"
+ },
+ "health-check-2": {
+ "healthy": true,
+ "message": "app is healthy - hariom",
+ "duration": 0,
+ "timestamp": "2021-05-22T13:04:30.100+05:30"
+ },
+ "my-health-check-class-1": {
+ "healthy": false,
+ "message": "not healthy - hariom",
+ "duration": 0,
+ "timestamp": "2021-05-22T13:04:30.100+05:30"
+ }
+ }
+ */
