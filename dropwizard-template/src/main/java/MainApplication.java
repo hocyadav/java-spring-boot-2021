@@ -1,7 +1,9 @@
+import commands.MyCommand;
 import config.AppConfig;
 import health.MyHealthCheck;
 import health.MyHealthCheck2;
 import io.dropwizard.Application;
+import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import lombok.SneakyThrows;
 import resource.MyResource;
@@ -20,6 +22,12 @@ public class MainApplication extends Application<AppConfig> {
     }
 
     @Override
+    public void initialize(Bootstrap<AppConfig> bootstrap) {//a.2. add override initialization method since it contain bootstrap instance
+        super.initialize(bootstrap);
+        bootstrap.addCommand(new MyCommand());//a.3 add command to bootstrap
+    }
+
+    @Override
     public void run(AppConfig appConfig, Environment environment) throws Exception {
         final MyResource myResource = new MyResource(appConfig);
         final MyHealthCheck myHealthCheck = new MyHealthCheck();
@@ -27,6 +35,7 @@ public class MainApplication extends Application<AppConfig> {
         environment.healthChecks().register("my-health-check-class-1", myHealthCheck);//app will start but we can see status of this health check http://localhost:8081/healthcheck
         environment.healthChecks().register("health-check-2", new MyHealthCheck2());
         environment.jersey().register(myResource);
+
     }
 }
 
