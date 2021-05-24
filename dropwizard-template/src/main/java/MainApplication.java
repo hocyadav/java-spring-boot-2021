@@ -6,6 +6,7 @@ import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import lombok.SneakyThrows;
+import managed.MyClientStartAndStop;
 import resource.MyResource;
 
 /**
@@ -36,6 +37,9 @@ public class MainApplication extends Application<AppConfig> {
         environment.healthChecks().register("health-check-2", new MyHealthCheck2());
         environment.jersey().register(myResource);
 
+        //our resource lifecycle is managed by HTTP server
+        final MyClientStartAndStop clientStartAndStop = new MyClientStartAndStop();
+        environment.lifecycle().manage(clientStartAndStop);
     }
 }
 
