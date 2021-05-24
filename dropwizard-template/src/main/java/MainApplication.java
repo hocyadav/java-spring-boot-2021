@@ -9,6 +9,9 @@ import lombok.SneakyThrows;
 import managed.MyClientStartAndStop;
 import resource.MyResource;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
+
 /**
  * @Author Hariom Yadav
  * @create 5/21/2021
@@ -40,6 +43,17 @@ public class MainApplication extends Application<AppConfig> {
         //our resource lifecycle is managed by HTTP server
         final MyClientStartAndStop clientStartAndStop = new MyClientStartAndStop();
         environment.lifecycle().manage(clientStartAndStop);
+
+        //https://www.dropwizard.io/en/latest/manual/core.html#managed-objects
+        //Environment has inbuilt factory for ExecutorService and ScheduledExecutorService
+        //TODO:(Hariom 5/24/2021): How it is working ?
+        final ExecutorService executorService = environment.lifecycle()
+                .executorService("my-executor-service")
+                .maxThreads(10)
+                .build();
+        final ScheduledExecutorService scheduledExecutorService = environment.lifecycle()
+                .scheduledExecutorService("my-scheduled-thread-pool")
+                .build();
     }
 }
 
