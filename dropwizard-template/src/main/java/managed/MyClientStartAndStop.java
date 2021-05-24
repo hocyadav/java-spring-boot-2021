@@ -16,11 +16,11 @@ public class MyClientStartAndStop implements Managed {
 
     @Override
     public void start() throws Exception {
-        System.out.println("client instance started");//when app will start then we can see this log
+        System.out.println("client instance started - Lifecycle Managed by HTTP Server");//when app will start then we can see this log
     }
 
     @Override
     public void stop() throws Exception {
-        System.out.println("client instance stop");//when app will stop then we can see this log
+        System.out.println("client instance stop - Lifecycle Managed by HTTP Server");//when app will stop then we can see this log
     }
 }
