@@ -1,2 +1,6 @@
 appName: dropwizard template
 location: "Bangalore, KA, India"
+
+#common api or common asset access from root path : https://www.dropwizard.io/en/latest/manual/core.html#serving-assets
+server:
+  rootPath: /api/
