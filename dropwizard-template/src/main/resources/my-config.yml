@@ -5,5 +5,23 @@ location: "Bangalore, KA, India"
 server:
   rootPath: /api/
 
+# Logging settings.
 logging:
-  level: TRACE
+  # default level of all logging, OFF, ERROR, INFO, DEBUG, WARN, TRACE, ALL
+  level: INFO
+
+  # Logger-specific levels, here we can override above level
+  # USE CASE 1: one use case is off whole app LOG and make one resource log on to see only log from that resource
+  # USE CASE 2: we can create log file and store all logs for a specific package , and same time we can show that package log on console log or exclude using "additive: true/false "
+  loggers:
+#    "resource.MyResource" : TRACE
+
+    "resource.MyResource":
+      level: TRACE
+      # This line stops org.hibernate.SQL (or anything under it) from using the root logger
+      additive: true # false means we will not show log on console & only show in below file
+      appenders:
+        - type : file
+          currentLogFilename: ./log/example-sql.log
+          archivedLogFilenamePattern: ./logs/example-sql-%d.log.gz
+          archivedFileCount: 5
