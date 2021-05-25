@@ -8,6 +8,8 @@ import io.dropwizard.setup.Environment;
 import lombok.SneakyThrows;
 import managed.MyClientStartAndStop;
 import resource.MyResource;
+import task.MyPostBodyTask;
+import task.MySimpleTask;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
@@ -33,20 +35,30 @@ public class MainApplication extends Application<AppConfig> {
 
     @Override
     public void run(AppConfig appConfig, Environment environment) throws Exception {
+        //todo : register resources
         final MyResource myResource = new MyResource(appConfig);
-        final MyHealthCheck myHealthCheck = new MyHealthCheck();
-
-        environment.healthChecks().register("my-health-check-class-1", myHealthCheck);//app will start but we can see status of this health check http://localhost:8081/healthcheck
-        environment.healthChecks().register("health-check-2", new MyHealthCheck2());
         environment.jersey().register(myResource);
 
-        //our resource lifecycle is managed by HTTP server
+        //todo : register health checks
+        final MyHealthCheck myHealthCheck = new MyHealthCheck();
+        environment.healthChecks().register("my-health-check-class-1", myHealthCheck);//app will start but we can see status of this health check http://localhost:8081/healthcheck
+        environment.healthChecks().register("health-check-2", new MyHealthCheck2());
+
+        //todo :our resource lifecycle is managed by HTTP server
         final MyClientStartAndStop clientStartAndStop = new MyClientStartAndStop();
         environment.lifecycle().manage(clientStartAndStop);
 
+        //todo :register task : we can see inbuilt task by DW during startup log:
+        // curl -X POST http://localhost:8081/tasks/gc
+        // curl -X POST http://localhost:8081/tasks/log-level
+        // curl -X POST http://localhost:8081/tasks/task1
+        // curl -X POST http://localhost:8081/tasks/task2
+        environment.admin().addTask(new MySimpleTask());//b3 : add task to admin , if we will not add our task here then we will get "Error 404 Not Found"
+        environment.admin().addTask(new MyPostBodyTask());//if we comment then we can see in startup log, URI is not created
+
+        //TODO:(Hariom 5/24/2021): How it is working ?
         //https://www.dropwizard.io/en/latest/manual/core.html#managed-objects
         //Environment has inbuilt factory for ExecutorService and ScheduledExecutorService
-        //TODO:(Hariom 5/24/2021): How it is working ?
         final ExecutorService executorService = environment.lifecycle()
                 .executorService("my-executor-service")
                 .maxThreads(10)
