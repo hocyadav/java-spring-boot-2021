@@ -25,3 +25,9 @@ logging:
           currentLogFilename: ./log/example-sql.log
           archivedLogFilenamePattern: ./logs/example-sql-%d.log.gz
           archivedFileCount: 5
+
+#todo : testing pending : https://www.dropwizard.io/en/latest/manual/configuration.html#man-configuration-logging
+metrics:
+  reporters:
+    - type: csv
+      file: ./csv_reports/
