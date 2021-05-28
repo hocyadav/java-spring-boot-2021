@@ -3,9 +3,16 @@ location: "Bangalore, KA, India"
 threadPoolConfig:
   threadPoolSize: 4
 
+
 #common api or common asset access from root path : https://www.dropwizard.io/en/latest/manual/core.html#serving-assets
 server:
   rootPath: /api/
+  requestLog: # URI request in JSON format : {"requestTime":152,"protocol":"HTTP/1.1","method":"GET","contentLength":58,"userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36","uri":"/api/test-api","remoteAddress":"[0:0:0:0:0:0:0:1]","timestamp":1622170269170,"status":200}
+    appenders:
+      - type: console
+        layout:
+          type: access-json
+
 
 # Logging settings.
 logging:
@@ -27,11 +34,10 @@ logging:
           currentLogFilename: ./log/example-sql.log
           archivedLogFilenamePattern: ./logs/example-sql-%d.log.gz
           archivedFileCount: 5
-  # json logging : add maven dependency + below config
-  appenders:
+  appenders: # JSON logging : add maven dependency + below config
     - type: console
       layout:
-        type: json
+        type: json #json, access-json(this will go inside server.requestLog.appenders)
 
 #todo : testing pending : https://www.dropwizard.io/en/latest/manual/configuration.html#man-configuration-logging
 metrics:
