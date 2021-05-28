@@ -39,7 +39,7 @@ logging:
       layout:
         type: json #json, access-json(this will go inside server.requestLog.appenders)
 
-#todo : testing pending : https://www.dropwizard.io/en/latest/manual/configuration.html#man-configuration-logging
+#todo : working : https://www.dropwizard.io/en/latest/manual/configuration.html#man-configuration-logging
 metrics:
   reporters:
     - type: csv
