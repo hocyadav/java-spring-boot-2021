@@ -29,6 +29,14 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- for json type logging - https://mvnrepository.com/artifact/io.dropwizard/dropwizard-json-logging -->
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-json-logging</artifactId>
+            <version>2.0.22</version>
+        </dependency>
+
+
     </dependencies>
 
 <!--    <build>-->
