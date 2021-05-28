@@ -1,12 +1,12 @@
 package config;
 
+import config.config_factory.MyConfigFactory;
 import io.dropwizard.Configuration;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * @Author Hariom Yadav
@@ -22,4 +22,8 @@ public class AppConfig extends Configuration {
 
     @NotEmpty
     String location;
+
+    @Valid
+    @NotNull
+    MyConfigFactory threadPoolConfig = new MyConfigFactory();
 }

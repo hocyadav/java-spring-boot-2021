@@ -1,5 +1,7 @@
 appName: dropwizard template
 location: "Bangalore, KA, India"
+threadPoolConfig:
+  threadPoolSize: 4
 
 #common api or common asset access from root path : https://www.dropwizard.io/en/latest/manual/core.html#serving-assets
 server:

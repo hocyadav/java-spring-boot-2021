@@ -34,10 +34,14 @@ public class MainApplication extends Application<AppConfig> {
     }
 
     @Override
-    public void run(AppConfig appConfig, Environment environment) throws Exception {
-        //todo : register resources
-        final MyResource myResource = new MyResource(appConfig);
+    public void run(AppConfig config, Environment environment) throws Exception {
+        //todo : register resources - using simple config class
+        final MyResource myResource = new MyResource(config);
         environment.jersey().register(myResource);
+
+        //todo : register resources - using factory config class
+        final ExecutorService executorServiceThreadPool = config.getThreadPoolConfig().build(environment);
+        environment.jersey().register(executorServiceThreadPool);
 
         //todo : register health checks
         final MyHealthCheck myHealthCheck = new MyHealthCheck();
