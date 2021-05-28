@@ -1,0 +1,5 @@
+TRACE [2021-05-28 02:45:36,077] resource.MyResource: name = Optional.empty
+TRACE [2021-05-28 02:46:59,929] resource.MyResource: name = Optional.empty
+TRACE [2021-05-28 02:48:48,393] resource.MyResource: name = Optional.empty
+TRACE [2021-05-28 02:51:09,118] resource.MyResource: name = Optional.empty
+TRACE [2021-05-28 02:53:33,838] resource.MyResource: name = Optional.empty
