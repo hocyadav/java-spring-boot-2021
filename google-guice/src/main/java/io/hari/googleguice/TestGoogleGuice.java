@@ -21,7 +21,7 @@ public class TestGoogleGuice implements CommandLineRunner {
 
         //todo DONE : interface impl services
 //        IShape iShape = injector.getInstance(IShape.class);
-//        MyShapeRequest myShapeRequest = new MyShapeRequest(iShape);
+//        MyShapeRequest myShapeRequest = new MyShapeRequest(iShape);//then @Inject is not required on top of constructor
 //        myShapeRequest.makeRequest();
 
         //todo : using @Inject
