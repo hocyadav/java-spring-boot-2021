@@ -26,6 +26,7 @@ public class KafkaProducer02KeysWithCallback {
             System.out.println("key = " + key);
             final ProducerRecord<String, String> producerRecord = new ProducerRecord<>("first_topic", key, "hello from java " + Integer.valueOf(i));
             kafkaProducer.send(producerRecord, new Callback() {
+
                 @Override
                 public void onCompletion(RecordMetadata recordMetadata, Exception e) {
                     if (e == null) {
