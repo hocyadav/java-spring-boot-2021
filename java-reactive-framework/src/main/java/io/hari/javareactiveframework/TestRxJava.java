@@ -26,23 +26,40 @@ public class TestRxJava {
     //todo : subscribe observable + access all 3 channel
     @Test
     public void testDataChannelAndErrorChannel() {
-        Observable<Game> gameObservable = getGames(GAMES_DB);//one data throw exception
+        Observable<Game> gameObservable = getGames(GAMES_DB);//one data will throw exception
         gameObservable.subscribe(
                 dataChannel -> System.out.println("DATA_CHANNEL : coming data from observable data channel : " + dataChannel),
                 errorChannel -> System.out.println("ERROR CHANNEL : Error from error channel : " + errorChannel),
                 () -> System.out.println("DONE CHANNEL : complete signal from Done channel : ")
         );
     }
+    /** output
+     starting observable...
+     DATA_CHANNEL : coming data from observable data channel : Game(name=game1, inventory=10)
+     DATA_CHANNEL : coming data from observable data channel : Game(name=game2, inventory=2)
+     ERROR CHANNEL : Error from error channel : java.lang.RuntimeException: Inventory count 0
+     ending observable...
+     */
+
 
     @Test
     public void testDataChannelAndDoneChannel() {
-        Observable<Game> gameObservable = getGames(GAMES_DB_2);//all data are
+        Observable<Game> gameObservable = getGames(GAMES_DB_2);//all data are correct, no exception
         gameObservable.subscribe( //subscribing observable to access all 3 channels
                 dataChannel -> System.out.println("DATA_CHANNEL : coming data from observable data channel : " + dataChannel),
                 errorChannel -> System.out.println("ERROR CHANNEL : Error from error channel : " + errorChannel),
                 () -> System.out.println("DONE CHANNEL : complete signal from Done channel : ")
         );
     }
+    /**
+     starting observable...
+     DATA_CHANNEL : coming data from observable data channel : Game(name=game1, inventory=10)
+     DATA_CHANNEL : coming data from observable data channel : Game(name=game2, inventory=2)
+     DATA_CHANNEL : coming data from observable data channel : Game(name=game4, inventory=6)
+     ending observable...
+     DONE CHANNEL : complete signal from Done channel :
+     */
+
 
     //todo : subscribe observable using Observer instance + access all 3 channel
     //this Observer instance contain all 3 channel impl
@@ -63,9 +80,16 @@ public class TestRxJava {
         gameObservable.subscribe(observer);
     }
 
+    /**
+     starting observable...
+     ending observable...
+     */
+
     @Test
     public void testObserverInterface2() {
-        Observable<Game> gameObservable = getGames(GAMES_DB);
+        Observable<Game> gameObservable = getGames(GAMES_DB);//output same as above 1st test
+//        Observable<Game> gameObservable = getGames(GAMES_DB_2);//output same as above 2nd test
+
         Observer<Game> observer = new Observer<>() {
             @Override
             public void onCompleted() {
@@ -84,7 +108,15 @@ public class TestRxJava {
         };
         gameObservable.subscribe(observer);
     }
+    /**
+     starting observable...
+     DATA_CHANNEL : coming data from observable data channel : Game(name=game1, inventory=10)
+     DATA_CHANNEL : coming data from observable data channel : Game(name=game2, inventory=2)
+     ERROR CHANNEL : Error from error channel : java.lang.RuntimeException: Inventory count 0
+     ending observable...
+     */
 
+    
     @Test //impl pending
     public void testSendUnSubscribeSignalToObservable() {
         Observable<Game> gameObservable = getGames(GAMES_DB);
