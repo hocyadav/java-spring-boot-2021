@@ -3,6 +3,7 @@ package io.hari.javareactiveframework;
 import io.hari.javareactiveframework.entity.Game;
 import org.junit.Test;
 import rx.Observable;
+import rx.Observer;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class TestRxJava {
             Game.builder().name("game2").inventory(2).build(),
             Game.builder().name("game4").inventory(6).build());
 
+    //todo : subscribe observable + access all 3 channel
     @Test
     public void testDataChannelAndErrorChannel() {
         Observable<Game> gameObservable = getGames(GAMES_DB);//one data throw exception
@@ -40,6 +42,72 @@ public class TestRxJava {
                 errorChannel -> System.out.println("ERROR CHANNEL : Error from error channel : " + errorChannel),
                 () -> System.out.println("DONE CHANNEL : complete signal from Done channel : ")
         );
+    }
+
+    //todo : subscribe observable using Observer instance + access all 3 channel
+    //this Observer instance contain all 3 channel impl
+    @Test
+    public void testObserverInterface1() {
+        Observable<Game> gameObservable = getGames(GAMES_DB);
+        Observer<Game> observer = new Observer<>() {
+            @Override
+            public void onCompleted() {
+            }
+            @Override
+            public void onError(Throwable throwable) {
+            }
+            @Override
+            public void onNext(Game game) {
+            }
+        };
+        gameObservable.subscribe(observer);
+    }
+
+    @Test
+    public void testObserverInterface2() {
+        Observable<Game> gameObservable = getGames(GAMES_DB);
+        Observer<Game> observer = new Observer<>() {
+            @Override
+            public void onCompleted() {
+                System.out.println("DONE CHANNEL : complete signal from Done channel : ");
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                System.out.println("ERROR CHANNEL : Error from error channel : " + throwable);
+            }
+
+            @Override
+            public void onNext(Game game) {
+                System.out.println("DATA_CHANNEL : coming data from observable data channel : " + game);
+            }
+        };
+        gameObservable.subscribe(observer);
+    }
+
+    @Test //impl pending
+    public void testSendUnSubscribeSignalToObservable() {
+        Observable<Game> gameObservable = getGames(GAMES_DB);
+        Observer<Game> observer = new Observer<>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+
+            }
+
+            @Override
+            public void onNext(Game game) {
+                if (game.getName().equals("game2")) {
+                    //todo impl : send unsubscribe signal to observable
+                }
+                System.out.println("DATA_CHANNEL : coming data from observable data channel : " + game);
+            }
+        };
+        gameObservable.subscribe(observer);
     }
 
 
