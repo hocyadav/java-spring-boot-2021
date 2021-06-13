@@ -11,7 +11,7 @@ import java.util.List;
  * @author Hariom Yadav
  * @since 12/06/21
  */
-public class TestRxJava {
+public class TestRxJava_ObservableAndObserver {
     public static final List<Game> GAMES_DB = List.of(
             Game.builder().name("game1").inventory(10).build(),
             Game.builder().name("game2").inventory(2).build(),
