@@ -35,6 +35,17 @@
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
 
+
+        <!-- reactor test
+        https://mvnrepository.com/artifact/io.projectreactor/reactor-test -->
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <version>3.4.6</version>
+            <scope>test</scope>
+        </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
