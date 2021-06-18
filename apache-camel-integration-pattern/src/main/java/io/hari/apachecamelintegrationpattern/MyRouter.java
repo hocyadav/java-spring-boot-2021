@@ -36,6 +36,7 @@ public class MyRouter extends RouteBuilder { // router or path : contains from a
         fileInputAndOutputConnectors();
     }
 
+    //todo : timer and log connector
     //my path/route : timer -> transformation -> log
     //add camel.springboot.main-run-controller=true
     private void firstPath() {
@@ -86,6 +87,7 @@ public class MyRouter extends RouteBuilder { // router or path : contains from a
                 .to("log:first-timer4");
     }
 
+    //todo : file connector
     //using file connectors , these connectors are already present in apache camel dependency
     //so no need to add extra dependency for these connectors
     public void fileInputAndOutputConnectors() {//working : run -> then create a new file and add some content -> see on log
