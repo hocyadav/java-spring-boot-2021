@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  * @author Hariom Yadav
  * @since 18/06/21
  */
-@Component
+//@Component // comment to deactivate below routes, this is helpful when we have multiple route in other class
 public class MyRouter extends RouteBuilder { // router or path : contains from and to
     @Autowired
     MyProcessorClass myProcessorClass;
@@ -40,7 +40,7 @@ public class MyRouter extends RouteBuilder { // router or path : contains from a
     //my path/route : timer -> transformation -> log
     //add camel.springboot.main-run-controller=true
     private void firstPath() {
-        from("timer:first-timer1")//timer connector
+        from("timer:first-timer1")//timer connector + DSL(domain specific language)
                 .log("${body}")
                 .to("log:first-timer1");//log connector
     }
