@@ -1,4 +1,4 @@
-package io.hari.apachecamelintegrationpattern;
+package io.hari.apachecamelintegrationpattern.test_sdk;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;

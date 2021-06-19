@@ -1,5 +1,5 @@
 version: '2'
-
+# create 2 container one for zookeeper and one for kafka
 services:
   zookeeper:
     image: 'docker.io/bitnami/zookeeper:3-debian-10'
