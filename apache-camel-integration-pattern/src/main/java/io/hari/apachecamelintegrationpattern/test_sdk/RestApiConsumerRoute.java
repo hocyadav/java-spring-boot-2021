@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
  * error : Cannot find RestProducerFactory in Registry or as a Component to use
  * add dependency
  */
-@Controller
+//@Controller
 public class RestApiConsumerRoute extends RouteBuilder {
 
     @Override

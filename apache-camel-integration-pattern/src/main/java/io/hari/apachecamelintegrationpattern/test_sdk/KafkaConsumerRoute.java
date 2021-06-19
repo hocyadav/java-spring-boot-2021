@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * read topic events/msg : https://kafka.apache.org/quickstart
  * $ bin/kafka-console-consumer.sh --topic my-camel-topic --from-beginning --bootstrap-server localhost:9092
  */
-@Component
+//@Component
 public class KafkaConsumerRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {//todo: add host name in : sudo vim /private/etc/hosts
