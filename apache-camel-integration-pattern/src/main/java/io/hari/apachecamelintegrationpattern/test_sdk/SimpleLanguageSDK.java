@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 /**
  * @author Hariom Yadav
  * @since 19/06/21
- * 
+ *
  * file simple language : https://camel.apache.org/components/latest/languages/file-language.html
  * this is camel simple language :  https://camel.apache.org/components/latest/languages/simple-language.html
  */
-@Component
+//@Component
 public class SimpleLanguageSDK extends RouteBuilder {
     @Override
     public void configure() throws Exception {
