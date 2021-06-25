@@ -1,6 +1,8 @@
 package io.hari.javareactiveframework;
 
 import org.junit.Test;
+import reactor.core.Disposable;
+import reactor.core.Disposables;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
@@ -132,6 +134,75 @@ public class TestMonoMethods {
                 () -> System.out.println("receiving complete : "),
                 subscription -> subscription.request(1)
         );
+    }
+
+    //Mono.just("a").flatMap(s -> Mono.empty()) //same as Mono.empty()
+    @Test
+    public void foo() {
+        Mono.just("a")
+//                .flatMap(s -> Mono.empty()) //same as Mono.empty()
+                .flatMap(s -> Mono.error(new Exception("my exception")))
+                .log()
+                .doOnSubscribe(subscription -> System.out.println("doOnSubscribe = " + subscription))
+//                .doOnNext(s -> System.out.println("doOnNext = " + s))//HAPPY FLOW : 1. onNext call <=> 2. then doOnNext call [Bi directional] -> 3. then subscriber get data from dataChannel i.e. publisher will send data to downstream
+                //NOT HAPPY FLOW : if there is no next call(i.e. in case of cancel() call) then -> no doOnNext call
+                .doOnSuccess(s -> System.out.println("doOnSuccess = " + s))//HAPPY FLOW : 1st doOnSuccess call <=> 2. then onNext() /OR/ onComplete() call [It's a bi-direction]
+                //NOT HAPPY FLOW : No doOnSunncess() call <=> if no onNext or no onComplete() call [Bidirectional]
+                .subscribe(
+                        s -> System.out.println("subscriber get output data = " + s),//2. doOnNext call 1st -> 3. then here data will come [see pic]
+                        throwable -> System.out.println("throwable = " + throwable),
+                        () -> System.out.println("completed signal"),
+                        subscription -> subscription.cancel() //for testing doOnSuccess Not Happy flow
+                );
+    }
+
+    @Test
+    public void doOnSuccess_HAPPY_FLOW_0() {
+        Mono.just("hariom").log()
+                .doOnSuccess(s -> System.out.println("doOnSuccess = " + s))//HAPPY FLOW : 1st doOnSuccess call <=> 2. then onNext() /OR/ onComplete() call [It's a bi-direction]
+                //NOT HAPPY FLOW : No doOnSunncess() call <=> if no onNext or no onComplete() call [Bidirectional]
+                .subscribe(
+                        s -> System.out.println("subscriber get output data = " + s),//2. doOnNext call 1st -> 3. then here data will come [see pic]
+                        throwable -> System.out.println("throwable = " + throwable),
+                        () -> System.out.println("completed signal")
+
+                        //for testing doOnSuccess Not Happy flow,
+                        // but here no use we can uncomment also, since we are using mono.empty it will call onComplete instead of onNext, so for doOnSuccess will execute
+//                        subscription -> subscription.cancel()
+                );
+    }
+
+    @Test
+    public void doOnSuccess_HAPPY_FLOW() {
+        Mono.empty().log()
+                .doOnSuccess(s -> System.out.println("doOnSuccess = " + s))//HAPPY FLOW : 1st doOnSuccess call <=> 2. then onNext() /OR/ onComplete() call [It's a bi-direction]
+                //NOT HAPPY FLOW : No doOnSunncess() call <=> if no onNext or no onComplete() call [Bidirectional]
+                .subscribe(
+                        s -> System.out.println("subscriber get output data = " + s),//2. doOnNext call 1st -> 3. then here data will come [see pic]
+                        throwable -> System.out.println("throwable = " + throwable),
+                        () -> System.out.println("completed signal"),
+
+                        //for testing doOnSuccess Not Happy flow,
+                        // but here no use we can uncomment also, since we are using mono.empty it will call onComplete instead of onNext, so for doOnSuccess will execute
+                        subscription -> subscription.cancel()
+                );
+    }
+
+    @Test
+    public void doOnSuccess_NOT_HAPPY_FLOW() {
+        Mono.just("a").log()
+                .doOnSuccess(s -> System.out.println("doOnSuccess = " + s))
+                //HAPPY FLOW : 1st doOnSuccess call <=> 2. then onNext() /OR/ onComplete() call [It's a bi-direction]
+                //NOT HAPPY FLOW : No doOnSunncess() call <=> if no onNext or no onComplete() call [Bidirectional]
+                .subscribe(
+                        s -> System.out.println("subscriber get output data = " + s),//2. doOnNext call 1st -> 3. then here data will come [see pic]
+                        throwable -> System.out.println("throwable = " + throwable),
+                        () -> System.out.println("completed signal"),
+
+                        //for testing doOnSuccess "NOT HAPPY FLOW"
+                        // but here no use we can uncomment also, since we are using mono.empty it will call onComplete instead of onNext, so for doOnSuccess will execute
+                        subscription -> subscription.cancel()
+                );
     }
 
     @Test
