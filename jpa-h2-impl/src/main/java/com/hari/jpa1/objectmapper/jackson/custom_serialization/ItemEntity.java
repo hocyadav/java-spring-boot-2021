@@ -1,4 +1,4 @@
-package com.hari.jpa1.objectmapper.jackson_custome_serialization;
+package com.hari.jpa1.objectmapper.jackson.custom_serialization;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,25 +1,29 @@
-package com.hari.jpa1.objectmapper.jackson_custome_serialization.custom;
+package com.hari.jpa1.objectmapper.jackson.custom_serialization.custom;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import com.hari.jpa1.objectmapper.jackson_custome_serialization.OrderEntity;
-import com.hari.jpa1.objectmapper.jackson_custome_serialization.User;
+import com.hari.jpa1.objectmapper.jackson.custom_serialization.ItemEntity;
+import com.hari.jpa1.objectmapper.jackson.custom_serialization.User;
 
 import java.io.IOException;
 
-public class OrderEntitySerializer extends StdSerializer<OrderEntity> {//0 StdSerializer<MyEntity>
+/**
+ * https://www.baeldung.com/jackson-custom-serialization
+ * https://www.baeldung.com/jackson
+ */
+public class ItemSerializer extends StdSerializer<ItemEntity> {//0 StdSerializer<MyEntity>
 
-    public OrderEntitySerializer() {
+    public ItemSerializer() {
         this(null);
     }
 
-    public OrderEntitySerializer(Class<OrderEntity> t) {
+    public ItemSerializer(Class<ItemEntity> t) {
         super(t);
     }
 
     @Override
-    public void serialize(OrderEntity item,
+    public void serialize(ItemEntity item,
                           JsonGenerator jsonGenerator,
                           SerializerProvider serializerProvider) throws IOException {
         User user = item.owner;

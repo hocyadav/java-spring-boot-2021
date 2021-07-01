@@ -1,7 +1,7 @@
-package com.hari.jpa1.objectmapper.jackson_custome_serialization;
+package com.hari.jpa1.objectmapper.jackson.custom_serialization;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.hari.jpa1.objectmapper.jackson_custome_serialization.custom.OrderEntitySerializer;
+import com.hari.jpa1.objectmapper.jackson.custom_serialization.custom.OrderEntitySerializer;
 import lombok.Builder;
 import lombok.Data;
 

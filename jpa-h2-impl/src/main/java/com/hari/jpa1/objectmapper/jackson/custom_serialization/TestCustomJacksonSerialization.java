@@ -1,8 +1,8 @@
-package com.hari.jpa1.objectmapper.jackson_custome_serialization;
+package com.hari.jpa1.objectmapper.jackson.custom_serialization;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.hari.jpa1.objectmapper.jackson_custome_serialization.custom.ItemSerializer;
+import com.hari.jpa1.objectmapper.jackson.custom_serialization.custom.ItemSerializer;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
