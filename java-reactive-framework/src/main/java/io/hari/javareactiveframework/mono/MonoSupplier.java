@@ -1,4 +1,4 @@
-package io.hari.javareactiveframework;
+package io.hari.javareactiveframework.mono;
 
 import reactor.core.publisher.Mono;
 
@@ -8,9 +8,9 @@ public class MonoSupplier {
         //use when we have fixed data
 //        Mono<String> monoProducer = Mono.just(getNameString());
 
-        Mono<String> monoProducerSupplier = Mono.fromSupplier(() -> Util.getNameString());
+        Mono<String> monoProducerSupplier = Mono.fromSupplier(() -> Util.getFakeName());
         monoProducerSupplier.subscribe(
-                Util.getNextData()
+                Util.getOnNext()
         );
 
     }
