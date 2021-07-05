@@ -15,7 +15,7 @@ public class Util {
     }
 
     public static Runnable getOnComplete() {
-        return () -> System.out.println("Completed..send emails");
+        return () -> System.out.println("Completed signal..");
     }
 
     public static String getFakeName() {

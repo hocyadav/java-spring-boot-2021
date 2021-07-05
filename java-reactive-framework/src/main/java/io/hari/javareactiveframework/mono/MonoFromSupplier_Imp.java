@@ -32,11 +32,20 @@ public class MonoFromSupplier_Imp {
 
     public static Mono<String> getNameString() {
         System.out.println("entered getNameString..");
-        return Mono.fromSupplier(() -> {
+        //m1
+//        return Mono.fromSupplier(() -> {
+//            System.out.println("Generating name..");
+//            sleep(4);
+//            return Faker.instance().name().fullName();
+//        }).map(String::toUpperCase);
+
+        //m2
+        Mono<String> supplier = Mono.fromSupplier(() -> {
             System.out.println("Generating name..");
             sleep(4);
             return Faker.instance().name().fullName();
-        }).map(String::toUpperCase);
+        });
+        return supplier.map(String::toUpperCase);
     }
 
     @SneakyThrows
