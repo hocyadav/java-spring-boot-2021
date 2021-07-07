@@ -1,5 +1,6 @@
 package com.javainuse;
 
+import brave.Tracer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ class Microservice1Controller {
 	@Autowired
 	RestTemplate restTemplate;
 
+//	@Autowired
+//	Tracer tracer;
+
 	@Bean
 	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
@@ -41,6 +45,9 @@ class Microservice1Controller {
 
 	@GetMapping(value = "/microservice1")
 	public String method1() {
+//		System.out.println("tracer = " + tracer);
+//		System.out.println("tracer.currentSpan = " + tracer.currentSpan());
+//		System.out.println("tracer.nextSpan = " + tracer.nextSpan());
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
