@@ -1,7 +1,6 @@
 package com.javainuse;
 
 import brave.Tracer;
-import brave.Tracing;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -9,13 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import brave.sampler.Sampler;
-import org.springframework.web.servlet.support.RequestContext;
 
 import java.util.Map;
 
@@ -76,8 +73,8 @@ class Microservice1Controller {
 		Map<String, String> copyOfContextMap = MDC.getCopyOfContextMap();
 		System.out.println("copyOfContextMap = " + copyOfContextMap);
 
-		traceService.printTraceId();
-		traceService.printTraceId2();
+		traceService.printTraceIdAndSpanId_usingTracerInstance();
+		traceService.printTraceIdAndSpanId_usingMDC();
 
 		try {
 			Thread.sleep(2000);
