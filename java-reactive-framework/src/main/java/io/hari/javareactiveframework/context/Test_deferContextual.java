@@ -4,7 +4,7 @@ import org.junit.Test;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-public class Test_ {
+public class Test_deferContextual {
 
     /** https://projectreactor.io/docs/core/release/reference/#_simple_context_examples
      *
@@ -57,6 +57,15 @@ public class Test_ {
     @Test
     public void test3() {
         String key = "message";
+        Mono<String> r = getStringMono(key);
+
+        StepVerifier.create(r)
+                .expectNext("Hello Reactor")
+                .verifyComplete();
+
+    }
+
+    private Mono<String> getStringMono(String key) {
         Mono<String> r = Mono
                 .deferContextual(ctx -> {
                     //OPTIONAL : get context map and print all KV
@@ -68,11 +77,7 @@ public class Test_ {
                 })//3rd finally it will get the 2nd update
                 .contextWrite(ctx -> ctx.put(key, "Reactor"))//2nd update, so this is the latest update for that key and new immutable context instance created
                 .contextWrite(ctx -> ctx.put(key, "World"));//1st update happen , after subscription
-
-        StepVerifier.create(r)
-                .expectNext("Hello Reactor")
-                .verifyComplete();
-
+        return r;
     }
 
     /**
