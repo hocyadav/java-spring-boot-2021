@@ -13,9 +13,14 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>java-reactive-framework</name>
     <description>Demo project for Java Reactive Framework</description>
+
     <properties>
         <java.version>16</java.version>
+        <!--    sleuth dependency 2-->
+<!--        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>-->
+        <spring-cloud.version>2020.0.3</spring-cloud.version>
     </properties>
+
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/io.reactivex/rxjava
@@ -94,7 +99,28 @@
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
         </dependency>
+
+
+<!--    sleuth dependency 3-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+
     </dependencies>
+
+<!--    sleuth dependency 1-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

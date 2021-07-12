@@ -2,9 +2,11 @@ package io.hari.javareactiveframework.flux;
 
 import com.github.javafaker.Faker;
 import io.hari.javareactiveframework.mono.Util;
+import org.slf4j.MDC;
 import reactor.core.publisher.Flux;
 
 public class FluxFixTakeUsingGenerate {
+
     public static void main(String[] args) {
 
 //        generate1_infiniteLoop();
