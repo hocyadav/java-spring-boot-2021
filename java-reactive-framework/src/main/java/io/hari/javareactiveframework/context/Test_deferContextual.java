@@ -1,12 +1,9 @@
 package io.hari.javareactiveframework.context;
 
 import org.junit.Test;
-import org.springframework.cloud.sleuth.TraceContext;
-import org.springframework.cloud.sleuth.instrument.web.WebFluxSleuthOperators;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 import reactor.util.context.Context;
-import reactor.util.context.ContextView;
 
 public class Test_deferContextual {
 
@@ -138,6 +135,29 @@ public class Test_deferContextual {
                 .verifyComplete();
     }
 
+    //todo : get context object upstream and downstream
+    @Test
+    public void test61() {
+        String key = "dummy_key";
+//        Mono<String> mono = Mono.just("Hello")
+//                .flatMap(upstreamMonoData -> Mono.deferContextual(contextView -> Mono.just(upstreamMonoData + " " + contextView.get(key))))
+//                .contextWrite(Context.of(key, "context_value1"));
+//        Mono<String> stringMono = mono.
+//                flatMap(s -> Mono.deferContextual(contextView -> Mono.just(s +"-----"+contextView.get(key))));
+
+
+        Mono<String> stringMono = Mono.just("Hello")
+                .flatMap(upstreamMonoData -> Mono.deferContextual(contextView1 -> Mono.just(upstreamMonoData + " " + contextView1.get(key))))//we can access context KV here
+                .contextWrite(Context.of(key, "context_value1"))
+                .flatMap(s -> Mono.deferContextual(contextView -> Mono.just(s +"-----"+contextView.get(key))));//we cant access context map value here
+
+        stringMono.subscribe(
+                data -> System.out.println("data = " + data),
+                err -> System.out.println("err.getMessage() = " + err.getMessage()),
+                () -> System.out.println("DONE")
+        );
+    }
+
     //todo : get trace context object from contextView/context object from reactor
     @Test
     public void test7() {
@@ -168,6 +188,4 @@ public class Test_deferContextual {
                 .contextWrite(ctx -> ctx.put(key, "World"));//1st update happen , after subscription
         return r;
     }
-
-
 }
