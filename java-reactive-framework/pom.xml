@@ -17,7 +17,7 @@
     <properties>
         <java.version>16</java.version>
         <!--    sleuth dependency 2-->
-<!--        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>-->
+        <!--        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>-->
         <spring-cloud.version>2020.0.3</spring-cloud.version>
     </properties>
 
@@ -60,7 +60,7 @@
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
             <version>3.4.6</version>
-<!--            <scope>test</scope>-->
+            <!--            <scope>test</scope>-->
         </dependency>
 
 
@@ -101,15 +101,25 @@
         </dependency>
 
 
-<!--    sleuth dependency 3-->
+        <!--    sleuth dependency 3-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/io.vavr/vavr -->
+        <!--        Try.ofCallable -->
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>0.10.3</version>
+        </dependency>
+
+
     </dependencies>
 
-<!--    sleuth dependency 1-->
+    <!--    sleuth dependency 1-->
     <dependencyManagement>
         <dependencies>
             <dependency>
