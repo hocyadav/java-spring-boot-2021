@@ -1,4 +1,4 @@
-package io.hari.javareactiveframework.mono;
+package io.hari.javareactiveframework.core_concept.mono;
 
 import reactor.core.publisher.Mono;
 

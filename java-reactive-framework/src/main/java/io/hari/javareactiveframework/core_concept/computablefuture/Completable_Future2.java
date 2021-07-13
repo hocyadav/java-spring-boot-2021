@@ -1,4 +1,4 @@
-package io.hari.javareactiveframework.computablefuture;
+package io.hari.javareactiveframework.core_concept.computablefuture;
 
 import lombok.SneakyThrows;
 import org.junit.Test;
@@ -6,8 +6,8 @@ import org.junit.Test;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
-import static io.hari.javareactiveframework.computablefuture.Completable_Future1.executorService;
-import static io.hari.javareactiveframework.computablefuture.Completable_Future1.mostRecentQuestionsAbout;
+import static io.hari.javareactiveframework.core_concept.computablefuture.Completable_Future1.executorService;
+import static io.hari.javareactiveframework.core_concept.computablefuture.Completable_Future1.mostRecentQuestionsAbout;
 
 public class Completable_Future2 {
     /**

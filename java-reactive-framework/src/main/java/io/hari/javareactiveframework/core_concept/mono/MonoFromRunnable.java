@@ -1,8 +1,8 @@
-package io.hari.javareactiveframework.mono;
+package io.hari.javareactiveframework.core_concept.mono;
 
 import reactor.core.publisher.Mono;
 
-import static io.hari.javareactiveframework.mono.MonoFromSupplier_Imp.sleep;
+import static io.hari.javareactiveframework.core_concept.mono.MonoFromSupplier_Imp.sleep;
 
 public class MonoFromRunnable {
     public static void main(String[] args) {

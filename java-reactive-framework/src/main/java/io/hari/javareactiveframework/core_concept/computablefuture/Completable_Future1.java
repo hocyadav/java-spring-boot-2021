@@ -1,4 +1,4 @@
-package io.hari.javareactiveframework.computablefuture;
+package io.hari.javareactiveframework.core_concept.computablefuture;
 
 import com.github.javafaker.Faker;
 import lombok.SneakyThrows;

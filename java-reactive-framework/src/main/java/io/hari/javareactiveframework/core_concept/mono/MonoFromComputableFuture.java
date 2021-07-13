@@ -1,11 +1,11 @@
-package io.hari.javareactiveframework.mono;
+package io.hari.javareactiveframework.core_concept.mono;
 
 import com.github.javafaker.Faker;
 import reactor.core.publisher.Mono;
 
 import java.util.concurrent.CompletableFuture;
 
-import static io.hari.javareactiveframework.mono.MonoFromSupplier_Imp.sleep;
+import static io.hari.javareactiveframework.core_concept.mono.MonoFromSupplier_Imp.sleep;
 
 public class MonoFromComputableFuture {
     public static void main(String[] args) {

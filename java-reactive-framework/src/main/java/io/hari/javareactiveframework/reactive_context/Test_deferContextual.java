@@ -1,4 +1,4 @@
-package io.hari.javareactiveframework.context;
+package io.hari.javareactiveframework.reactive_context;
 
 import org.junit.Test;
 import reactor.core.publisher.Mono;

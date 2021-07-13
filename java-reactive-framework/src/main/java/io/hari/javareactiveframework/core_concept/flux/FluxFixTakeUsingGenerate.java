@@ -1,8 +1,7 @@
-package io.hari.javareactiveframework.flux;
+package io.hari.javareactiveframework.core_concept.flux;
 
 import com.github.javafaker.Faker;
-import io.hari.javareactiveframework.mono.Util;
-import org.slf4j.MDC;
+import io.hari.javareactiveframework.core_concept.mono.Util;
 import reactor.core.publisher.Flux;
 
 public class FluxFixTakeUsingGenerate {

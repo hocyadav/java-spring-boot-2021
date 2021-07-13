@@ -1,4 +1,4 @@
-package io.hari.javareactiveframework.josh_simple_mdc;
+package io.hari.javareactiveframework.reactive_context.josh_simple_mdc;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
