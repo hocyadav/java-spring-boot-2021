@@ -1,8 +1,12 @@
 package io.hari.javareactiveframework.context;
 
 import org.junit.Test;
+import org.springframework.cloud.sleuth.TraceContext;
+import org.springframework.cloud.sleuth.instrument.web.WebFluxSleuthOperators;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
+import reactor.util.context.Context;
+import reactor.util.context.ContextView;
 
 public class Test_deferContextual {
 
@@ -121,5 +125,49 @@ public class Test_deferContextual {
                 .expectNext("Hello World Reactor")//output B flatmap, since that flatmap is close to this subscriber
                 .verifyComplete();
     }
+
+    @Test
+    public void test6() {
+        String key = "dummy_key";
+        Mono<String> mono = Mono.just("Hello")
+                .flatMap(s -> Mono.deferContextual(contextView -> Mono.just(s + " " + contextView.get(key))))
+                .contextWrite(Context.of(key, "value1"));
+
+        StepVerifier.create(mono)
+                .expectNext("Hello value1")
+                .verifyComplete();
+    }
+
+    //todo : get trace context object from contextView/context object from reactor
+    @Test
+    public void test7() {
+        Mono<String> mono = getStringMono2("test");
+        mono.subscribe(
+                data -> System.out.println("data = " + data),
+                err -> System.out.println("err.getMessage() = " + err.getMessage()),
+                () -> System.out.println("Completed")
+        );
+    }
+
+    private Mono<String> getStringMono2(String key) {
+        Mono<String> r = Mono
+                .deferContextual(ctx -> {
+                    //OPTIONAL : get context map and print all KV
+
+                    //not working : not able to get tracercontext object coz it is not present
+//                    TraceContext traceContext = ctx.get(TraceContext.class);//m1 : get TraceContext object from contextView object
+//                    org.springframework.cloud.sleuth.TraceContext currentTraceContext = WebFluxSleuthOperators.currentTraceContext();//m2 : get TraceContext object from contextView object
+
+                    ctx.stream().forEach(objectObjectEntry -> {
+                        System.out.println("key1 = " + objectObjectEntry.getKey());
+                        System.out.println("value = " + objectObjectEntry.getValue());
+                    });
+                    return Mono.just("Hello " + ctx.get(key));
+                })//3rd finally it will get the 2nd update
+                .contextWrite(ctx -> ctx.put(key, "Reactor"))//2nd update, so this is the latest update for that key and new immutable context instance created
+                .contextWrite(ctx -> ctx.put(key, "World"));//1st update happen , after subscription
+        return r;
+    }
+
 
 }
