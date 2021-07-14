@@ -16,10 +16,12 @@ import reactor.core.publisher.Signal;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 import reactor.util.context.Context;
+import reactor.util.context.ContextView;
 
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -36,29 +38,69 @@ public class SimpleApplication {
     private static Scheduler SCHEDULER = Schedulers.fromExecutor(Executors.newFixedThreadPool(10));
 
     @GetMapping("/data")
-	Mono<String> getData() {
+    Mono<String> getData() {
 //        return Flux_publisher_PublishData();//working
         return monoPublishData();//working
     }
 
-    //todo : get context object in MONO stages : Approach using doOnEach -> give u signal -> get context -> stream
+    //todo : get context object in MONO pipeline :
+    // M1: Approach using doOnEach -> signal -> get context -> get trace id/span id
+    //M2 : using deferContextual : give contextView object
     Mono<String> monoPublishData() {
-    	return Mono.just("A")
-				.doOnEach(new Consumer<Signal<String>>() {
-					@Override
-					public void accept(Signal<String> stringSignal) {
-						if (!stringSignal.isOnNext()) return;
-						Context context = stringSignal.getContext();
-						context.stream().forEach(objectObjectEntry -> {
-							System.out.println("objectObjectEntry.getKey() = " + objectObjectEntry.getKey());
-							System.out.println("objectObjectEntry.getValue() = " + objectObjectEntry.getValue());
-						});
-						log.info("inside mono doOnEach - printing trace id and span id : WORKING");
-					}
-				});
-	}
+        return Mono.just("A")
+                .doOnEach(new Consumer<Signal<String>>() {
+                    @Override
+                    public void accept(Signal<String> stringSignal) {
+                        if (!stringSignal.isOnNext()) return;
+                        Context context = stringSignal.getContext();
 
-    //todo : get context object in FLUX stages  : Approach using doOnEach -> give u signal -> get context -> stream
+                        String traceId = captureTraceId(context);
+                        System.out.println("traceId = " + traceId);
+
+
+                        context.stream().forEach(objectObjectEntry -> {
+                            Object key = objectObjectEntry.getKey();
+                            System.out.println(key.getClass().getName());
+                            System.out.println("objectObjectEntry.getKey() = " + key);
+                            System.out.println("objectObjectEntry.getValue() = " + objectObjectEntry.getValue());
+
+                            if (key instanceof org.springframework.cloud.sleuth.TraceContext) {//Not working
+                                System.out.println("instance of TC");
+                            }
+                            if (key instanceof TraceContext) {//not working
+                                System.out.println("instance of TC 2");
+                            }
+
+                        });
+                        log.info("inside mono doOnEach - printing trace id and span id : WORKING");
+                    }
+                })
+                .flatMap(s -> Mono.deferContextual(contextView -> {
+                            contextView.stream().forEach(objectObjectEntry -> {
+                                Object key = objectObjectEntry.getKey();
+                                System.out.println("f objectObjectEntry.getKey() = " + key);
+                                System.out.println("f objectObjectEntry.getValue() = " + objectObjectEntry.getValue());
+
+                                if (org.springframework.cloud.sleuth.TraceContext.class.isInstance(key)) {
+                                    System.out.println("class instance of");
+                                }
+                                if (TraceContext.class.isInstance(key)) {
+                                    System.out.println("class ins of");
+                                }
+                                if (key instanceof org.springframework.cloud.sleuth.TraceContext) {
+                                    System.out.println("instance of TC");
+                                }
+                                if (key instanceof TraceContext) {
+                                    System.out.println("instance of TC 2");
+                                }
+
+                            });
+                            return Mono.just(s);
+                        }
+                ));
+    }
+
+    //todo : get context object in FLUX stages  :  Approach using doOnEach -> signal -> get context -> get trace id/span id
     Flux<String> Flux_publisher_PublishData() {//publisher class with multiple stages
         Flux<String> letters = Flux.just("A", "B", "C");
         Flux<String> letters_wrapper = prepare_wrapperFluxPrintLogAndRunInThreadPool(letters);
@@ -153,8 +195,13 @@ public class SimpleApplication {
     }
 
     private String captureTraceId(final Context context) {
-        return Try.ofCallable(() -> StringUtils.join(context.get(TraceContext.class).toString().split("/"), "-"))
-                .getOrElse((String) null);
+        Callable<String> stringCallable = () -> {
+            String[] split = context.get(TraceContext.class).toString().split("/");
+            String join = StringUtils.join(split, "-");
+            return join;
+        };
+        String orElse = Try.ofCallable(stringCallable).getOrElse((String) null);
+        return orElse;
     }
 
 }
