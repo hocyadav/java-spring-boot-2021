@@ -78,4 +78,40 @@ public class Handle_n_limitRange {
                         () -> System.out.println("DONE signal")
                 );
     }
+
+    @Test
+    public void limitRange_test2() {
+        Flux.range(1, 1000)
+                .log()
+                .limitRate(100, 99)// 99% data consumer then send 99 as next request
+                .subscribe(
+                        data -> System.out.println("data : "+data),
+                        error -> System.out.println("error.getMessage() = " + error.getMessage()),
+                        () -> System.out.println("DONE signal")
+                );
+    }
+
+    @Test
+    public void limitRange_test3() {
+        Flux.range(1, 1000)
+                .log()
+                .limitRate(100, 0)// 100% data consumer then send 100 as next request
+                .subscribe(
+                        data -> System.out.println("data : "+data),
+                        error -> System.out.println("error.getMessage() = " + error.getMessage()),
+                        () -> System.out.println("DONE signal")
+                );
+    }
+
+    @Test
+    public void limitRange_test4() {
+        Flux.range(1, 1000)
+                .log()
+                .limitRate(101, 0)// 100% data consumer i.e. 101 data consume downstream then send 101 as next request
+                .subscribe(
+                        data -> System.out.println("data : "+data),
+                        error -> System.out.println("error.getMessage() = " + error.getMessage()),
+                        () -> System.out.println("DONE signal")
+                );
+    }
 }
