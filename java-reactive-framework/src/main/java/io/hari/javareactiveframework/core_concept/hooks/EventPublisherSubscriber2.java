@@ -16,23 +16,20 @@ import java.util.function.Function;
 /**
  * Event publisher collaborator for reactive streams.
  */
-public final class EventPublisherSubscriber<T> implements CoreSubscriber<T>, Fuseable {
+public final class EventPublisherSubscriber2<T> implements CoreSubscriber<T>, Fuseable {
 
     private final Subscriber<? super T> subscriber;
     private final Context context;
-    private final MyService myService;
 
     /**
      * Constructor.
      *  @param subscriber a subscriber
      * @param context    reactor context
-     * @param myService
      */
-    public EventPublisherSubscriber(final Subscriber<? super T> subscriber, final Context context, MyService myService) {
+    public EventPublisherSubscriber2(final Subscriber<? super T> subscriber, final Context context) {
         System.out.println("--EventPublisherSubscriber.EventPublisherSubscriber");
         this.subscriber = subscriber;
         this.context = context;
-        this.myService = myService;
     }
 
     @Override
@@ -49,11 +46,6 @@ public final class EventPublisherSubscriber<T> implements CoreSubscriber<T>, Fus
             String user1 = context.get("user").toString();
             System.out.println("user1 = " + user1);
         }
-
-        //todo my-service we get instance from constructor : working
-        //get data from onNext and send to myservice
-        String foo = myService.foo(item.toString());
-        System.out.println("foo = " + foo);
 
         //todo my-service we get instance from context : working
         if (context.hasKey("my_service")) {
@@ -98,8 +90,6 @@ public final class EventPublisherSubscriber<T> implements CoreSubscriber<T>, Fus
      * @return operator
      */
     public static <T> Function<? super Publisher<T>, ? extends Publisher<T>> publisherOperator() {
-        MyService myService = new MyService();
-
         System.out.println("--EventPublisherSubscriber.publisherOperator");
         return Operators.liftPublisher((publisher, coreSubscriber) -> {
             Publisher publisher1 = publisher;
@@ -109,7 +99,7 @@ public final class EventPublisherSubscriber<T> implements CoreSubscriber<T>, Fus
             if (publisher instanceof ScalarCallable) {
                 return coreSubscriber;
             } else {
-                return new EventPublisherSubscriber<>(coreSubscriber, context, myService);
+                return new EventPublisherSubscriber2<>(coreSubscriber, context);
 //                return coreSubscriber;
             }
         });

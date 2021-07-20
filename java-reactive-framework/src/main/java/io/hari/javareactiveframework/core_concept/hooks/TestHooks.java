@@ -13,9 +13,26 @@ import java.util.function.Function;
 public class TestHooks {
 
     public static void main(String[] args) {
-        hooks1();
+        //step 1: hooks
+        //HOOKS type 1: add key/hook name + 2nd parameter as function mapper Publisher to publisher
+        Hooks.onEachOperator("hooks-key", new Function<Publisher<Object>, Publisher<Object>>() {
+            @Override
+            public Publisher<Object> apply(Publisher<Object> objectPublisher) {
+                log.info("hooks-key - apply - on each operator");
+                return objectPublisher;
+            }
+        });
 
+        //HOOKS type 2: function mapper publisher to publisher
+        Hooks.onEachOperator(new Function<Publisher<Object>, Publisher<Object>>() {
+            @Override
+            public Publisher<Object> apply(Publisher<Object> objectPublisher) {
+                log.info("apply - on each operator");
+                return objectPublisher;
+            }
+        });
 
+        //step 2 : stream/chain
         Flux.range(1, 3)//Range.1 - | onNext(1)
 //                .log()
                 .map(i -> i + 2)//MapFuseable.2 - | onNext(3)
@@ -25,32 +42,6 @@ public class TestHooks {
                         err -> System.out.println("err.getMessage() = " + err.getMessage()),
                         () -> System.out.println("DONE signal")
                 );
-
-        Flux.range(1, 4)
-                .log()
-                .subscribe(new CoreSubscriber<Integer>() {
-                    Subscription subscription;
-                    @Override
-                    public void onSubscribe(Subscription s) {
-                        subscription = s;
-                        s.request(100);
-                    }
-
-                    @Override
-                    public void onNext(Integer integer) {
-                        System.out.println("next - "+integer);
-                    }
-
-                    @Override
-                    public void onError(Throwable throwable) {
-                        System.out.println("on error - ");
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        System.out.println("complete -- ");
-                    }
-                });
     }
 
     private static void hooks1() {

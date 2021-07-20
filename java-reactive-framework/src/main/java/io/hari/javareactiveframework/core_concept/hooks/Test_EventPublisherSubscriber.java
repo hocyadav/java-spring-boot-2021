@@ -3,14 +3,12 @@ package io.hari.javareactiveframework.core_concept.hooks;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Hooks;
 
-public class Hooks3 {
+public class Test_EventPublisherSubscriber {
     public static void main(String[] args) {
         Hooks.onEachOperator(EventPublisherSubscriber.publisherOperator());//this will add on each publisher
-
-//        extracted();
+        extracted();
 //        extracted1();
 //        extracted2();
-
     }
 
     private static void extracted2() {//total 3 call for each publisher - Hooks call.. see output 9 on next
@@ -81,7 +79,8 @@ DONE signal
     private static void extracted() {//total 3 call for each publisher - Hooks call.. see output 3 on next
         Flux.range(1, 3)
 //                .map(i -> i + 2)
-//                .contextWrite(context -> context.put("user", "hariom"))
+                .contextWrite(context -> context.put("my_service", new MyService()))
+                .contextWrite(context -> context.put("user", "hariom"))
                 .subscribe(
                         data -> System.out.println("data " + data),
                         err -> System.out.println("err.getMessage() = " + err.getMessage()),
