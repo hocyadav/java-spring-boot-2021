@@ -97,7 +97,11 @@ public final class EventPublisherSubscriber<T> implements CoreSubscriber<T>, Fus
      * @param <T> the publisher data type
      * @return operator
      */
-    public static <T> Function<? super Publisher<T>, ? extends Publisher<T>> publisherOperator() {
+    public static
+    <T>
+    Function<? super Publisher<T>, //type 1
+            ? extends Publisher<T>> //type 2
+    publisherOperator() {
         MyService myService = new MyService();
 
         System.out.println("--EventPublisherSubscriber.publisherOperator");

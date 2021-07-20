@@ -1,11 +1,18 @@
 package io.hari.javareactiveframework.core_concept.hooks;
 
+import org.reactivestreams.Publisher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Hooks;
 
+import java.util.function.Function;
+
 public class Test_EventPublisherSubscriber {
     public static void main(String[] args) {
-        Hooks.onEachOperator(EventPublisherSubscriber.publisherOperator());//this will add on each publisher
+        Function<? super Publisher<Object>,
+                ? extends Publisher<Object>> publisher_FunctionMapper = EventPublisherSubscriber.publisherOperator();
+
+        Hooks.onEachOperator(publisher_FunctionMapper);//this will add on each publisher
+
         extracted();
 //        extracted1();
 //        extracted2();
