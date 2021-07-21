@@ -18,9 +18,8 @@ public class Test_deferContextual {
     public void test1() {
         String key = "dummy_key";
         Mono<String> r = Mono.just("Hello_value1")
-                .flatMap(s -> Mono.deferContextual(ctx ->
-                        Mono.just(s + " " + ctx.get(key))))//2. get upstream value s : Hello_value1 and get down stream value from context ctx.get() : World_context_value and concat both & return result
-                                .contextWrite(ctx -> ctx.put(key, "World_context_value"));//1. set value key : message , value : World_context_value
+                .flatMap(s -> Mono.deferContextual(ctx -> Mono.just(s + " " + ctx.get(key))))//2. get upstream value s : Hello_value1 and get down stream value from context ctx.get() : World_context_value and concat both & return result
+                .contextWrite(ctx -> ctx.put(key, "World_context_value"));//1. set value key : message , value : World_context_value
 
         StepVerifier.create(r)
                 .expectNext("Hello_value1 World_context_value")
@@ -66,9 +65,8 @@ public class Test_deferContextual {
 
     }
 
-    private Mono<String> getStringMono(String key) {
-        Mono<String> r = Mono
-                .deferContextual(ctx -> {
+    private Mono<String> getStringMono(String key) {//IMP
+        Mono<String> r = Mono.deferContextual(ctx -> {//this MONO will get downstream all context key-value
                     //OPTIONAL : get context map and print all KV
                     ctx.stream().forEach(objectObjectEntry -> {
                         System.out.println("key1 = " + objectObjectEntry.getKey());
@@ -86,10 +84,9 @@ public class Test_deferContextual {
      * each operator accesses the Context by requesting it from its downstream Subscriber.
      */
     @Test
-    public void test4() {
+    public void test4() {//IMP : inside flat we are just writing similar to 1st like Mono.deferContextual, flatmap is like to call ASYNC
         String key = "message";
-        Mono<String> r = Mono
-                .deferContextual(ctx -> Mono.just("Hello " + ctx.get(key)))//3 : it will get data from 2nd write (The top context read sees second write.)
+        Mono<String> r = Mono.deferContextual(ctx -> Mono.just("Hello " + ctx.get(key)))//3 : it will get data from 2nd write (The top context read sees second write.)
                 .contextWrite(ctx -> ctx.put(key, "Reactor"))//2 this is second write to happen
                 .flatMap( s -> Mono.deferContextual(ctx -> Mono.just(s + " " + ctx.get(key))))//4 it will get data data from 1st write (The flatMap concatenates the result from initial read with the value from the first write)
                 .contextWrite(ctx -> ctx.put(key, "World"));//1 : this is first write to happen
@@ -106,17 +103,15 @@ public class Test_deferContextual {
      * Propagation and immutability isolate the Context in operators that create intermediate inner sequences such as flatMap.
      */
     @Test
-    public void test5() {
+    public void test5() {//IMP : local global
         String key = "message";
         Mono<String> r = Mono.just("Hello")
-                .flatMap( s -> Mono
-                        .deferContextual(ctxView -> Mono.just(s + " " + ctxView.get(key)))//Q. uses P value : Hello(from upstream) + World (from downstream)
+                .flatMap( s -> Mono.deferContextual(ctxView -> Mono.just(s + " " + ctxView.get(key))))//Q. uses P value : Hello(from upstream) + World (from downstream)
+                .flatMap( s ->
+                        Mono.deferContextual(ctxView -> Mono.just(s + " " + ctxView.get(key)))//B. uses A value : Hello World(from upstream) + Reactor(from downstream)
+                        .contextWrite(ctx -> ctx.put(key, "Reactor"))//A. : it will only impact internal to flatmap: its like LOCAL to this flatmap chain
                 )
-                .flatMap( s -> Mono
-                        .deferContextual(ctxView -> Mono.just(s + " " + ctxView.get(key)))//B. uses A value : Hello World(from upstream) + Reactor(from downstream)
-                        .contextWrite(ctx -> ctx.put(key, "Reactor"))//A. : it will only impact internal to flatmap
-                )
-                .contextWrite(ctx -> ctx.put(key, "World"));//P. : it is outside flatmap so it will go up where we need value
+                .contextWrite(ctx -> ctx.put(key, "World"));//P. : it is outside flatmap so it will go up where we need value: its like GLOBAL to chain
 
         StepVerifier.create(r)
                 .expectNext("Hello World Reactor")//output B flatmap, since that flatmap is close to this subscriber
@@ -170,8 +165,7 @@ public class Test_deferContextual {
     }
 
     private Mono<String> getStringMono2(String key) {
-        Mono<String> r = Mono
-                .deferContextual(ctx -> {
+        Mono<String> r = Mono.deferContextual(ctx -> {
                     //OPTIONAL : get context map and print all KV
 
                     //not working : not able to get tracercontext object coz it is not present
