@@ -9,7 +9,7 @@ public class NameTest {
     public void test() {
         Flux<Integer> upstreamFlux = Flux.range(1, 3)
 //                .metrics() //??
-//                .log()
+                .log()
                 .name("flux-stream");//??
 //                .log();
 
