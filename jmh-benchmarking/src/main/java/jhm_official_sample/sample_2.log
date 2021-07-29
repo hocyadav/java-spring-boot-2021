@@ -1,0 +1,402 @@
+/Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/bin/java -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=59755:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 -classpath /Users/yadav.hariom/hy_git_code/java-spring-boot-2021/jmh-benchmarking/target/classes:/Users/yadav.hariom/.m2/repository/org/openjdk/jmh/jmh-core/1.28/jmh-core-1.28.jar:/Users/yadav.hariom/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/Users/yadav.hariom/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:/Users/yadav.hariom/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.28/jmh-generator-annprocess-1.28.jar:/Users/yadav.hariom/.m2/repository/org/springframework/boot/spring-boot-starter-validation/2.5.3/spring-boot-starter-validation-2.5.3.jar:/Users/yadav.hariom/.m2/repository/org/springframework/boot/spring-boot-starter/2.5.3/spring-boot-starter-2.5.3.jar:/Users/yadav.hariom/.m2/repository/org/springframework/boot/spring-boot/2.5.3/spring-boot-2.5.3.jar:/Users/yadav.hariom/.m2/repository/org/springframework/spring-context/5.3.9/spring-context-5.3.9.jar:/Users/yadav.hariom/.m2/repository/org/springframework/spring-aop/5.3.9/spring-aop-5.3.9.jar:/Users/yadav.hariom/.m2/repository/org/springframework/spring-expression/5.3.9/spring-expression-5.3.9.jar:/Users/yadav.hariom/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/2.5.3/spring-boot-autoconfigure-2.5.3.jar:/Users/yadav.hariom/.m2/repository/org/springframework/boot/spring-boot-starter-logging/2.5.3/spring-boot-starter-logging-2.5.3.jar:/Users/yadav.hariom/.m2/repository/ch/qos/logback/logback-classic/1.2.4/logback-classic-1.2.4.jar:/Users/yadav.hariom/.m2/repository/ch/qos/logback/logback-core/1.2.4/logback-core-1.2.4.jar:/Users/yadav.hariom/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.14.1/log4j-to-slf4j-2.14.1.jar:/Users/yadav.hariom/.m2/repository/org/apache/logging/log4j/log4j-api/2.14.1/log4j-api-2.14.1.jar:/Users/yadav.hariom/.m2/repository/org/slf4j/jul-to-slf4j/1.7.32/jul-to-slf4j-1.7.32.jar:/Users/yadav.hariom/.m2/repository/jakarta/annotation/jakarta.annotation-api/1.3.5/jakarta.annotation-api-1.3.5.jar:/Users/yadav.hariom/.m2/repository/org/yaml/snakeyaml/1.28/snakeyaml-1.28.jar:/Users/yadav.hariom/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/9.0.50/tomcat-embed-el-9.0.50.jar:/Users/yadav.hariom/.m2/repository/org/hibernate/validator/hibernate-validator/6.2.0.Final/hibernate-validator-6.2.0.Final.jar:/Users/yadav.hariom/.m2/repository/jakarta/validation/jakarta.validation-api/2.0.2/jakarta.validation-api-2.0.2.jar:/Users/yadav.hariom/.m2/repository/org/jboss/logging/jboss-logging/3.4.2.Final/jboss-logging-3.4.2.Final.jar:/Users/yadav.hariom/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/Users/yadav.hariom/.m2/repository/org/springframework/boot/spring-boot-starter-webflux/2.5.3/spring-boot-starter-webflux-2.5.3.jar:/Users/yadav.hariom/.m2/repository/org/springframework/boot/spring-boot-starter-json/2.5.3/spring-boot-starter-json-2.5.3.jar:/Users/yadav.hariom/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.12.4/jackson-databind-2.12.4.jar:/Users/yadav.hariom/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.12.4/jackson-annotations-2.12.4.jar:/Users/yadav.hariom/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.12.4/jackson-core-2.12.4.jar:/Users/yadav.hariom/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.12.4/jackson-datatype-jdk8-2.12.4.jar:/Users/yadav.hariom/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.12.4/jackson-datatype-jsr310-2.12.4.jar:/Users/yadav.hariom/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.12.4/jackson-module-parameter-names-2.12.4.jar:/Users/yadav.hariom/.m2/repository/org/springframework/boot/spring-boot-starter-reactor-netty/2.5.3/spring-boot-starter-reactor-netty-2.5.3.jar:/Users/yadav.hariom/.m2/repository/io/projectreactor/netty/reactor-netty-http/1.0.9/reactor-netty-http-1.0.9.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-codec-http/4.1.66.Final/netty-codec-http-4.1.66.Final.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-common/4.1.66.Final/netty-common-4.1.66.Final.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-buffer/4.1.66.Final/netty-buffer-4.1.66.Final.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-transport/4.1.66.Final/netty-transport-4.1.66.Final.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-codec/4.1.66.Final/netty-codec-4.1.66.Final.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-handler/4.1.66.Final/netty-handler-4.1.66.Final.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-codec-http2/4.1.66.Final/netty-codec-http2-4.1.66.Final.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-resolver-dns/4.1.66.Final/netty-resolver-dns-4.1.66.Final.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-resolver/4.1.66.Final/netty-resolver-4.1.66.Final.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-codec-dns/4.1.66.Final/netty-codec-dns-4.1.66.Final.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-resolver-dns-native-macos/4.1.66.Final/netty-resolver-dns-native-macos-4.1.66.Final-osx-x86_64.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.66.Final/netty-transport-native-unix-common-4.1.66.Final.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-transport-native-epoll/4.1.66.Final/netty-transport-native-epoll-4.1.66.Final-linux-x86_64.jar:/Users/yadav.hariom/.m2/repository/io/projectreactor/netty/reactor-netty-core/1.0.9/reactor-netty-core-1.0.9.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-handler-proxy/4.1.66.Final/netty-handler-proxy-4.1.66.Final.jar:/Users/yadav.hariom/.m2/repository/io/netty/netty-codec-socks/4.1.66.Final/netty-codec-socks-4.1.66.Final.jar:/Users/yadav.hariom/.m2/repository/org/springframework/spring-web/5.3.9/spring-web-5.3.9.jar:/Users/yadav.hariom/.m2/repository/org/springframework/spring-beans/5.3.9/spring-beans-5.3.9.jar:/Users/yadav.hariom/.m2/repository/org/springframework/spring-webflux/5.3.9/spring-webflux-5.3.9.jar:/Users/yadav.hariom/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar:/Users/yadav.hariom/.m2/repository/org/slf4j/slf4j-api/1.7.32/slf4j-api-1.7.32.jar:/Users/yadav.hariom/.m2/repository/org/springframework/spring-core/5.3.9/spring-core-5.3.9.jar:/Users/yadav.hariom/.m2/repository/org/springframework/spring-jcl/5.3.9/spring-jcl-5.3.9.jar:/Users/yadav.hariom/.m2/repository/io/projectreactor/reactor-core/3.4.8/reactor-core-3.4.8.jar:/Users/yadav.hariom/.m2/repository/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3.jar jhm_official_sample.JMHSample_02_BenchmarkModes
+# JMH version: 1.28
+# VM version: JDK 16.0.1, OpenJDK 64-Bit Server VM, 16.0.1+9
+# VM invoker: /Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=59755:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint
+# Warmup: 1 iterations, 10 s each
+# Measurement: 1 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jhm_official_sample.JMHSample_02_BenchmarkModes.measureAll
+
+# Run progress: 0.00% complete, ETA 00:03:00
+# Fork: 1 of 1
+# Warmup Iteration   1: ≈ 10⁻⁵ ops/us
+Iteration   1: ≈ 10⁻⁵ ops/us
+
+
+Result "jhm_official_sample.JMHSample_02_BenchmarkModes.measureAll":
+  ≈ 10⁻⁵ ops/us
+
+
+# JMH version: 1.28
+# VM version: JDK 16.0.1, OpenJDK 64-Bit Server VM, 16.0.1+9
+# VM invoker: /Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=59755:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint
+# Warmup: 1 iterations, 10 s each
+# Measurement: 1 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jhm_official_sample.JMHSample_02_BenchmarkModes.measureMultiple
+
+# Run progress: 11.11% complete, ETA 00:02:47
+# Fork: 1 of 1
+# Warmup Iteration   1: ≈ 10⁻⁵ ops/us
+Iteration   1: ≈ 10⁻⁵ ops/us
+
+
+Result "jhm_official_sample.JMHSample_02_BenchmarkModes.measureMultiple":
+  ≈ 10⁻⁵ ops/us
+
+
+# JMH version: 1.28
+# VM version: JDK 16.0.1, OpenJDK 64-Bit Server VM, 16.0.1+9
+# VM invoker: /Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=59755:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint
+# Warmup: 1 iterations, 10 s each
+# Measurement: 1 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: jhm_official_sample.JMHSample_02_BenchmarkModes.measureThroughput
+
+# Run progress: 22.22% complete, ETA 00:02:27
+# Fork: 1 of 1
+# Warmup Iteration   1: 9.724 ops/s
+Iteration   1: 9.748 ops/s
+
+
+Result "jhm_official_sample.JMHSample_02_BenchmarkModes.measureThroughput":
+  9.748 ops/s
+
+
+# JMH version: 1.28
+# VM version: JDK 16.0.1, OpenJDK 64-Bit Server VM, 16.0.1+9
+# VM invoker: /Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=59755:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint
+# Warmup: 1 iterations, 10 s each
+# Measurement: 1 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: jhm_official_sample.JMHSample_02_BenchmarkModes.measureAll
+
+# Run progress: 33.33% complete, ETA 00:02:05
+# Fork: 1 of 1
+# Warmup Iteration   1: 102306.764 us/op
+Iteration   1: 102186.051 us/op
+
+
+Result "jhm_official_sample.JMHSample_02_BenchmarkModes.measureAll":
+  102186.051 us/op
+
+
+# JMH version: 1.28
+# VM version: JDK 16.0.1, OpenJDK 64-Bit Server VM, 16.0.1+9
+# VM invoker: /Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=59755:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint
+# Warmup: 1 iterations, 10 s each
+# Measurement: 1 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: jhm_official_sample.JMHSample_02_BenchmarkModes.measureAvgTime
+
+# Run progress: 44.44% complete, ETA 00:01:44
+# Fork: 1 of 1
+# Warmup Iteration   1: 102481.724 us/op
+Iteration   1: 101848.131 us/op
+
+
+Result "jhm_official_sample.JMHSample_02_BenchmarkModes.measureAvgTime":
+  101848.131 us/op
+
+
+# JMH version: 1.28
+# VM version: JDK 16.0.1, OpenJDK 64-Bit Server VM, 16.0.1+9
+# VM invoker: /Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=59755:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint
+# Warmup: 1 iterations, 10 s each
+# Measurement: 1 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: jhm_official_sample.JMHSample_02_BenchmarkModes.measureMultiple
+
+# Run progress: 55.55% complete, ETA 00:01:23
+# Fork: 1 of 1
+# Warmup Iteration   1: 101949.594 us/op
+Iteration   1: 102273.217 us/op
+
+
+Result "jhm_official_sample.JMHSample_02_BenchmarkModes.measureMultiple":
+  102273.217 us/op
+
+
+# JMH version: 1.28
+# VM version: JDK 16.0.1, OpenJDK 64-Bit Server VM, 16.0.1+9
+# VM invoker: /Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=59755:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint
+# Warmup: 1 iterations, 10 s each
+# Measurement: 1 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Sampling time
+# Benchmark: jhm_official_sample.JMHSample_02_BenchmarkModes.measureAll
+
+# Run progress: 66.66% complete, ETA 00:01:02
+# Fork: 1 of 1
+# Warmup Iteration   1: 102614.664 ±(99.9%) 604.767 us/op
+Iteration   1: 102649.438 ±(99.9%) 595.034 us/op
+                 measureAll·p0.00:   100007.936 us/op
+                 measureAll·p0.50:   102957.056 us/op
+                 measureAll·p0.90:   104988.672 us/op
+                 measureAll·p0.95:   104988.672 us/op
+                 measureAll·p0.99:   104988.672 us/op
+                 measureAll·p0.999:  104988.672 us/op
+                 measureAll·p0.9999: 104988.672 us/op
+                 measureAll·p1.00:   104988.672 us/op
+
+
+
+Result "jhm_official_sample.JMHSample_02_BenchmarkModes.measureAll":
+  N = 98
+  mean = 102649.438 ±(99.9%) 595.034 us/op
+
+  Histogram, us/op:
+    [100000.000, 100500.000) = 13
+    [100500.000, 101000.000) = 13
+    [101000.000, 101500.000) = 9
+    [101500.000, 102000.000) = 4
+    [102000.000, 102500.000) = 9
+    [102500.000, 103000.000) = 1
+    [103000.000, 103500.000) = 11
+    [103500.000, 104000.000) = 8
+    [104000.000, 104500.000) = 10
+
+  Percentiles, us/op:
+      p(0.0000) = 100007.936 us/op
+     p(50.0000) = 102957.056 us/op
+     p(90.0000) = 104988.672 us/op
+     p(95.0000) = 104988.672 us/op
+     p(99.0000) = 104988.672 us/op
+     p(99.9000) = 104988.672 us/op
+     p(99.9900) = 104988.672 us/op
+     p(99.9990) = 104988.672 us/op
+     p(99.9999) = 104988.672 us/op
+    p(100.0000) = 104988.672 us/op
+
+
+# JMH version: 1.28
+# VM version: JDK 16.0.1, OpenJDK 64-Bit Server VM, 16.0.1+9
+# VM invoker: /Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=59755:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint
+# Warmup: 1 iterations, 10 s each
+# Measurement: 1 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Sampling time
+# Benchmark: jhm_official_sample.JMHSample_02_BenchmarkModes.measureMultiple
+
+# Run progress: 77.78% complete, ETA 00:00:41
+# Fork: 1 of 1
+# Warmup Iteration   1: 102557.153 ±(99.9%) 648.809 us/op
+Iteration   1: 102688.225 ±(99.9%) 615.487 us/op
+                 measureMultiple·p0.00:   100007.936 us/op
+                 measureMultiple·p0.50:   102694.912 us/op
+                 measureMultiple·p0.90:   104988.672 us/op
+                 measureMultiple·p0.95:   104988.672 us/op
+                 measureMultiple·p0.99:   104988.672 us/op
+                 measureMultiple·p0.999:  104988.672 us/op
+                 measureMultiple·p0.9999: 104988.672 us/op
+                 measureMultiple·p1.00:   104988.672 us/op
+
+
+
+Result "jhm_official_sample.JMHSample_02_BenchmarkModes.measureMultiple":
+  N = 98
+  mean = 102688.225 ±(99.9%) 615.487 us/op
+
+  Histogram, us/op:
+    [100000.000, 100500.000) = 13
+    [100500.000, 101000.000) = 10
+    [101000.000, 101500.000) = 11
+    [101500.000, 102000.000) = 8
+    [102000.000, 102500.000) = 6
+    [102500.000, 103000.000) = 6
+    [103000.000, 103500.000) = 4
+    [103500.000, 104000.000) = 7
+    [104000.000, 104500.000) = 9
+
+  Percentiles, us/op:
+      p(0.0000) = 100007.936 us/op
+     p(50.0000) = 102694.912 us/op
+     p(90.0000) = 104988.672 us/op
+     p(95.0000) = 104988.672 us/op
+     p(99.0000) = 104988.672 us/op
+     p(99.9000) = 104988.672 us/op
+     p(99.9900) = 104988.672 us/op
+     p(99.9990) = 104988.672 us/op
+     p(99.9999) = 104988.672 us/op
+    p(100.0000) = 104988.672 us/op
+
+
+# JMH version: 1.28
+# VM version: JDK 16.0.1, OpenJDK 64-Bit Server VM, 16.0.1+9
+# VM invoker: /Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=59755:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint
+# Warmup: 1 iterations, 10 s each
+# Measurement: 1 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Sampling time
+# Benchmark: jhm_official_sample.JMHSample_02_BenchmarkModes.measureSamples
+
+# Run progress: 88.89% complete, ETA 00:00:20
+# Fork: 1 of 1
+# Warmup Iteration   1: 102185.336 ±(99.9%) 630.341 us/op
+Iteration   1: 102373.919 ±(99.9%) 591.984 us/op
+                 measureSamples·p0.00:   100007.936 us/op
+                 measureSamples·p0.50:   102301.696 us/op
+                 measureSamples·p0.90:   104857.600 us/op
+                 measureSamples·p0.95:   104988.672 us/op
+                 measureSamples·p0.99:   104988.672 us/op
+                 measureSamples·p0.999:  104988.672 us/op
+                 measureSamples·p0.9999: 104988.672 us/op
+                 measureSamples·p1.00:   104988.672 us/op
+
+
+
+Result "jhm_official_sample.JMHSample_02_BenchmarkModes.measureSamples":
+  N = 98
+  mean = 102373.919 ±(99.9%) 591.984 us/op
+
+  Histogram, us/op:
+    [100000.000, 100500.000) = 23
+    [100500.000, 101000.000) = 6
+    [101000.000, 101500.000) = 6
+    [101500.000, 102000.000) = 9
+    [102000.000, 102500.000) = 8
+    [102500.000, 103000.000) = 6
+    [103000.000, 103500.000) = 8
+    [103500.000, 104000.000) = 9
+    [104000.000, 104500.000) = 8
+
+  Percentiles, us/op:
+      p(0.0000) = 100007.936 us/op
+     p(50.0000) = 102301.696 us/op
+     p(90.0000) = 104857.600 us/op
+     p(95.0000) = 104988.672 us/op
+     p(99.0000) = 104988.672 us/op
+     p(99.9000) = 104988.672 us/op
+     p(99.9900) = 104988.672 us/op
+     p(99.9990) = 104988.672 us/op
+     p(99.9999) = 104988.672 us/op
+    p(100.0000) = 104988.672 us/op
+
+
+# JMH version: 1.28
+# VM version: JDK 16.0.1, OpenJDK 64-Bit Server VM, 16.0.1+9
+# VM invoker: /Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=59755:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint
+# Warmup: 1 iterations, single-shot each
+# Measurement: 1 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: jhm_official_sample.JMHSample_02_BenchmarkModes.measureAll
+
+# Run progress: 100.00% complete, ETA 00:00:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 100064.915 us/op
+Iteration   1: 100669.477 us/op
+
+
+
+# JMH version: 1.28
+# VM version: JDK 16.0.1, OpenJDK 64-Bit Server VM, 16.0.1+9
+# VM invoker: /Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=59755:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint
+# Warmup: 1 iterations, single-shot each
+# Measurement: 1 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: jhm_official_sample.JMHSample_02_BenchmarkModes.measureMultiple
+
+# Run progress: 100.00% complete, ETA 00:00:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 102354.348 us/op
+Iteration   1: 102862.318 us/op
+
+
+
+# JMH version: 1.28
+# VM version: JDK 16.0.1, OpenJDK 64-Bit Server VM, 16.0.1+9
+# VM invoker: /Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=59755:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8
+# Blackhole mode: full + dont-inline hint
+# Warmup: 1 iterations, single-shot each
+# Measurement: 1 iterations, single-shot each
+# Timeout: 10 min per iteration
+# Threads: 1 thread
+# Benchmark mode: Single shot invocation time
+# Benchmark: jhm_official_sample.JMHSample_02_BenchmarkModes.measureSingleShot
+
+# Run progress: 100.00% complete, ETA 00:00:00
+# Fork: 1 of 1
+# Warmup Iteration   1: 101065.161 us/op
+Iteration   1: 104933.176 us/op
+
+
+
+# Run complete. Total time: 00:03:11
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                              Mode  Cnt       Score     Error   Units
+JMHSample_02_BenchmarkModes.measureAll                                thrpt           ≈ 10⁻⁵            ops/us
+JMHSample_02_BenchmarkModes.measureMultiple                           thrpt           ≈ 10⁻⁵            ops/us
+JMHSample_02_BenchmarkModes.measureThroughput                         thrpt            9.748             ops/s
+JMHSample_02_BenchmarkModes.measureAll                                 avgt       102186.051             us/op
+JMHSample_02_BenchmarkModes.measureAvgTime                             avgt       101848.131             us/op
+JMHSample_02_BenchmarkModes.measureMultiple                            avgt       102273.217             us/op
+JMHSample_02_BenchmarkModes.measureAll                               sample   98  102649.438 ± 595.034   us/op
+JMHSample_02_BenchmarkModes.measureAll:measureAll·p0.00              sample       100007.936             us/op
+JMHSample_02_BenchmarkModes.measureAll:measureAll·p0.50              sample       102957.056             us/op
+JMHSample_02_BenchmarkModes.measureAll:measureAll·p0.90              sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureAll:measureAll·p0.95              sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureAll:measureAll·p0.99              sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureAll:measureAll·p0.999             sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureAll:measureAll·p0.9999            sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureAll:measureAll·p1.00              sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureMultiple                          sample   98  102688.225 ± 615.487   us/op
+JMHSample_02_BenchmarkModes.measureMultiple:measureMultiple·p0.00    sample       100007.936             us/op
+JMHSample_02_BenchmarkModes.measureMultiple:measureMultiple·p0.50    sample       102694.912             us/op
+JMHSample_02_BenchmarkModes.measureMultiple:measureMultiple·p0.90    sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureMultiple:measureMultiple·p0.95    sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureMultiple:measureMultiple·p0.99    sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureMultiple:measureMultiple·p0.999   sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureMultiple:measureMultiple·p0.9999  sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureMultiple:measureMultiple·p1.00    sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureSamples                           sample   98  102373.919 ± 591.984   us/op
+JMHSample_02_BenchmarkModes.measureSamples:measureSamples·p0.00      sample       100007.936             us/op
+JMHSample_02_BenchmarkModes.measureSamples:measureSamples·p0.50      sample       102301.696             us/op
+JMHSample_02_BenchmarkModes.measureSamples:measureSamples·p0.90      sample       104857.600             us/op
+JMHSample_02_BenchmarkModes.measureSamples:measureSamples·p0.95      sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureSamples:measureSamples·p0.99      sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureSamples:measureSamples·p0.999     sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureSamples:measureSamples·p0.9999    sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureSamples:measureSamples·p1.00      sample       104988.672             us/op
+JMHSample_02_BenchmarkModes.measureAll                                   ss       100669.477             us/op
+JMHSample_02_BenchmarkModes.measureMultiple                              ss       102862.318             us/op
+JMHSample_02_BenchmarkModes.measureSingleShot                            ss       104933.176             us/op
+
+Process finished with exit code 0
