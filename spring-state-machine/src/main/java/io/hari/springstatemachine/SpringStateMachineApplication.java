@@ -18,6 +18,7 @@ import org.springframework.statemachine.listener.StateMachineListenerAdapter;
 import org.springframework.statemachine.state.State;
 
 import java.util.EnumSet;
+import java.util.Optional;
 import java.util.UUID;
 
 //@RequiredArgsConstructor //not working with command line runner
@@ -55,7 +56,7 @@ class MyStateMachineConfig extends EnumStateMachineConfigurerAdapter<States, Eve
 		StateMachineListenerAdapter<States, Events> listener = new StateMachineListenerAdapter<>() {
 			@Override
 			public void stateChanged(State<States, Events> from, State<States, Events> to) {
-				System.out.println("LISTENER : State change to " + to.getId());
+				System.out.println("LISTENER : State change to " + from.getId() + " ---  "+ to.getId());
 			}
 		};
 
