@@ -34,6 +34,9 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * https://github.com/spring-tips/statemachine/blob/master/src/main/java/com/example/orderservice/OrderServiceApplication.java
+ */
 @SpringBootApplication
 public class OrderServiceApplication {
 
