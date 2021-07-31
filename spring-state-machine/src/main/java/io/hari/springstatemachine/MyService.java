@@ -2,10 +2,14 @@ package io.hari.springstatemachine;
 
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.Message;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.access.StateMachineAccessor;
 import org.springframework.statemachine.config.StateMachineFactory;
+import org.springframework.statemachine.state.State;
 import org.springframework.statemachine.support.DefaultStateMachineContext;
+import org.springframework.statemachine.support.StateMachineInterceptorAdapter;
+import org.springframework.statemachine.transition.Transition;
 import org.springframework.stereotype.Service;
 
 //@RequiredArgsConstructor
@@ -29,6 +33,22 @@ public class MyService {
         StateMachineAccessor<States, Events> accessor = stateMachine.getStateMachineAccessor();
         System.out.println("33 CURRENT STATE = " + stateMachine.getState().getId());//--"--
         accessor.doWithAllRegions(stateMachineAccess -> {
+
+            //add interceptor/callback/handler : m1
+            stateMachineAccess.addStateMachineInterceptor(new StateMachineInterceptorAdapter<States, Events>(){
+                @Override
+                public void preStateChange(State<States, Events> state, Message<Events> message, Transition<States, Events> transition, StateMachine<States, Events> stateMachine) {
+                    System.out.println("preStateChange BODY ----- ");
+                    //::save new entity state into db
+                    //get entity object (use repository instance)
+                    //set new state
+                    //save back to db
+                    super.preStateChange(state, message, transition, stateMachine);
+                }
+            });
+            //add interceptor : m2: use bean of type SM Interceptor Adapter, for this create a class + extends StateMachineInterceptorAdapter + add above body
+//            stateMachineAccess.addStateMachineInterceptor(interceptor bean);
+
             System.out.println("35 CURRENT STATE = " + stateMachine.getState().getId());//--"--
             System.out.println("--");
             System.out.println("37 CURRENT STATE = " + stateMachine.getState().getId());//--"--

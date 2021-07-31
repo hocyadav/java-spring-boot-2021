@@ -1,11 +1,13 @@
 package io.hari.springstatemachine;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.Message;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.config.EnableStateMachineFactory;
 import org.springframework.statemachine.config.EnumStateMachineConfigurerAdapter;
@@ -16,6 +18,9 @@ import org.springframework.statemachine.config.builders.StateMachineTransitionCo
 import org.springframework.statemachine.listener.StateMachineListener;
 import org.springframework.statemachine.listener.StateMachineListenerAdapter;
 import org.springframework.statemachine.state.State;
+import org.springframework.statemachine.support.StateMachineInterceptorAdapter;
+import org.springframework.statemachine.transition.Transition;
+import org.springframework.stereotype.Component;
 
 import java.util.EnumSet;
 import java.util.Optional;
@@ -97,19 +102,19 @@ enum States {STATE_START, STATE_MID, STATE_END;}
 enum Events {EVENT_START_TO_MID, EVENT_MID_TO_END;}
 
 //below are not part of state machine config - this is required to listen event and do some processing (act like Handler/Inerceptor)
-//@RequiredArgsConstructor
-//@Component
-//class ListenerHandler extends StateMachineInterceptorAdapter<States, Events> {
-//	@Override
-//	public void preStateChange(State<States, Events> state,
-//							   Message<Events> message,
-//							   Transition<States, Events> transition,
-//							   StateMachine<States, Events> stateMachine) {
-//
-//		System.out.println("ListenerHandler.preStateChange");
-//		Optional.ofNullable(message).ifPresent(eventsMessage -> {
-//			Events payload = message.getPayload();
-//			System.out.println("payload = " + payload);
-//		});
-//	}
-//}
+@RequiredArgsConstructor
+@Component
+class ListenerHandler extends StateMachineInterceptorAdapter<States, Events> {
+	@Override
+	public void preStateChange(State<States, Events> state,
+							   Message<Events> message,
+							   Transition<States, Events> transition,
+							   StateMachine<States, Events> stateMachine) {
+
+		System.out.println("ListenerHandler.preStateChange");
+		Optional.ofNullable(message).ifPresent(eventsMessage -> {
+			Events payload = message.getPayload();
+			System.out.println("payload = " + payload);
+		});
+	}
+}
