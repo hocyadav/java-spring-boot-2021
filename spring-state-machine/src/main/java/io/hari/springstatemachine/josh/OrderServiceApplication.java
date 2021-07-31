@@ -232,3 +232,24 @@ class SimpleEnumStatemachineConfiguration extends StateMachineConfigurerAdapter<
                 .listener(adapter);
     }
 }
+/**
+ *
+
+ 2021-07-31 18:10:30.845  INFO 52652 --- [           main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080
+ 2021-07-31 18:10:30.853  INFO 52652 --- [           main] i.h.s.josh.OrderServiceApplication       : Started OrderServiceApplication in 3.489 seconds (JVM running for 3.878)
+ 2021-07-31 18:10:30.923  INFO 52652 --- [           main] o.s.s.support.LifecycleObjectSupport     : started ObjectState [getIds()=[SUBMITTED], getClass()=class org.springframework.statemachine.state.ObjectState, hashCode()=1275670724, toString()=AbstractState [id=SUBMITTED, pseudoState=org.springframework.statemachine.state.DefaultPseudoState@75c0cd39, deferred=[], entryActions=[], exitActions=[], stateActions=[], regions=[], submachine=null]]
+ 2021-07-31 18:10:30.924  INFO 52652 --- [           main] o.s.s.support.LifecycleObjectSupport     : started org.springframework.statemachine.support.DefaultStateMachineExecutor@7455204c
+ 2021-07-31 18:10:30.926  INFO 52652 --- [           main] o.s.s.support.LifecycleObjectSupport     : started SUBMITTED CANCELLED FULFILLED PAID  / SUBMITTED / uuid=c4ecf6a2-0efe-4b83-876e-0e9aedb0c6d6 / id=null
+ 2021-07-31 18:10:30.942  INFO 52652 --- [           main] .s.j.SimpleEnumStatemachineConfiguration : stateChanged(from: ObjectState [getIds()=[SUBMITTED], getClass()=class org.springframework.statemachine.state.ObjectState, hashCode()=1275670724, toString()=AbstractState [id=SUBMITTED, pseudoState=org.springframework.statemachine.state.DefaultPseudoState@75c0cd39, deferred=[], entryActions=[], exitActions=[], stateActions=[], regions=[], submachine=null]], to: ObjectState [getIds()=[PAID], getClass()=class org.springframework.statemachine.state.ObjectState, hashCode()=280226418, toString()=AbstractState [id=PAID, pseudoState=null, deferred=[], entryActions=[], exitActions=[], stateActions=[], regions=[], submachine=null]])
+ 2021-07-31 18:10:30.943  INFO 52652 --- [           main] io.hari.springstatemachine.josh.Runner   : after calling pay(): PAID
+ 2021-07-31 18:10:30.944  INFO 52652 --- [           main] io.hari.springstatemachine.josh.Runner   : order: Order(id=1, datetime=2021-07-31 18:10:30.855, state=PAID)
+ 2021-07-31 18:10:30.945  INFO 52652 --- [           main] o.s.s.support.LifecycleObjectSupport     : started ObjectState [getIds()=[PAID], getClass()=class org.springframework.statemachine.state.ObjectState, hashCode()=710973468, toString()=AbstractState [id=PAID, pseudoState=null, deferred=[], entryActions=[], exitActions=[], stateActions=[], regions=[], submachine=null]]
+ 2021-07-31 18:10:30.946  INFO 52652 --- [           main] o.s.s.support.LifecycleObjectSupport     : started org.springframework.statemachine.support.DefaultStateMachineExecutor@3f1fb139
+ 2021-07-31 18:10:30.946  INFO 52652 --- [           main] o.s.s.support.LifecycleObjectSupport     : started SUBMITTED CANCELLED FULFILLED PAID  / PAID / uuid=7f36d914-57df-4051-9afe-cd620f5b3bc6 / id=null
+ 2021-07-31 18:10:30.949  INFO 52652 --- [           main] .s.j.SimpleEnumStatemachineConfiguration : stateChanged(from: ObjectState [getIds()=[PAID], getClass()=class org.springframework.statemachine.state.ObjectState, hashCode()=710973468, toString()=AbstractState [id=PAID, pseudoState=null, deferred=[], entryActions=[], exitActions=[], stateActions=[], regions=[], submachine=null]], to: ObjectState [getIds()=[FULFILLED], getClass()=class org.springframework.statemachine.state.ObjectState, hashCode()=2046578329, toString()=AbstractState [id=FULFILLED, pseudoState=org.springframework.statemachine.state.DefaultPseudoState@6e7fa4b0, deferred=[], entryActions=[], exitActions=[], stateActions=[], regions=[], submachine=null]])
+ 2021-07-31 18:10:30.949  INFO 52652 --- [           main] o.s.s.support.LifecycleObjectSupport     : stopped org.springframework.statemachine.support.DefaultStateMachineExecutor@3f1fb139
+ 2021-07-31 18:10:30.949  INFO 52652 --- [           main] o.s.s.support.LifecycleObjectSupport     : stopped SUBMITTED CANCELLED FULFILLED PAID  /  / uuid=7f36d914-57df-4051-9afe-cd620f5b3bc6 / id=null
+ 2021-07-31 18:10:30.949  INFO 52652 --- [           main] io.hari.springstatemachine.josh.Runner   : after calling fulfill(): FULFILLED
+ 2021-07-31 18:10:30.950  INFO 52652 --- [           main] io.hari.springstatemachine.josh.Runner   : order: Order(id=1, datetime=2021-07-31 18:10:30.855, state=FULFILLED)
+
+ */
