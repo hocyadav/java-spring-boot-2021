@@ -1,7 +1,9 @@
 package io.hari.apachecamelintegrationpattern.test_sdk;
 
+import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +16,7 @@ import java.time.LocalDateTime;
  * @author Hariom Yadav
  * @since 18/06/21
  */
-//@Component // comment to deactivate below routes, this is helpful when we have multiple route in other class
+@Component // comment to deactivate below routes, this is helpful when we have multiple route in other class
 public class MyRouter extends RouteBuilder { // router or path : contains from and to
     @Autowired
     MyProcessorClass myProcessorClass;
@@ -32,8 +34,8 @@ public class MyRouter extends RouteBuilder { // router or path : contains from a
 //        thirdPath_Transform_M1();
 //        thirdPath_Transform_M2();
 //        fourth_Processor_M1();
-//        fourth_Processor_M2();
-        fileInputAndOutputConnectors();
+        fourth_Processor_M2();
+//        fileInputAndOutputConnectors();
     }
 
     //todo : timer and log connector
@@ -120,6 +122,11 @@ class MyProcessorImpl implements Processor {
 
     @Override
     public void process(Exchange exchange) throws Exception {
+        //testing ProducerTemplate
+        CamelContext camelContext = exchange.getContext();
+        ProducerTemplate producerTemplate = camelContext.createProducerTemplate();
+        producerTemplate.sendBody("log:first-timer4","hello_body_from_producerTemplate");
+
         logger.info("Process : " + exchange.getMessage().getBody());
     }
 }
