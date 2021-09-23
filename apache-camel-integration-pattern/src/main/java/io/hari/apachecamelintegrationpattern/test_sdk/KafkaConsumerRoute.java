@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class KafkaConsumerRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {//todo: add host name in : sudo vim /private/etc/hosts
-        from("kafka:my-camel-topic")
+        from("kafka:my-camel-topic").routeId("kafka-consumer-route-1")
                 .log("${body}")
                 .to("log:my-camel-topic-log");
     }

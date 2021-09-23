@@ -1,4 +1,4 @@
-package io.hari.apachecamelintegrationpattern.test_sdk;
+package io.hari.apachecamelintegrationpattern.test_sdk.old;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
  *
  * org.apache.camel.FailedToStartRouteException: Failed to start route route2 because of Multiple consumers for the same endpoint is not allowed: file://files/input
  */
-@Component
+//@Component
 public class DelegateLogToDirectRoute_AndUseAnyWhere extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 //        simpleRoute(); // comment : if we run all route with same endpoints then not allowed
 
-        from("file:files/input")
+        from("file:files/input").routeId("delegate-route-1")
                 .to("direct:common-route")
                 .to("file:files/output");
 

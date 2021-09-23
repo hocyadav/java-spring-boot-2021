@@ -82,7 +82,8 @@ public class MyRouter extends RouteBuilder { // router or path : contains from a
     }
 
     public void fourth_Processor_M2() {
-        from("timer:first-timer4") //Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+//        from("timer:my-first-timer-route").routeId("timer-route-1") //Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+        from("timer:my-first-timer-route?period=60000").routeId("timer-route-1") //Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
                 .transform().constant("constant string send to processor bean : ")
                 .bean(new MyProcessorImpl())//working
                 .log("${body}")
