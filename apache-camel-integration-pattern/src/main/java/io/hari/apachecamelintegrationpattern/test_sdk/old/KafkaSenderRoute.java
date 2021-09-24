@@ -1,4 +1,4 @@
-package io.hari.apachecamelintegrationpattern.test_sdk;
+package io.hari.apachecamelintegrationpattern.test_sdk.old;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * 3 : add dependency for kafka connector
  * 3.a add camel-kafka application properties for apache camel (where kafka is runing url+port): camel.component.kafka.brokers=localhost:9092
  */
-@Component
+//@Component
 public class KafkaSenderRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {

@@ -1,4 +1,4 @@
-package io.hari.apachecamelintegrationpattern.test_sdk;
+package io.hari.apachecamelintegrationpattern.test_sdk.old;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;

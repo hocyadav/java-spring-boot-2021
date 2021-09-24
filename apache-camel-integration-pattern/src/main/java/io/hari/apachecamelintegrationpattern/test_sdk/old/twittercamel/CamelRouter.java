@@ -1,10 +1,9 @@
-package io.hari.apachecamelintegrationpattern.test_sdk.twittercamel;
+package io.hari.apachecamelintegrationpattern.test_sdk.old.twittercamel;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.elasticsearch.ElasticsearchComponent;
 import org.apache.camel.component.elasticsearch.ElasticsearchEndpoint;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 

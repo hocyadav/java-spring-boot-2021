@@ -41,6 +41,19 @@
             <version>3.10.0</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>org.apache.camel</groupId>-->
+<!--            <artifactId>camel-elasticsearch</artifactId>-->
+<!--            <version>3.10.0</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.apache.camel</groupId>-->
+<!--            <artifactId>camel-elasticsearch-rest-starter</artifactId>-->
+<!--            <version>3.10.0</version>-->
+<!--            &lt;!&ndash; use the same version as your Camel core version &ndash;&gt;-->
+<!--        </dependency>-->
+
         <!--	 No endpoint could be found for: kafka://my-camel-topic,	-->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>

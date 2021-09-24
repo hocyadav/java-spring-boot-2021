@@ -1,5 +1,6 @@
 package io.hari.apachecamelintegrationpattern;
 
+import lombok.SneakyThrows;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,9 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class ApacheCamelIntegrationPatternApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(ApacheCamelIntegrationPatternApplication.class, args);
-	}
-
+    @SneakyThrows
+    public static void main(String[] args) {
+        SpringApplication.run(ApacheCamelIntegrationPatternApplication.class, args);
+    }
 }
