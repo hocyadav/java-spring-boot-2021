@@ -92,5 +92,9 @@ public class StreamConsumerAndPredicateTest {
         }
     }
 
+    //TODO : same way we can do for Function, BiFunction, Predicate, BiPredicate
+//    function : https://mkyong.com/java8/java-8-function-examples/ (map used Function object, and flatMap uses I think BiFunction??)
+//    predicate and BiPredicate : https://mkyong.com/java8/java-8-predicate-examples/ ,  https://mkyong.com/java8/java-8-bipredicate-examples/ (filter used predicate object)
+//    consumer : https://mkyong.com/java8/java-8-consumer-examples/ (forEach used consumer object)
 
 }
