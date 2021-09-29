@@ -53,6 +53,7 @@ public class StreamConsumerAndPredicateTest {
                 .forEach(getConsumer());//input consumer object
     }
 
+
     private Consumer<String> getConsumer() {
         return s -> System.out.println("s = " + s);
     }
