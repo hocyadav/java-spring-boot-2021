@@ -51,6 +51,7 @@ public class StreamConsumerAndPredicateTest {
         list.stream()
                 .filter(getPredicate())//input : predicate object
                 .forEach(getConsumer());//input consumer object
+
     }
 
 
