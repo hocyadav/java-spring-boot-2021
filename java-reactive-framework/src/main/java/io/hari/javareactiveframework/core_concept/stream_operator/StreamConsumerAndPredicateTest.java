@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 
-public class SampleTest {
+public class StreamConsumerAndPredicateTest {
     @Test
     public void simpleStream(){
         List<String> list = new ArrayList<>();
