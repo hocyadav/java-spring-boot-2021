@@ -42,7 +42,7 @@ public final class EventPublisherSubscriber<T> implements CoreSubscriber<T>, Fus
     }
 
     @Override
-    public void onNext(final T item) {
+    public void onNext(final T item) {//first this onNext will called then downstream subscribe( data pipeline ) called
         System.out.println("--EventPublisherSubscriber.onNext");
 
         if (context.hasKey("user")) {
@@ -53,7 +53,7 @@ public final class EventPublisherSubscriber<T> implements CoreSubscriber<T>, Fus
         //todo my-service we get instance from constructor : working
         //get data from onNext and send to myservice
         String foo = myService.foo(item.toString());
-        System.out.println("foo = " + foo);
+//        System.out.println("foo = " + foo);
 
         //todo my-service we get instance from context : working
         if (context.hasKey("my_service")) {
@@ -104,7 +104,7 @@ public final class EventPublisherSubscriber<T> implements CoreSubscriber<T>, Fus
     publisherOperator() {
         MyService myService = new MyService();
 
-        System.out.println("--EventPublisherSubscriber.publisherOperator");
+        System.out.println("calling publisherOperator() ");
         return Operators.liftPublisher((publisher, coreSubscriber) -> {
             Publisher publisher1 = publisher;
             CoreSubscriber<? super T> coreSubscriber1 = coreSubscriber;

@@ -1,4 +1,4 @@
-package io.hari.apachecamelintegrationpattern.test_sdk;
+package io.hari.apachecamelintegrationpattern.test_sdk.old;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import java.util.List;
  * @author Hariom Yadav
  * @since 20/06/21
  */
-@Component
+//@Component
 public class MyCamelPattern extends RouteBuilder {
 
     @Autowired

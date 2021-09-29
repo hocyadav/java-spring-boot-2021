@@ -1,4 +1,4 @@
-package io.hari.apachecamelintegrationpattern.test_sdk;
+package io.hari.apachecamelintegrationpattern.test_sdk.old;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class KafkaSenderRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        from("file:files/input")
+        from("file:files/input").routeId("kafka-sender-route-1")
                 .log("${body}")
                 .to("kafka:my-camel-topic");
     }

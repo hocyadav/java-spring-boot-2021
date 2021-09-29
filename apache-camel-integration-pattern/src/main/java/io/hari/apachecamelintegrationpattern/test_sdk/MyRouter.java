@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  * @author Hariom Yadav
  * @since 18/06/21
  */
-@Component // comment to deactivate below routes, this is helpful when we have multiple route in other class
+//@Component // comment to deactivate below routes, this is helpful when we have multiple route in other class
 public class MyRouter extends RouteBuilder { // router or path : contains from and to
     @Autowired
     MyProcessorClass myProcessorClass;
@@ -34,7 +34,7 @@ public class MyRouter extends RouteBuilder { // router or path : contains from a
 //        thirdPath_Transform_M1();
 //        thirdPath_Transform_M2();
 //        fourth_Processor_M1();
-        fourth_Processor_M2();
+//        fourth_Processor_M2();
 //        fileInputAndOutputConnectors();
     }
 
@@ -82,7 +82,8 @@ public class MyRouter extends RouteBuilder { // router or path : contains from a
     }
 
     public void fourth_Processor_M2() {
-        from("timer:first-timer4") //Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+//        from("timer:my-first-timer-route").routeId("timer-route-1") //Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+        from("timer:my-first-timer-route?period=60000").routeId("timer-route-1") //Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
                 .transform().constant("constant string send to processor bean : ")
                 .bean(new MyProcessorImpl())//working
                 .log("${body}")
