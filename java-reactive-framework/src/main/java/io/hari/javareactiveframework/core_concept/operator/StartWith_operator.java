@@ -12,7 +12,5 @@ public class StartWith_operator {
 
         input3//3
                 .subscribe(s -> System.out.println("data = " + s));//4
-
-
     }
 }
