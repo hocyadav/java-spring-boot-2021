@@ -5,7 +5,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-public class Sort_operator {
+public class CollectList_operator {
     public static void main(String[] args) {
         Flux<String> input1 = Flux.just("a", "b", "c", "z", "a");
 
