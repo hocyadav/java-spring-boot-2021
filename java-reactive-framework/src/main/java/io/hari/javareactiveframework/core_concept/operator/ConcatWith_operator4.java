@@ -4,6 +4,7 @@ import reactor.core.publisher.Flux;
 
 public class ConcatWith_operator4 {
     public static void main(String[] args) {
+        //https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#concatWith-org.reactivestreams.Publisher-
         Flux<String> input1 = Flux.just("a", "b", "c");
         Flux<String> input2 = Flux.error(new RuntimeException("oops"));
         Flux<String> input3 = Flux.just("d", "e", "f");
