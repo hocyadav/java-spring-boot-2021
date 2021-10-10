@@ -1,4 +1,4 @@
-package io.hari.javareactiveframework.core_concept.operator;
+package io.hari.javareactiveframework.core_concept.operator.collect;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

@@ -1,4 +1,4 @@
-package io.hari.javareactiveframework.core_concept.operator;
+package io.hari.javareactiveframework.core_concept.operator.concat;
 
 import reactor.core.publisher.Flux;
 
