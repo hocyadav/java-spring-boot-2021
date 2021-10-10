@@ -10,7 +10,7 @@ public class ConcatWith_operator4 {
         Flux<String> input3 = Flux.just("d", "e", "f");
 
 //        Flux<String> input3 = input1.concatWith(input2);//1 + 2 + 3
-//        Flux<String> input4 = Flux.concat(input1, input2, input3);//1 + 2 + 3 , after input2 not execute input3
+//        Flux<String> input4 = Flux.concat(input1, input2, input3);//1 + 2 + 3 , after input1 not execute input3
         Flux<String> input4 = Flux.concatDelayError(input1, input2, input3);//1 + 2 + 3 , after input2 execute input3
 
         input4.subscribe(data -> System.out.println("data = " + data),
