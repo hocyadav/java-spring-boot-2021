@@ -1,4 +1,4 @@
-package io.hari.java9to16feature.CopyOf;
+package io.hari.java9to16feature.streams;
 
 import java.util.List;
 
