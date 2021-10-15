@@ -9,6 +9,7 @@ record Entity(String name, Integer phoneNum) {
         //add validation : optional
         this.name = name;
         this.phoneNum = phoneNum;
+
     }
 }
 
