@@ -1,7 +1,7 @@
 package io.hari.machinecodingtips.validation;
 
-import io.hari.machinecodingtips.validation.inteface.NumberValidation;
-import io.hari.machinecodingtips.validation.inteface.StringValidation;
+import io.hari.machinecodingtips.validation.marker_inteface.NumberValidation;
+import io.hari.machinecodingtips.validation.marker_inteface.StringValidation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

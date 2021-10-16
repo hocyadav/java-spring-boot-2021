@@ -1,0 +1,1 @@
+pending : GroupSequence, https://www.baeldung.com/javax-validation-groups

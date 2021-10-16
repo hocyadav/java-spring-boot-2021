@@ -1,7 +1,7 @@
 package io.hari.machinecodingtips.validation;
 
-import io.hari.machinecodingtips.validation.inteface.NumberValidation;
-import io.hari.machinecodingtips.validation.inteface.StringValidation;
+import io.hari.machinecodingtips.validation.marker_inteface.NumberValidation;
+import io.hari.machinecodingtips.validation.marker_inteface.StringValidation;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -18,12 +18,12 @@ public class MyServiceNewStyle {//1. add @Validated class level & method level, 
     //m1
     @Validated({StringValidation.class})
     public void stringMethod(@Valid EntityA entityA) {
-        System.out.println("number validation done : entityA = " + entityA);
+        System.out.println("NEW : number validation done : entityA = " + entityA);
     }
 
     @Validated({NumberValidation.class})
     public void numberMethod(@Valid EntityA entityA) {
-        System.out.println("string validation done : entityA = " + entityA);
+        System.out.println("NEW : string validation done : entityA = " + entityA);
     }
 
     //m2 : simple filed validation we can do at input level, and other validation delegate to validation_method

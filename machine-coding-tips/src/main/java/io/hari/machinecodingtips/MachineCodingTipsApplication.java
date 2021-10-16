@@ -27,24 +27,27 @@ public class MachineCodingTipsApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//		validationTest();
-		modelMapperTest();
+    	//test one at a time, comment others
+
+		test1_validationAtEveryLevel();
+
+		test2_modelMapperEntityConversion();
 	}
 
-	private void modelMapperTest() {
+	private void test2_modelMapperEntityConversion() {
 		myService.foo();
 	}
 
-	private void validationTest() {
+	private void test1_validationAtEveryLevel() {
 		EntityA hariom = EntityA.builder()
 				.name("")
 				.email("hari@gmaul.com")
-//				.phoneNumber(BigInteger.valueOf(9887700499L))
+				.phoneNumber(BigInteger.valueOf(9887700499L))
 				.dateOfBirth(LocalDate.of(1989, 06, 26)).build();
 		System.out.println("hariom = " + hariom);
 
 		//old impl
-		myServiceOldStyle.stringMethod(hariom);//validate all Entity annotation, that have no group mentioned
+		myServiceOldStyle.stringMethod(hariom);//validate all Entity annotation, that have no group mentioned, it will only validate date
 
 		//new impl
 		myServiceNewStyle.stringMethod(hariom);//only string group validation
