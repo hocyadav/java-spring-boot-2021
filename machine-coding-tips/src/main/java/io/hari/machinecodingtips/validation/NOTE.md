@@ -1,7 +1,7 @@
-pending : GroupSequence, https://www.baeldung.com/javax-validation-groups
-
-pending : add all javax validation inside my entity class
-
+#### pending : 
+- GroupSequence, https://www.baeldung.com/javax-validation-groups
+- add all javax validation inside my entity class
+---
 ```java
 //step 1
 public interface StringValidation {// validation group marker interface
@@ -24,3 +24,10 @@ public class MyServiceNewStyle {//1. add @Validated class level & method level, 
     }
     
 ```
+---
+
+#### validate client json input (use case k8s validate user input yaml)- explore
+- https://json-schema.org/learn/miscellaneous-examples.html
+
+---
+
