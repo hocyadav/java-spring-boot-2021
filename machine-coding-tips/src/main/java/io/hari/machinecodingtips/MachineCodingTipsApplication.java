@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.*;
 
 @SpringBootApplication
 @RequiredArgsConstructor
@@ -29,9 +30,29 @@ public class MachineCodingTipsApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
     	//test one at a time, comment others
 
-		test1_validationAtEveryLevel();
+//		test1_validationAtEveryLevel();
 
-		test2_modelMapperEntityConversion();
+//		test2_modelMapperEntityConversion();
+
+		test3_collectionCanStoreListSet();
+	}
+
+	private void test3_collectionCanStoreListSet() {
+		Collection<String> collection;
+		List<String> list = new ArrayList<>();
+		list.add("h");
+		list.add("h");
+		list.add("h");
+		collection = list;
+		System.out.println("collection object can store list = " + list);
+
+		Set<String> set = new HashSet<>();
+		set.add("h");
+		set.add("a");
+		set.add("y");
+
+		collection = set;
+		System.out.println("collection object can store set = " + set);
 	}
 
 	private void test2_modelMapperEntityConversion() {
