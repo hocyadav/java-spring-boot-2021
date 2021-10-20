@@ -16,6 +16,7 @@ public class Lec03DoCallbacks {
             fluxSink.error(new RuntimeException("oops"));
             System.out.println("--completed");
         })
+
                 //most of callback takes consumer as input or Runnable type argument
         .doOnComplete(() -> System.out.println("doOnComplete"))
         .doFirst(() -> System.out.println("doFirst"))
