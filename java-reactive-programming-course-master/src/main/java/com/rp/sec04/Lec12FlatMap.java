@@ -20,9 +20,5 @@ public class Lec12FlatMap {
 
 
         Util.sleepSeconds(60);
-
-
     }
-
-
 }

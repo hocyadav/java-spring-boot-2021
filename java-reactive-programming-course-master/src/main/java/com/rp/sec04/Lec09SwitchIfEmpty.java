@@ -8,8 +8,8 @@ public class Lec09SwitchIfEmpty {
     public static void main(String[] args) {
 
         getOrderNumbers()
-                .filter(i -> i > 10)
-                .switchIfEmpty(fallback())
+                //switchIfEmpty : try to write in one line
+                .filter(i -> i > 10).switchIfEmpty(fallback())//send values from processor, type will be same as above pipeline data
                 .subscribe(Util.subscriber());
 
     }

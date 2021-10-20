@@ -10,10 +10,15 @@ public class Lec11SwitchOnFirst {
 
     public static void main(String[] args) {
 
+        //switchOnFirst : execute only one time and that is for 1st data
+        //Now 1st data is inside switchOnFirst, we can check and decide what to do pass as it is i.e. old data or we can pass to some other Mapper,
+        // but this mapper will be apply for all data that will come after this 1st data
         getPerson()
                 .switchOnFirst((signal, personFlux) -> {
                     System.out.println("inside switch-on-first");
-                    return signal.isOnNext() && signal.get().getAge() > 10 ? personFlux : applyFilterMap().apply(personFlux);
+                    return signal.isOnNext() && signal.get().getAge() > 10
+                            ? personFlux //if condition pass then simply pass that data to downstream
+                            : applyFilterMap().apply(personFlux);//this will be apply to all data if condition is fail
                 })
                 .subscribe(Util.subscriber());
     }
