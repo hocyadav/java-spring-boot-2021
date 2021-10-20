@@ -12,7 +12,8 @@ public class Lec02Retry {
     public static void main(String[] args) {
 
         getIntegers()
-                .retry(2)
+//                .retry()//in case of error : retry infinite
+                .retry(2)//in case of error : retry 2 time
                 .subscribe(Util.subscriber());
 
 
@@ -22,6 +23,7 @@ public class Lec02Retry {
         return Flux.range(1, 3)
                 .doOnSubscribe(s -> System.out.println("Subscribed"))
                 .doOnComplete(() -> System.out.println("--Completed"))
+//                .map(i -> i / 0)//server always send error
                 .map(i -> i / (Util.faker().random().nextInt(1, 5) > 3 ? 0 : 1))
                 .doOnError(err -> System.out.println("--error"));
     }

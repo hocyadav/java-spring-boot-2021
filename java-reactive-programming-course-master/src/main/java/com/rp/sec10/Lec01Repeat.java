@@ -12,7 +12,9 @@ public class Lec01Repeat {
     public static void main(String[] args) {
 
         getIntegers()
-                .repeat(() -> atomicInteger.get() < 14)
+//                .repeat()//infinite
+//                .repeat(1)//repeat 1 time
+                .repeat(() -> atomicInteger.get() < 14)//repeat till condition TRUE
                 .subscribe(Util.subscriber());
 
 

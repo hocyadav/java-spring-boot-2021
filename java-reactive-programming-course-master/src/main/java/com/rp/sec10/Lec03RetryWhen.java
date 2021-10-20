@@ -11,10 +11,11 @@ public class Lec03RetryWhen {
     public static void main(String[] args) {
 
         getIntegers()
-                .retryWhen(Retry.fixedDelay(2, Duration.ofSeconds(3)))
+                .retryWhen(Retry.fixedDelay(2, Duration.ofSeconds(3)))//same as previous but we added delay of 3 sec
                 .subscribe(Util.subscriber());
 
         Util.sleepSeconds(60);
+        //todo: explore other Retry.backOff() and its other methods
     }
 
     private static Flux<Integer> getIntegers(){
