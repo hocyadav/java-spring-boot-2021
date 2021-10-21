@@ -1,7 +1,7 @@
-package com.rp.sec04;
+package com.rp.sec04_operators;
 
 import com.rp.courseutil.Util;
-import com.rp.sec04.helper.Person;
+import com.rp.sec04_operators.helper.Person;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -11,20 +11,23 @@ public class Lec10Transform {
 
     public static void main(String[] args) {
 
+        //todo : https://projectreactor.io/docs/core/release/reference/index.html#advanced-mutualizing-operator-usage
+
         //simply converting one "input" type to another "input" type, and that "input" are publisher
         //if input pipeline data is Flux
         //Flux<> --> do processing/transform --> Flux<>
         //Flux<> --> do processing/transform --> Mono<>
+        //no above is not correct, return type from Function Mapper will be same as input
 
         //if input pipeline data is Mono
         //Mono<> --> do processing/transform --> Flux<> / Mono<>
 
         getPerson()
-                .transform(applyFilterMap())
-//                .transform(personFlux -> {
-//                    Flux<Person> personFlux1 = personFlux;
-//                    return Mono.just(1);
-//                })
+//                .transform(applyFilterMap())
+                .transform(personFlux -> {
+                    Flux<Person> personFlux1 = personFlux;
+                    return Mono.just(1);//but the return publisher will be Flux<Int> not Mono<Int>
+                })
                 .subscribe(Util.subscriber());
     }
 

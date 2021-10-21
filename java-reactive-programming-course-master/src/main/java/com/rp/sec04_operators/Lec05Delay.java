@@ -1,4 +1,4 @@
-package com.rp.sec04;
+package com.rp.sec04_operators;
 
 import com.rp.courseutil.Util;
 import reactor.core.publisher.Flux;

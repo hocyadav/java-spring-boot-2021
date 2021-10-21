@@ -1,7 +1,7 @@
-package com.rp.sec04;
+package com.rp.sec04_operators;
 
 import com.rp.courseutil.Util;
-import com.rp.sec04.helper.Person;
+import com.rp.sec04_operators.helper.Person;
 import reactor.core.publisher.Flux;
 
 import java.util.function.Function;
