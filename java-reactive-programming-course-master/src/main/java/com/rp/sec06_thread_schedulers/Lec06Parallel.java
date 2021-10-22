@@ -1,4 +1,4 @@
-package com.rp.sec06;
+package com.rp.sec06_thread_schedulers;
 
 import com.rp.courseutil.Util;
 import reactor.core.publisher.Flux;

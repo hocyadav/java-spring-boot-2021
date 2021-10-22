@@ -1,9 +1,10 @@
-package com.rp.sec06;
+package com.rp.sec06_thread_schedulers;
 
 import com.rp.courseutil.Util;
 import reactor.core.publisher.Flux;
+import reactor.core.scheduler.Schedulers;
 
-public class Lec01ThreadDemo {
+public class Lec02SubscribeOnDemo03 {
 
     public static void main(String[] args) {
 
@@ -11,10 +12,15 @@ public class Lec01ThreadDemo {
             printThreadName("create");
             fluxSink.next(1);
         })
-                .doOnNext(i -> printThreadName("next " + i));
+         .subscribeOn(Schedulers.newParallel("vins"))
+        .doOnNext(i -> printThreadName("next " + i));
 
 
-       Runnable runnable = () -> flux.subscribe(v -> printThreadName("sub " + v));
+      Runnable runnable = () ->  flux
+               .doFirst(() -> printThreadName("first2"))
+               .subscribeOn(Schedulers.boundedElastic())
+               .doFirst(() -> printThreadName("first1"))
+               .subscribe(v -> printThreadName("sub " + v));
 
         for (int i = 0; i < 2; i++) {
             new Thread(runnable).start();

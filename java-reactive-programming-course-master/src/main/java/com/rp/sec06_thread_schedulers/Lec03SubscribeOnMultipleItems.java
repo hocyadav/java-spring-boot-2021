@@ -1,10 +1,10 @@
-package com.rp.sec06;
+package com.rp.sec06_thread_schedulers;
 
 import com.rp.courseutil.Util;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
-public class Lec05PubSubOn {
+public class Lec03SubscribeOnMultipleItems {
 
     public static void main(String[] args) {
 
@@ -12,18 +12,20 @@ public class Lec05PubSubOn {
             printThreadName("create");
             for (int i = 0; i < 4; i++) {
                 fluxSink.next(i);
+                Util.sleepSeconds(1);
             }
             fluxSink.complete();
         })
-                .doOnNext(i -> printThreadName("next " + i));
+        .doOnNext(i -> printThreadName("next " + i));
 
 
-        flux
-                .publishOn(Schedulers.parallel())
-                .doOnNext(i -> printThreadName("next " + i))
+       flux
                 .subscribeOn(Schedulers.boundedElastic())
                 .subscribe(v -> printThreadName("sub " + v));
 
+        flux
+                .subscribeOn(Schedulers.parallel())
+                .subscribe(v -> printThreadName("sub " + v));
 
         Util.sleepSeconds(5);
 

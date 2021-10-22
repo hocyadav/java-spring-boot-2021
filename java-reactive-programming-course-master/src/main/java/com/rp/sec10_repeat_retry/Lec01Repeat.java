@@ -1,4 +1,4 @@
-package com.rp.sec10;
+package com.rp.sec10_repeat_retry;
 
 import com.rp.courseutil.Util;
 import reactor.core.publisher.Flux;
