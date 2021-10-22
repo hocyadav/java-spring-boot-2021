@@ -19,8 +19,10 @@ public class Lec03DoCallbacks {
 
                 //most of callback takes consumer as input or Runnable type argument
         .doOnComplete(() -> System.out.println("doOnComplete"))
+                //when we create pipeline : (P)<----f3--f2--f1----(S) , So bottom to up (bottom to up during pipeline creating time)
         .doFirst(() -> System.out.println("doFirst"))
         .doOnNext(o -> System.out.println("doOnNext : " + o))
+                //when we execute pipeline: (P)----s1--s2--s3---->(S) , So up to down (up to down possible when pipeline created, i.e. execution time)
         .doOnSubscribe(s -> System.out.println("doOnSubscribe" + s))
         .doOnRequest(l -> System.out.println("doOnRequest : " + l))
         .doOnError(err -> System.out.println("doOnError : " + err.getMessage()))
@@ -32,6 +34,7 @@ public class Lec03DoCallbacks {
                 .doFinally(signal -> System.out.println("doFinally 2 : " + signal))
         .subscribe(Util.subscriber());
 
+        //IMP : we have 2 case : operator use during pipeline CREATION or during pipeline EXECUTION
 
     }
 

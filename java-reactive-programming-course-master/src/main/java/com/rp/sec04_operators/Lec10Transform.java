@@ -37,10 +37,11 @@ public class Lec10Transform {
     }
 
     public static Function<Flux<Person>, Flux<Person>> applyFilterMap() {
-        return flux -> flux
+        return flux -> //input T1
+                flux
                 .filter(p -> p.getAge() > 10)
                 .doOnNext(p -> p.setName(p.getName().toUpperCase()))
-                .doOnDiscard(Person.class, p -> System.out.println("Not allowing : " + p));
+                .doOnDiscard(Person.class, p -> System.out.println("Not allowing : " + p));//after lambda outut T2
     }
 
 
