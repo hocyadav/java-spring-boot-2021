@@ -1,8 +1,17 @@
 package com.rp.sec04_operators;
 
 import com.rp.courseutil.Util;
+import lombok.Builder;
+import lombok.Data;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+@Data
+@Builder
+class EntityA{
+    String name;
+
+}
 
 public class Lec06OnError {
 
@@ -18,6 +27,16 @@ public class Lec06OnError {
 
                 })
                 .subscribe(Util.subscriber());
+
+        //todo : testing is mono.empty return actual entity or null or mono
+        Mono<EntityA> entityAMono = Mono.just(EntityA.builder().name("name2").build()).onErrorReturn(null);
+        EntityA entityA = entityAMono.block();
+        System.out.println("entityA = " + entityA);
+
+        Mono<Object> opps = Mono.error(new RuntimeException("opps")).onErrorResume(e -> Mono.empty());
+//        Mono<EntityA> opps = Mono.just(EntityA.builder().name("name2").build()).onErrorResume(e -> Mono.empty());
+        Object block = opps.block();
+        System.out.println("block = " + block);
 
 
     }
