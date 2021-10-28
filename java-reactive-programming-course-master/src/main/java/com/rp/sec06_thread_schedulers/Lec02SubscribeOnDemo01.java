@@ -19,7 +19,7 @@ public class Lec02SubscribeOnDemo01 {
                .doFirst(() -> printThreadName("first2"))//4. run in new scheduler thread, and above all pipeline will be run in this new thread
                .subscribeOn(Schedulers.boundedElastic())//3. switch to new scheduler thread
                .doFirst(() -> printThreadName("first1"))//2. run in main thread
-               .subscribe(v -> printThreadName("sub " + v));//1. started as main thread
+               .subscribe(v -> printThreadName("output " + v));//1. started as main thread
 
         Util.sleepSeconds(5);
     }
