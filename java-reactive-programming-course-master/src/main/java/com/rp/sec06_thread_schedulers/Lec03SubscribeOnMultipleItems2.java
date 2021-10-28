@@ -4,7 +4,7 @@ import com.rp.courseutil.Util;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
-public class Lec03SubscribeOnMultipleItems {
+public class Lec03SubscribeOnMultipleItems2 {
 
     public static void main(String[] args) {
 
