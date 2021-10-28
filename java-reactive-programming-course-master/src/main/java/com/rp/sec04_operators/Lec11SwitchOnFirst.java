@@ -9,6 +9,7 @@ import java.util.function.Function;
 public class Lec11SwitchOnFirst {
 
     public static void main(String[] args) {
+        //switchOnFirst = do nothing for all + do something for all , (decision based on 1st data)
 
         //switchOnFirst : execute only one time and that is for 1st data
         //Now 1st data is inside switchOnFirst, we can check and decide what to do pass as it is i.e. old data or we can pass to some other Mapper,
