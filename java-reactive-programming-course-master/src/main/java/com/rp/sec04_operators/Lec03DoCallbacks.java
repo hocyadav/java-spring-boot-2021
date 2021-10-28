@@ -6,6 +6,7 @@ import reactor.core.publisher.Flux;
 public class Lec03DoCallbacks {
 
     public static void main(String[] args) {
+        //one thing common in all doOn operator is that they return same type here Flux<T> , its like plug and play in pipeline
 
         Flux.create(fluxSink -> {
             System.out.println("inside create");

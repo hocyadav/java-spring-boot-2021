@@ -10,6 +10,7 @@ public class Lec11SwitchOnFirst {
 
     public static void main(String[] args) {
         //switchOnFirst = do nothing for all + do something for all , (decision based on 1st data)
+        //something == based on input data we can do : case1. filter, case2. mapper OR case1 + case2 , (below we are doing case1+ case2)
 
         //switchOnFirst : execute only one time and that is for 1st data
         //Now 1st data is inside switchOnFirst, we can check and decide what to do pass as it is i.e. old data or we can pass to some other Mapper,
