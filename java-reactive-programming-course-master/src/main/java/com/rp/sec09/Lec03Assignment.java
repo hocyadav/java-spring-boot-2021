@@ -22,22 +22,19 @@ public class Lec03Assignment {
         );
 
         bookStream()
-                .filter(book -> allowedCategories.contains(book.getCategory()))
-                .buffer(Duration.ofSeconds(5))
-                .map(list -> revenueCalculator(list))
+                .filter(book -> allowedCategories.contains(book.getCategory())) //OPTIONAL: some filtering
+                .buffer(Duration.ofSeconds(5))                                  //GROUP: Flux<Type> --> Flux<List<Type>>
+                .map(list -> revenueCalculator(list))                           //STREAM: List --> Stream/Stream group by --> Map<Key, Value>
                 .subscribe(Util.subscriber());
 
-
         Util.sleepSeconds(60);
-
-
     }
 
     private static RevenueReport revenueCalculator(List<BookOrder> books){
         Map<String, Double> map = books.stream()
                 .collect(Collectors.groupingBy(
-                        BookOrder::getCategory,
-                        Collectors.summingDouble(BookOrder::getPrice)
+                        BookOrder::getCategory,//key : field
+                        Collectors.summingDouble(BookOrder::getPrice)//value: list OR some operation on list value
                 ));
         return new RevenueReport(map);
     }

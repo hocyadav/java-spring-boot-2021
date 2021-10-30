@@ -5,7 +5,7 @@ import reactor.core.publisher.Flux;
 
 import java.time.Duration;
 
-public class Lec01Buffer {
+public class Lec01Buffer1 {
 
     public static void main(String[] args) {
 
