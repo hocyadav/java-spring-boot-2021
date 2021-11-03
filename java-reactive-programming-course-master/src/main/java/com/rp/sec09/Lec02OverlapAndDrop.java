@@ -16,7 +16,8 @@ public class Lec02OverlapAndDrop {
         //NOTE : size == skip ===> buffer(size)
 
         eventStream()
-                .buffer(3, 5)
+//                .buffer(3, 1)//case 1 : [event0, event1, event2], [event1, event2, event3]
+                .buffer(3, 5)//case 2 : out of 5 data take only 3 data and drop other: [event0, event1, event2], [event5, event6, event7]
                 .subscribe(Util.subscriber());
         Util.sleepSeconds(60);
     }
