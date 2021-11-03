@@ -1,0 +1,8 @@
+
+h
+java:S1128
+"RRemove this unused import 'org.springframework.context.annotation.ComponentScans'.(è¦ù
+l
+java:S1128	"QRemove this unused import 'org.springframework.context.annotation.ComponentScan'.(æëòÒûÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ü£µûıÿÿÿÿ
+S	java:S106!"9Replace this use of System.out or System.err by a logger.(áìÅ—şÿÿÿÿ

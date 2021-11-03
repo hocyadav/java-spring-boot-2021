@@ -1,0 +1,11 @@
+
+f
+java:S2095"KUse try-with-resources or close this "KafkaProducer" in a "finally" clause.(è„„Öúÿÿÿÿ
+f
+java:S2095"KUse try-with-resources or close this "KafkaProducer" in a "finally" clause.(è„„Öúÿÿÿÿ
+C
+java:S1604"(Make this anonymous inner class a lambda(þüœ€ÿÿÿÿÿ
+C
+java:S1604"(Make this anonymous inner class a lambda(þüœ€ÿÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(îÙê€úÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(îÙê€úÿÿÿÿ
