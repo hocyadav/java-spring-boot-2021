@@ -8,9 +8,11 @@ import io.vavr.control.Try;
 import org.junit.Test;
 
 import java.net.URI;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 public class VarvTest {
 
@@ -264,6 +266,11 @@ public class VarvTest {
         //java mutable to java immutable
         java.util.List<Integer> list = List.ofAll(javaMutable)//java varv immutable
                 .asJava();//java 8 immutable
+
+//        Map<Integer, java.util.List<Integer>> listMap =
+//                originalImmutableList.collect(Collectors.groupingBy(i -> i.intValue()));
+//        System.out.println("listMap = " + listMap);
+
 
     }
 
