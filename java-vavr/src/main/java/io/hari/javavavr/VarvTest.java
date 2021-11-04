@@ -1,7 +1,6 @@
 package io.hari.javavavr;
 
 import io.vavr.*;
-import io.vavr.collection.Iterator;
 import io.vavr.collection.List;
 import io.vavr.control.Option;
 import io.vavr.control.Try;
@@ -11,7 +10,6 @@ import java.net.URI;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 public class VarvTest {
 
@@ -277,14 +275,69 @@ public class VarvTest {
 //        immutableList1.add(12);//error
 //        immutableList2.add(12);//error
 
+
         //java 8 mutable list
         java.util.List<Object> mutableList1 = new ArrayList<>();
         mutableList1.add(12);
         mutableList1.addAll(immutableList2);
         System.out.println("mutableList1 = " + mutableList1);
 
+    }
+
+    @Test
+    public void collectionsMethods2() {
+        //convert mutable/modifiable/write-access to immutable/unmodifiable/read-only
+        java.util.List<String> mutableList = new ArrayList<>();
+        mutableList.add("hari");
+        mutableList.add("om");
+        mutableList.add("yadav");
+        java.util.List<String> unmodifiableList = Collections.unmodifiableList(mutableList);
+        System.out.println("unmodifiableList = " + unmodifiableList);
+//        unmodifiableList.add("omp");//error
+
+        Map<String, String> mutableMap = new HashMap<>();
+        mutableMap.put("hari", "om");
+        Map<String, String> unmodifiableMap = Collections.unmodifiableMap(mutableMap);
+        System.out.println("unmodifiableMap = " + unmodifiableMap);
+//        unmodifiableMap.put("omp","chandan");//error
+
+        Set<String> mutableSet = new HashSet<>();
+        mutableSet.add("set value 1");
+        Set<String> unmodifiableSet = Collections.unmodifiableSet(mutableSet);
+        System.out.println("unmodifiableSet = " + unmodifiableSet);
+//        unmodifiableSet.add("set value 2");//error
+    }
+
+    @Test
+    public void collectionsMethods1() {
+        //todo: collections similar methods
+        //m1: create 0 size + immutable/read-only
+        java.util.List<Integer> emptyList = Collections.emptyList();
+        Map<Object, Object> emptyMap =      Collections.emptyMap();
+        Set<Object> emptySet =              Collections.emptySet();
+
+        //m2: create 0 size + immutable/read-only
+        java.util.List<Integer> emptyList2 = Collections.EMPTY_LIST;
+        Map<Object, Object> emptyMap2 =      Collections.EMPTY_MAP;
+        Set<Object> emptySet2 =              Collections.EMPTY_SET;
+
+        //create 1 size + immutable/read-only
+        java.util.List<Integer> singletonList1 = Collections.singletonList(1);//immutable of any size using : Arrays.asList(1,2,3);
+        Map<String, Integer> singletonMap =      Collections.singletonMap("key", 12);
+        Set<Object> singletonSet =               Collections.singleton(123);
 
 
+        System.out.println("emptyList = " + emptyList);
+        System.out.println("emptyMap = " + emptyMap);
+        System.out.println("emptySet = " + emptySet);
+
+        System.out.println("emptyList2 = " + emptyList2);
+        System.out.println("emptyMap2 = " + emptyMap2);
+        System.out.println("emptySet2 = " + emptySet2);
+
+        System.out.println("singletonList1 = " + singletonList1);
+        System.out.println("singletonMap = " + singletonMap);
+        System.out.println("singletonSet = " + singletonSet);
     }
 
 }
