@@ -177,7 +177,7 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
 
 		//both below are same : https://stackoverflow.com/questions/40826431/whats-the-difference-between-groupingby-and-mapping-in-collectors-java
 		final Collector<Integer, ?, List<Integer>> c = Collectors.toList();
-		final Function<Student, Integer> m = i -> i.getRollNumber();
+		final Function<Student, Integer> m = i -> i.getRollNumber();//extract key from object/Student
 
 		final List<Integer> collect2 = Stream.of(student, student2).map(m).collect(c);
 		final List<Integer> collect5 = Stream.of(student, student2).collect(Collectors.mapping(m, c));
@@ -188,6 +188,10 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
 		//m1 : key : map (we are passing), value as list (default collectors interface method here) and this will contain Obj from previous stream
 		final Map<Integer, List<Student>> collect6 = Stream.of(student, student2)
 												.collect(Collectors.groupingBy(m));//map obj : takes mapper, that will become key and value will automatically be list
+        //mapper output type will be the key in groupingBy(key)
+        //KEY : extract key from object/Student (use Function<Student, Integer> m = i -> i.getRollNumber();)
+        //VALUE : by default it will be object/Student
+
 		System.out.println("collect6 = " + collect6);
 //        {25=[Student{rollNumber=25, name='hari'}], 75=[Student{rollNumber=75, name='chandan'}]}
 
@@ -195,13 +199,23 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
 		final Map<Integer, List<Student>> collect7 = Stream.of(student, student2)
 												.collect(Collectors.groupingBy(m, //map obj : take map as key
 														Collectors.toList()));    //collectors interface obj : take value what we want , list or set
-		System.out.println("collect7 = " + collect7);
+        //mapper output type will be the key in groupingBy(key, value)
+        //KEY : extract key from object/Student (use Function<Student, Integer> m = i -> i.getRollNumber();)
+        //VALUE : by default it will be object/Student, override by passing 2nd argument Collectors.toList() or Collectors.toSet()
+
+        System.out.println("collect7 = " + collect7);
 //        {25=[Student{rollNumber=25, name='hari'}], 75=[Student{rollNumber=75, name='chandan'}]}
 
         //above grop by collect6 and 7 are same as below
         final Map<Integer, List<Student>> collect33 = Stream.of(student, student2).collect(Collectors.groupingBy(m,
                 Collectors.mapping(i -> i, Collectors.toList())//value we can use what we want , by default in above it is calling this same logic
         ));
+
+        //mapper output type will be the key in groupingBy(key, mapper : original value --to-> some other value)
+        //groupingBy(key, mapper + output list or set); //mapper + output list or set === Collectors.mapping
+        //KEY : extract key from object/Student (use Function<Student, Integer> m = i -> i.getRollNumber();)
+        //VALUE : //mapper + output list or set === Collectors.mapping
+
         System.out.println("collect33 = " + collect33);
         // collect33 = {25=[Student{rollNumber=25, name='hari'}], 75=[Student{rollNumber=75, name='chandan'}]}
 
@@ -211,7 +225,7 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
 		// then we can replace collectors interface above with anotehr collectors mapping method
 		final Map<Integer, List<String>> collect8 = Stream.of(student, student2)
 				.collect(Collectors.groupingBy(m, //map obj
-						Collectors.mapping(i -> i.getName(), Collectors.toList())));//collectors interface obj
+						Collectors.mapping(i -> i.getName(), Collectors.toList())));//collectors interface obj (NOTE : i -> i.getName() here we can chanage to some different type and that will be store inside final value list)
 		System.out.println("collect8 = " + collect8);
 //        {25=[hari], 75=[chandan]}
 
@@ -253,13 +267,20 @@ public class JavaStreamAllMethodsImpl implements CommandLineRunner {
         // reduce method is not part of collectors interface
         final Map<StudentType, Integer> collect13 = Stream.of(student, student2, student3)
                 .collect(Collectors.groupingBy(
-                        i -> i.getStudentType(),
+                        i -> i.getStudentType(),//key : its a function mapper type1 -> type2
                         Collectors.reducing(0, //initial/default value for below selected field
-                                a -> a.getRollNumber(), //select field that we want to perform binaryOperator/accumulator
-                                (a, b) -> a + b))//accumulator/binary oprator operation or static method
+                                a -> a.getRollNumber(), //select field that we want to perform binaryOperator/accumulator (its a Function p1 to p2)
+                                (a, b) -> a + b))//accumulator/binary oprator operation or static method (its a Bi function mapper of 3 type t1, t2 t3 and all t1, t2 , t3 are same type and all are p2 type)
                 );
         System.out.println("collect13 = " + collect13);
 //        {mtech=25, btech=100}
+
+        Integer collect41 = Stream.of(student, student2, student3)
+//                .collect(Collectors.toList());
+//                .collect(Collectors.counting());//same as toList
+                .collect(Collectors.reducing(0, a -> a.getRollNumber(), (a, b) -> a + b));//same as toList
+        System.out.println("collect41 = " + collect41);
+
 
         //key student type, value names of students : https://stackoverflow.com/questions/56425800/java-collectors-reducing-implementation
         final Map<StudentType, String> collect14 = Stream.of(student, student2, student3)

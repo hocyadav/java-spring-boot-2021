@@ -80,14 +80,15 @@ public class StreamSorted {
 
         people.stream()
                 .sorted(Comparator.comparing(
-                        Person::getRollNum,
-                        Comparator.nullsLast(Integer::compareTo)
+                        Person::getRollNum,//sort on roll num field
+                        Comparator.nullsLast(Integer::compareTo)//sort logic
                 )) //natural order sort + keep null last
                 .forEach(System.out::println);
 
         System.out.println();
 
         people.stream()
+                //sorted contain 2 sorting logic, 1st based on roll num field, 2nd if same then sort on name field
                 .sorted(Comparator.comparing(
                         Person::getRollNum,
                         Comparator.nullsLast(Integer::compareTo)
