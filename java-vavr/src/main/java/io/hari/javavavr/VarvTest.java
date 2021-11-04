@@ -11,7 +11,49 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+class MyFunctionMapper implements Function<Integer, Integer> {
+    @Override
+    public Integer apply(Integer input) {
+        int output = input + 10;
+        return output;
+    }
+}
+
 public class VarvTest {
+
+    @Test
+    public void functionMapperDifferentImplWay(){
+        java.util.List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
+
+        Function<Integer, Integer> functionMapper = i -> i + 10;
+
+        list.stream()
+                .filter(i -> i % 2 == 0)
+                .map(functionMapper)//variable name : LHS
+                .forEach(p -> System.out.println("p = " + p));
+        System.out.println();
+
+        list.stream()
+                .filter(i -> i % 2 == 0)
+                .map(i -> i + 10)//variable value : RHS
+                .forEach(p -> System.out.println("q = " + p));
+        System.out.println();
+
+        list.stream()
+                .filter(i -> i % 2 == 0)
+                .map(functionMapperMethod())//variable value as method: RHS (extract variable value as method)
+                .forEach(p -> System.out.println("r = " + p));
+        System.out.println();
+
+        list.stream()
+                .filter(i -> i % 2 == 0)
+                .map(new MyFunctionMapper())//mapper as class/bean/object/function object
+                .forEach(p -> System.out.println("s = " + p));
+    }
+
+    private Function<Integer, Integer> functionMapperMethod() {
+        return input -> input + 10;
+    }
 
     //funtion2, 3..
     //tuple2, 3...
