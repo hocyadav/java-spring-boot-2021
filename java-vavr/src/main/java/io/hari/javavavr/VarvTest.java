@@ -8,8 +8,7 @@ import io.vavr.control.Try;
 import org.junit.Test;
 
 import java.net.URI;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -270,6 +269,20 @@ public class VarvTest {
 //        Map<Integer, java.util.List<Integer>> listMap =
 //                originalImmutableList.collect(Collectors.groupingBy(i -> i.intValue()));
 //        System.out.println("listMap = " + listMap);
+
+
+        //java 8 immutable list
+        java.util.List<Object> immutableList1 = Collections.emptyList();
+        java.util.List<Object> immutableList2 = Arrays.asList(1,2,3);
+//        immutableList1.add(12);//error
+//        immutableList2.add(12);//error
+
+        //java 8 mutable list
+        java.util.List<Object> mutableList1 = new ArrayList<>();
+        mutableList1.add(12);
+        mutableList1.addAll(immutableList2);
+        System.out.println("mutableList1 = " + mutableList1);
+
 
 
     }
