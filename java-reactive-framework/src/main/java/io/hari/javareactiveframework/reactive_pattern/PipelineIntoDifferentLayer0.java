@@ -7,10 +7,13 @@ public class PipelineIntoDifferentLayer0 {
 //16 lec
         Mono<String> mono =
                 //pipeline : start any HL into LL like this , and then break down into different methods, then different class
-                Mono.just(1)
-                .map(input1 -> input1.toString())
-                .map(input -> input.toUpperCase())
-                .map(input -> input.toUpperCase().concat(" - new string added "));
+                        //domain layer
+                        Mono.just(1)
+                        //service layer
+                        .map(input1 -> input1.toString())
+                        //api layer
+                        .map(input -> input.toUpperCase())
+                        .map(input -> input.toUpperCase().concat(" - new string added "));
 
         mono.subscribe(
                 item -> System.out.println("item = " + item),
