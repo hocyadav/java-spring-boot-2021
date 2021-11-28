@@ -11,7 +11,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Getter @Setter @ToString
-class User {
+class User implements IUser{
     String name, role;
     User(String a, String b) {
         name = a;
@@ -62,7 +62,18 @@ class User {
 
         //todo : move predicate inside Entity class and use inside filter
 
+        //we can negate predicate also : https://www.baeldung.com/java-predicate-chain
+        List<User> list1 = users.stream()
+//                .filter(User::test1)
+                .filter(nonNullPredicate.and(nameNotNull).and(teamWIPredicate.negate()))//last predicate is negate , i.e. not team of teamWIPredicate
+                .collect(Collectors.toList());
+        System.out.println("list1 = " + list1);
 
+
+    }
+
+    private static boolean test1(User user) {
+        return false;
     }
 
     public static List<User> myProcess(List<User> users, Predicate<User> adminCheckPredicate) {//predicate arg can be hardcoded inside entity class
