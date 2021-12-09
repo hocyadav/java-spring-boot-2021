@@ -1,33 +1,41 @@
 package io.hari.javareactiveframework.core_concept.operator;
 
 import lombok.SneakyThrows;
+import org.reactivestreams.Publisher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 /**
- * flatmap
+ * flatmap == async (final output order may change)
  * 1. convert t1 to t2
  * 2. wrap t2 to input type
  * 3. final return type will be mono.mono.t2 in case of mono, flatmap will cancel out one mono, so final output will be mono.t2
  *
  * NOTE. final return type will be same as input, mono -> mono, flux -> flux, only inside object type will be changed
+ *
+ * flatmap == concatmap, both are async but concat map will preserver order
+ *
  */
 public class FlatMapOperator {
     @SneakyThrows
     public static void main(String[] args) {
 
+
         Mono<String> mono = Mono.just("hariom");//T1 = string , wrap inside mono
+
         Mono<Integer> map = mono.flatMap(i -> {
             int length = i.length();//1. t1-> t2
-            return Mono.just(length);//2. wrap over mono
+            return Mono.just(length);//2. wrap over mono (this step is not present in map())
         });
         //1. map convert T1->T2, 2. that T2 output will be mono
         //1. flat map convert T1->T2, 1.5 wrap over mono, 2. that T2 output will be mono so final mono.mono.t2 and, flat map will cancel one mono
 
         Flux<String> flux = Flux.just("hari", "om");//T1 = string
+
         Flux<Integer> map1 = flux
                 .flatMap(i -> {
                     int length = i.length();//1. mapping operation [NOTE here conversion one t1 to t2 is single object]

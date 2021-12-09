@@ -4,7 +4,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
- * map
+ * map == sync
  * 1. t1 to t2 for each input element
  * NOTE. final return type will be same as input, mono -> mono, flux -> flux, only inside object type will be changed
  */
