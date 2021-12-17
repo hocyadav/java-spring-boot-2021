@@ -1,0 +1,10 @@
+{
+  "namespace": "io.hari.entity",
+  "type": "record",
+  "name": "MyAddress",
+  "fields": [
+    {"name": "street","type": ["null","string"]},
+    {"name": "pinCode","type": ["null","int"]},
+    {"name": "country","type": ["null","string"]}
+  ]
+}

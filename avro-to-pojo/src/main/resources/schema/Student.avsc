@@ -1,0 +1,10 @@
+{
+  "namespace": "io.hari.entity",
+  "type": "record",
+  "name": "Student",
+  "fields": [
+    {"name": "name","type": ["null","string"]},
+    {"name": "phoneNumber","type": ["null","int"]},
+    {"name": "address","type": ["null","MyAddress"]}
+  ]
+}
