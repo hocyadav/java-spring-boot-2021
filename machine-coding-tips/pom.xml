@@ -17,6 +17,21 @@
 		<java.version>16</java.version>
 	</properties>
 	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/com.google.common/google-collect -->
+<!--		<dependency>-->
+<!--			<groupId>com.google.common</groupId>-->
+<!--			<artifactId>google-collect</artifactId>-->
+<!--			<version>0.5</version>-->
+<!--		</dependency>-->
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>19.0</version>
+		</dependency>
+
+
 		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
 		<dependency>
 			<groupId>org.modelmapper</groupId>
