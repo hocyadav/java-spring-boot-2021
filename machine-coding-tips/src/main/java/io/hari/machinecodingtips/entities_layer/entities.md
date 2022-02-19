@@ -32,3 +32,4 @@
     - `org.apache.commons` : artifactId commons-collections4
     - `com.fasterxml.jackson.databind.ObjectMapper` : inbuilt in spring
     - `org.modelmapper` : http://modelmapper.org/getting-started/
+    - `mysql-connector-java`
