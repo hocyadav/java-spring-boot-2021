@@ -1,0 +1,34 @@
+- tools : lombok, hibernate validator, google validator, h2 database
+  - `builder class`
+  - `@RequiredArgsConstructor(staticName = "of")` 
+  - `utility class`
+  - `validte field in constructor` 
+  - validate group of fields using lombok "groups" : 
+    - create Marker interface -> 
+    - entity class fields `@NotBlank(groups = {StringValidation.class}) String name;` ->
+    - `@Validated({NumberValidation.class}) myFun(@Valid MyEntity input){..}`
+    - INFO : `@Validated` : from spring, `@Valid` from hibernate validator
+---
+- simple DTO class : `java record` , e.g. `public record MyRecord(String field1, String field2){}` 
+---
+- interface : 
+    - interface class + getter setter methods + imp default methods 
+    - FunctionalInterface methods (functional/declarative style coding): 
+        - `Predicate myPredicateFun(){..}` : use directly in stream or use `boolean test = myPredicate.test(input)`
+        - Mapper class using `class MyMapper implements Function<t1, t2>{}`
+    - BaseEntity using `@MappedSuperclass` ref : https://github.com/hocyadav/leetcode-lld-flipkart-coding-blox/blob/master/src/main/java/io/hari/demo/entity/BaseEntity.java 
+---
+- entities class from the Java inbuilt class : e.g. `public class MyEntity extends HashMap<String, String>`
+---
+- to store whole object as json in Database (MySQL, H2 in-memory): 
+    - HL : move List<> field1, Map<> field2 from entity class to separate class then add converter class : https://github.com/hocyadav/leetcode-lld-flipkart-coding-blox/tree/master/src/main/java/io/hari/demo/entity/helper
+    - `@Convert(converter = ContestQuestionsConverter.class) ContestQuestions contestQuestions;` -> 
+    - `java public class ContestQuestionsConverter implements AttributeConverter<ContestQuestions, String > {}`
+    - NoSQL : ??
+---
+- Other tools : ref : https://github.com/hocyadav/leetcode-lld-flipkart-coding-blox/blob/master/pom.xml
+    - `com.google.guava` 
+    - `org.apache.commons` : artifactId commons-lang3 
+    - `org.apache.commons` : artifactId commons-collections4
+    - `com.fasterxml.jackson.databind.ObjectMapper` : inbuilt in spring
+    - `org.modelmapper` : http://modelmapper.org/getting-started/
