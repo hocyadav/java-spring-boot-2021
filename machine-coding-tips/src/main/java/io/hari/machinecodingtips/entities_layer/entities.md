@@ -13,6 +13,7 @@
 ---
 - interface : 
     - interface class + getter setter methods + imp default methods 
+    -  .filter(u -> Objects.equals(u.getId(), id))
     - FunctionalInterface methods (functional/declarative style coding): 
         - `Predicate myPredicateFun(){..}` : use directly in stream or use `boolean test = myPredicate.test(input)`
         - Mapper class using `class MyMapper implements Function<t1, t2>{}`
