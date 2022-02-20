@@ -3,6 +3,7 @@
   - `@RequiredArgsConstructor(staticName = "of")` 
   - `utility class`
   - `validte field in constructor` 
+  - column name style using json annotation
   - validate group of fields using lombok "groups" : 
     - create Marker interface -> 
     - entity class fields `@NotBlank(groups = {StringValidation.class}) String name;` ->
