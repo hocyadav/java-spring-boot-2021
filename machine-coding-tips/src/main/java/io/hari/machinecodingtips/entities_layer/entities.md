@@ -24,7 +24,7 @@
 ---
 - entities class from the Java inbuilt class : e.g. `public class MyEntity extends HashMap<String, String>`
 - java.time.DayOfWeek https://github.com/hocyadav/restaurant-service/blob/main/src/main/java/com/jetbrains/restaurantservice/Restaurant.java
-- https://www.baeldung.com/java-8-date-time-intro
+- https://www.baeldung.com/java-8-date-time-intro  https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html
 ---
 - to store whole object as json in Database (MySQL, H2 in-memory): 
     - HL : move List<> field1, Map<> field2 from entity class to separate class then add converter class : https://github.com/hocyadav/leetcode-lld-flipkart-coding-blox/tree/master/src/main/java/io/hari/demo/entity/helper
