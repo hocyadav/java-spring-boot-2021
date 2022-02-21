@@ -5,6 +5,7 @@
   - `validte field in constructor` 
   - column name style using json annotation https://www.baeldung.com/jackson-deserialize-snake-to-camel-case
   - jpa @column annotation for entity fields , SQL column validation 
+  - `regex` : add regex for column/fields validation e.g. special id, email etc.
   - validate group of fields using lombok "groups" : 
     - create Marker interface -> 
     - entity class fields `@NotBlank(groups = {StringValidation.class}) String name;` ->
