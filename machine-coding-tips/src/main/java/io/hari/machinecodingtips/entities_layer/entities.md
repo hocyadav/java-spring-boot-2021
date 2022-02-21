@@ -35,4 +35,9 @@
     - `org.apache.commons` : artifactId commons-collections4
     - `com.fasterxml.jackson.databind.ObjectMapper` : inbuilt in spring
     - `org.modelmapper` : http://modelmapper.org/getting-started/
-    - `mysql-connector-java`
+    - `mysql-connector-java` 
+    - `io.cloudevents` https://cloudevents.github.io/sdk-java/spring.html 
+      -  OR own event entity/record class for events : https://github.com/hocyadav/spring-boot-book-my-show/blob/c73e99639f/src/main/java/io/hari/demo/entity/Event.java 
+        - send event using ApplicationEventPublisher#publishEvent(myevent entity) : https://github.com/hocyadav/spring-boot-book-my-show/blob/c73e99639f/src/main/java/io/hari/demo/service/UserService.java
+        - receive/consume and process and store in db https://github.com/hocyadav/spring-boot-book-my-show/blob/c73e99639f/src/main/java/io/hari/demo/event/ConsumerService.java
+        - clean events : https://github.com/hocyadav/spring-boot-book-my-show/blob/c73e99639f7b8e752295a1a8a3f5730af2f542c8/src/main/java/io/hari/demo/event/SchedulerService.java
