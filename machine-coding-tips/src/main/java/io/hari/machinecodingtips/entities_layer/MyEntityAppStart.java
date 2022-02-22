@@ -8,4 +8,4 @@ public class MyEntityAppStart {
         System.out.println("hello harry");
     }
 }
-// make this package specific
+// run package specific, make sure it will not take any other package beans
