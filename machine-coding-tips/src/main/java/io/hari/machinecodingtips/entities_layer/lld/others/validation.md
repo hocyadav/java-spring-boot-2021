@@ -1,0 +1,17 @@
+- goal : even if we get error, our execution should not stop
+---
+- INFO : 
+  - `errors` : logical error compile time, run time
+    - normal steps
+    - critical steps (wrap over try catch) , try means try to execute that critical statement 😄 it may work/not work
+  
+- code level
+  - EXCEPTIONS : handle different type of exception like + ( user don't understand `exceptions` so send user-friendly message)
+    - case 1: input type will give different exception
+    - case 2: different exception type in different catch block
+    - case 3: ...
+    - case 4: generic exception handle
+  - whenever we `open resources` (as normal step/critical steps), `always close` it e.g., when u open a fridge and in between someone calls u then what u do 😄
+  - time out : for external http client call, make sure it will not block for infinite time, so add timeout in critical section + handle that exception type
+  - JPA hibernate validation using min, max, regex etc. 
+  - (Optional) JPA hibernate validation error/exception + http response combine as single response : https://youtu.be/zhlnLbRn4hY
