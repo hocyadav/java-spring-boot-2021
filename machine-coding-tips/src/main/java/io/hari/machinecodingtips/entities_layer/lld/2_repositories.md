@@ -1,0 +1,3 @@
+- quick endpoint for our entity : use @RepositoryRestResource above repo interface that's all : https://github.com/hocyadav/microservice-spring-data-rest/blob/main/src/main/java/io/getarrays/webservice/WebserviceApplication.java
+    - https://www.youtube.com/watch?v=34QmfGbNrpE
+    - https://www.youtube.com/watch?v=d2f_-gDygXI&t=484s

@@ -1,33 +1,36 @@
 - tools : lombok, hibernate validator, google validator, h2 database
   - `builder class`
   - `@RequiredArgsConstructor(staticName = "of")` 
-  - `utility class`
-  - `validte field in constructor` 
-  - column name style using json annotation https://www.baeldung.com/jackson-deserialize-snake-to-camel-case
-  - jpa @column annotation for entity fields , SQL column validation 
-  - `regex` : add regex for column/fields validation e.g. special id, email etc.
-  - validate group of fields using lombok "groups" : 
-    - create Marker interface -> 
-    - entity class fields `@NotBlank(groups = {StringValidation.class}) String name;` ->
-    - `@Validated({NumberValidation.class}) myFun(@Valid MyEntity input){..}`
-    - INFO : `@Validated` : from spring, `@Valid` from hibernate validator
+  - `@utility class`
+  - `validate field in constructor` 
+  - column name style using json annotation https://www.baeldung.com/jackson-deserialize-snake-to-camel-case (mostly use _ style, i.e. same as db column name)
+  - jpa @column annotation for SQL column name & validation 
+  - `regex` : for column/fields validation e.g. special id, email etc. 
+  - @transient : not create field entry in db i.e. age 
+  - ✅ validate group of fields using lombok "groups" : 
+    - i. create Marker interface -> 
+    - ii. entity class fields `@NotBlank(groups = {StringValidation.class}) String name;` ->
+    - iii. `@Validated({NumberValidation.class}) myFun(@Valid MyEntity input){..}`
+    - INFO : import `@Validated` : from spring, `@Valid` from JPA
 ---
-- simple DTO class : `java record` , e.g. `public record MyRecord(String field1, String field2){}` 
+- simple DTO/entity class : `java record` , e.g. `public record MyRecord(String field1, String field2){}` 
 ---
 - interface : 
-    - interface class + getter setter methods + imp default methods 
-    -  .filter(u -> Objects.equals(u.getId(), id))
+    - interface class + getter setter methods + important default methods
     - FunctionalInterface methods (functional/declarative style coding): 
         - `Predicate myPredicateFun(){..}` : use directly in stream or use `boolean test = myPredicate.test(input)`
         - Mapper class using `class MyMapper implements Function<t1, t2>{}`
-    - BaseEntity using `@MappedSuperclass` ref : https://github.com/hocyadav/leetcode-lld-flipkart-coding-blox/blob/master/src/main/java/io/hari/demo/entity/BaseEntity.java 
+    - ✅ BaseEntity using `@MappedSuperclass` ref : https://github.com/hocyadav/leetcode-lld-flipkart-coding-blox/blob/master/src/main/java/io/hari/demo/entity/BaseEntity.java 
 ---
 - entities class from the Java inbuilt class : e.g. `public class MyEntity extends HashMap<String, String>`
-- java.time.DayOfWeek https://github.com/hocyadav/restaurant-service/blob/main/src/main/java/com/jetbrains/restaurantservice/Restaurant.java
+- data types:
+  - java.time.DayOfWeek https://github.com/hocyadav/restaurant-service/blob/main/src/main/java/com/jetbrains/restaurantservice/Restaurant.java
+  - BigInteger 
+  - Duration, time difference method as default method
 - https://www.baeldung.com/java-8-date-time-intro  https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html
 ---
-- to store whole object as json in Database (MySQL, H2 in-memory): 
-    - HL : move List<> field1, Map<> field2 from entity class to separate class then add converter class : https://github.com/hocyadav/leetcode-lld-flipkart-coding-blox/tree/master/src/main/java/io/hari/demo/entity/helper
+- ✅ to store whole object as json in Database (MySQL, H2 in-memory): 
+    - HL : move `List<> field1` OR `Map<> field2` from entity class to separate class then add converter class : https://github.com/hocyadav/leetcode-lld-flipkart-coding-blox/tree/master/src/main/java/io/hari/demo/entity/helper
     - `@Convert(converter = ContestQuestionsConverter.class) ContestQuestions contestQuestions;` -> 
     - `java public class ContestQuestionsConverter implements AttributeConverter<ContestQuestions, String > {}`
     - NoSQL : ??
@@ -44,3 +47,4 @@
         - send event using ApplicationEventPublisher#publishEvent(myevent entity) : https://github.com/hocyadav/spring-boot-book-my-show/blob/c73e99639f/src/main/java/io/hari/demo/service/UserService.java
         - receive/consume and process and store in db https://github.com/hocyadav/spring-boot-book-my-show/blob/c73e99639f/src/main/java/io/hari/demo/event/ConsumerService.java
         - clean events : https://github.com/hocyadav/spring-boot-book-my-show/blob/c73e99639f7b8e752295a1a8a3f5730af2f542c8/src/main/java/io/hari/demo/event/SchedulerService.java
+  
