@@ -9,5 +9,6 @@
   - m1: any service an update the global field
   - m2: @Async service can update that global field (async coz it will validate event msg and send to different global static fields (different channel fields for different types))
 
-    -  compare object value:  .filter(u -> Objects.equals(u.getId(), id))
+    -  compare object value:  `.filter(u -> Objects.equals(u.getId(), id))` 
+    - `final Map<String, Object> innerRequestMap = Objects.requireNonNullElseGet(reqMap, HashMap::new);`
     - type cast : Student.class.cast(obj1)
