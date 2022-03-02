@@ -11,4 +11,5 @@
 
     -  compare object value:  `.filter(u -> Objects.equals(u.getId(), id))` 
     - `final Map<String, Object> innerRequestMap = Objects.requireNonNullElseGet(reqMap, HashMap::new);`
+    - combine 2 list : `List<String> newList = Stream.concat(listOne.stream(), listTwo.stream()).collect(Collectors.toList());` 
     - type cast : Student.class.cast(obj1)
