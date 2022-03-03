@@ -13,3 +13,12 @@
     - `final Map<String, Object> innerRequestMap = Objects.requireNonNullElseGet(reqMap, HashMap::new);`
     - combine 2 list : `List<String> newList = Stream.concat(listOne.stream(), listTwo.stream()).collect(Collectors.toList());` 
     - type cast : Student.class.cast(obj1)
+    - output will be json view `String result = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(shape);` 
+    - JsonIgnoreProperties vs  JsonInclude (it is use for exclude) : https://stackoverflow.com/a/39013609/871451
+      - `JsonIgnoreProperties` 2 way, use for serialization , and deserialization
+        - class level
+      - `JsonInclude` 1 way during serialization, only during JAVA to JSON 
+        - class level
+    - `JsonProperty` https://stackoverflow.com/a/44861221/871451 
+        - field level 
+        - maven : https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations/2.13.1
