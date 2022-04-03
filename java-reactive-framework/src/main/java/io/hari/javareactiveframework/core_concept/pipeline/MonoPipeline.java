@@ -18,7 +18,8 @@ public class MonoPipeline {
 //        monoPipelineJoin2Pipeline();
 //        monoPipelineError();
 //        monoCombine2Pipeline();
-        monoCombine3Pipeline();
+        monoCombine3Pipeline0();
+//        monoCombine3Pipeline();
     }
 
     /**
@@ -131,11 +132,13 @@ public class MonoPipeline {
     }
 
     /**
-     * p1, p2, p3 lazy + async
+     * p1 p2 p3 lazy + async
+     * all run by 1 background thread
+     * to run in different thread then see next example
      *
      */
     @SneakyThrows
-    public void monoCombine3Pipeline(){
+    public void monoCombine3Pipeline0(){
         Mono<String> p1 = Mono.fromCallable(() -> " p1 do some processing thread - " + Thread.currentThread().getId());
         Mono<String> p2 = Mono.fromCallable(() -> " p2 do some processing thread - " + Thread.currentThread().getId());
         Mono<String> p3 = Mono.fromCallable(() -> " p3 do some processing thread - " + Thread.currentThread().getId());
@@ -154,7 +157,48 @@ public class MonoPipeline {
 //        Mono.zip(p1, p2, p3)
         Mono.zip(arrayToSomeValueMapper, //2 then use mapper to do something with array result
                 new Mono[]{p1, p2, p3})//1 run all in async
-                .subscribeOn(Schedulers.parallel())
+                .subscribeOn(Schedulers.parallel())//all above to down pipeline will be run in this background thread
+                .doOnNext(s -> {
+                    System.out.println("doOnNext - "+Thread.currentThread().getId());
+                })
+                .subscribe(
+                        data -> System.out.println("data signal= " + data),
+                        error -> System.out.println("error signal = " + error.getMessage()),
+                        () -> System.out.println("complete signal")
+                );
+        Thread.sleep(1000);
+    }
+
+    /**
+     * p1, p2, p3 lazy + async
+     * p4 : DAG pipeline will be run in different thread
+     * total 4 thread
+     *
+     */
+    @SneakyThrows
+    public void monoCombine3Pipeline(){
+        Mono<String> p1 = Mono.fromCallable(() -> " p1 do some processing thread - " + Thread.currentThread().getId()).subscribeOn(Schedulers.parallel());
+        Mono<String> p2 = Mono.fromCallable(() -> " p2 do some processing thread - " + Thread.currentThread().getId()).subscribeOn(Schedulers.parallel());
+        Mono<String> p3 = Mono.fromCallable(() -> " p3 do some processing thread - " + Thread.currentThread().getId()).subscribeOn(Schedulers.parallel());
+
+        //t1 : array, t2 : single value
+        Function<Object[], String> arrayToSomeValueMapper = new Function<Object[], String>() {
+            @Override
+            public String apply(Object[] objects) {
+                Stream<Object> stream = Arrays.stream(objects);
+                Stream<String> stringStream = stream.map(o -> String.class.cast(o));
+                String reduce = stringStream.reduce("default value + ", String::concat);
+                return reduce;
+            }
+        };
+
+//        Mono.zip(p1, p2, p3)
+        Mono.zip(arrayToSomeValueMapper, //2 then use mapper to do something with array result
+                new Mono[]{p1, p2, p3})//1 run all in async
+                .publishOn(Schedulers.boundedElastic())//from here onward all down steps will run in different threads
+                .doOnNext(s -> {
+                    System.out.println("doOnNext - "+Thread.currentThread().getId());
+                })
                 .subscribe(
                         data -> System.out.println("data signal= " + data),
                         error -> System.out.println("error signal = " + error.getMessage()),
@@ -163,3 +207,7 @@ public class MonoPipeline {
         Thread.sleep(1000);
     }
 }
+/**
+ * mono async
+ * - all the pipeline will execute by same background thread
+ */
