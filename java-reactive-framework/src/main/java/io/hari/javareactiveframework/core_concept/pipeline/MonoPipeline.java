@@ -2,6 +2,7 @@ package io.hari.javareactiveframework.core_concept.pipeline;
 
 import lombok.SneakyThrows;
 import org.junit.Test;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
@@ -18,8 +19,10 @@ public class MonoPipeline {
 //        monoPipelineJoin2Pipeline();
 //        monoPipelineError();
 //        monoCombine2Pipeline();
-        monoCombine3Pipeline0();
+//        monoCombine3Pipeline0();
 //        monoCombine3Pipeline();
+        errorResumeAndThenAddFilter();
+        errorResumeAndThenAddFilter2();
     }
 
     /**
@@ -206,8 +209,86 @@ public class MonoPipeline {
                 );
         Thread.sleep(1000);
     }
+
+    public void errorResumeAndThenAddFilter(){
+        //problem is that we can not set default value for the error/exception one
+        Flux.just(1,2,3,4,5)
+                .map(integer -> {
+                    if (integer == 3) throw new RuntimeException("oops");
+                    return integer;
+                })
+//                .onErrorResume(throwable -> {//no use of onErrorResume
+//                    return Flux.just(-1);
+//                })
+                .onErrorContinue((throwable, o) -> {
+                    //log line
+//                    System.out.println("throwable.getMessage() = " + throwable.getMessage());
+                })
+//                .filter(o -> !o.equals(-1))//not required if we are using onErrorContinue coz it will not do processing further for that data
+                .doOnNext(o -> {
+                    System.out.println("o = " + o);
+                })
+                .subscribe();
+        /** output1
+         *
+         * o = 1
+         * o = 2
+         * throwable.getMessage() = oops //this is simple log line , this will not part of final result
+         * o = 4
+         * o = 5
+         *
+         * comment log line, and see output
+         *          * o = 1
+         *          * o = 2
+         *          * o = 4
+         *          * o = 5
+         */
+    }
+
+    public void errorResumeAndThenAddFilter2(){
+        //we can set default value for the error one and we can ignore by just adding filter operator
+        Flux.just(1,2,3,4,5)
+                .flatMap(integer -> {
+                    //mono pipeline for each flatmap,
+                    //we know for some data it will throw exception, and for that data we will send default value from here
+                    //and outside flux pipeline will filter out these defalut value
+                    return Mono.fromCallable(() -> integer)
+                            .map(integer1 -> {
+                                if (integer1 == 3) throw new RuntimeException("oops");
+                                return integer1;
+                            })
+                            .onErrorResume(throwable -> {
+//                                System.out.println("throwable.getMessage() = " + throwable.getMessage());
+                                return Mono.just(-1);
+                            });
+                })
+                //input : 1,2,-1,4,5
+                .filter(o -> !o.equals(-1))//not required if we are using onErrorContinue coz it will not do processing further for that data
+                //here : 1,2,4,5
+                .doOnNext(o -> {
+                    System.out.println("o = " + o);
+                })
+                .subscribe();
+        /**
+         * output 2 : here 3 value error will not present in final output
+         *
+         * o = 1
+         * o = 2
+         * o = 4
+         * o = 5
+         *
+         * or if we not use filter (this output we cant get in above simple flux pipeline)
+         *
+         * o = 1
+         * o = 2
+         * o = -1
+         * o = 4
+         * o = 5
+         */
+    }
 }
 /**
  * mono async
  * - all the pipeline will execute by same background thread
+ * - to run each pipeline p1 p2 p3..in different background thread then add  .subscribeOn(Schedulers.parallel() to each pipeline
  */
