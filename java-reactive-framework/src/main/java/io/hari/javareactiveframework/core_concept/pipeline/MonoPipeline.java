@@ -2,12 +2,17 @@ package io.hari.javareactiveframework.core_concept.pipeline;
 
 import lombok.SneakyThrows;
 import org.junit.Test;
+import org.reactivestreams.Publisher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
+import java.io.Flushable;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MonoPipeline {
@@ -21,8 +26,10 @@ public class MonoPipeline {
 //        monoCombine2Pipeline();
 //        monoCombine3Pipeline0();
 //        monoCombine3Pipeline();
-        errorResumeAndThenAddFilter();
-        errorResumeAndThenAddFilter2();
+//        errorResumeAndThenAddFilter();
+//        errorResumeAndThenAddFilter2();
+//        FluxToMono_CollectAndReduce();
+        flatMapVsFlatMapMany();
     }
 
     /**
@@ -286,6 +293,106 @@ public class MonoPipeline {
          * o = 5
          */
     }
+
+
+    public void FluxToMono_CollectAndReduce(){
+        Flux.just(1,2,3,4,5)
+                .collect(Collectors.toList())
+                .doOnNext(list -> System.out.println("list = " + list))
+                .subscribe();
+
+        Flux.just(1,2,3,4,5)
+                .collectList()
+                .doOnNext(System.out::println)
+                .subscribe();
+
+        //calculate sum using flux reduce
+        Flux.just(1,2,3,4,5)
+                .reduce(Integer::sum)
+//                .reduce((integer, integer2) -> integer + integer2)
+//                .reduce(0, (integer, integer2) -> integer + integer2)//or (0, Integer::sum)
+                .doOnNext(integer -> System.out.println("integer = " + integer))
+                .subscribe();
+
+        //calculate sum using stream reduce
+        Flux.just(1,2,3,4,5)
+                .collectList()
+                .flatMap(list -> {
+                    Optional<Integer> reduce = list.stream()
+                            .reduce(Integer::sum);
+                    return Mono.just(reduce.get());
+                })
+                .doOnNext(integer -> System.out.println("integer = " + integer))
+                .subscribe();
+
+    }
+
+    public void flatMapVsFlatMapMany(){
+        //map : t1 to t2 - sync way (done by blocking way)
+        //mono pipeline<t1> --> mono pipeline<t2>
+
+        //flatmap : t1 to t2 - async way (done by thread from thread pool)
+        //mono pipeline<t1> --> mono pipeline<t2>
+
+        //flatmap many : list<t1>  async (for 1 input it can produce many output)
+        //mono pipeline<t1> -> list<values> ie flux <value>
+
+        System.out.println("case 1---------------1:1-----------------------");
+        Function<Integer, String> mapperSync = new Function<Integer, String>() {
+            public String apply(Integer integer) {
+                return String.valueOf(integer);//sync
+            }
+        };
+        Mono.just(1)
+                .map(mapperSync)
+                .doOnNext(s -> System.out.println("s = " + s))
+                .subscribe();
+
+        System.out.println("case 2---------------1:1-----------------------");
+        Function<Integer, Mono<String>> mapperAsync = new Function<Integer, Mono<String>>() {
+            public Mono<String> apply(Integer integer) {
+                return Mono.just(String.valueOf(integer));//async can be run by thread pool + it can send only one value
+            }
+        };
+        Mono.just(2)
+                .flatMap(mapperAsync)
+                .doOnNext(s -> System.out.println("s = " + s))
+                .subscribe();
+
+
+        System.out.println("case 3---------------1:m-----------------------");
+        Function<Integer, Flux<String>> mapperAsync2 = new Function<Integer, Flux<String>>() {
+            public Flux<String> apply(Integer integer) {
+//                return Flux.just(String.valueOf(integer));//async + can be run by thread pool thread + it can send list of values
+
+                //take input 3 and do some processing and return 3 table, so its one to many
+                return Flux.just("3","6","9","12","...3 tables etc");
+            }
+        };
+        Mono.just(3)
+                .flatMapMany(mapperAsync2)
+                .doOnNext(s -> System.out.println("s = " + s))
+                .subscribe();
+
+        System.out.println("case 1 to case 3---------------1:m-----------------------");
+        Mono.just(1)
+                //same
+                //m1: sync t1 to t2 , single value to list, output mono<list<string>>
+                .map(integer -> List.of("1", "2", "3", "..."))
+
+                //m2: async, t1 to t2, single value to list, output mono<list<String>>
+//                .flatMap(integer -> Mono.just(List.of("1", "2", "3", "...")))
+
+                //mono list to flux value
+                .flatMapMany(Flux::fromIterable)
+
+                .doOnNext(s -> System.out.println("s = " + s))
+                .subscribe();
+
+    }
+
+
+
 }
 /**
  * mono async
