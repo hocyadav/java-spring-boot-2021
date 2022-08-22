@@ -22,14 +22,15 @@ public class MonoPipeline {
 //        monoPipeline1Async1();
 //        monoPipeline1Async2();
 //        monoPipelineJoin2Pipeline();
-//        monoPipelineError();
+        monoPipelineError();
 //        monoCombine2Pipeline();
 //        monoCombine3Pipeline0();
 //        monoCombine3Pipeline();
-//        errorResumeAndThenAddFilter();
-//        errorResumeAndThenAddFilter2();
+        errorResumeAndThenAddFilter();
+        System.out.println("----");
+        errorResumeAndThenAddFilter2();
 //        FluxToMono_CollectAndReduce();
-        flatMapVsFlatMapMany();
+//        flatMapVsFlatMapMany();
     }
 
     /**
@@ -106,9 +107,21 @@ public class MonoPipeline {
                 })
                 //some error in pipeline, dont stop set default / empty
                 .onErrorResume(throwable -> {
-                    System.out.println("executing onErrorResume - "+Thread.currentThread().getId());
-                    return Mono.empty();
+                    System.out.println("executing onErrorResume THREAD - "+Thread.currentThread().getId());
+//                    return Mono.empty();
+//                    return Mono.just(123);
+                    throw new RuntimeException("oops...");
                 })
+//                .onErrorMap(throwable -> new RuntimeException("nnnn"))
+//                .onErrorStop()
+//                .doOnError(throwable -> {
+//                    System.out.println("do on error");
+//                    throw new RuntimeException("00000");
+//                })
+//                .onErrorStop()
+                .doOnNext(o -> System.out.println("o--1 = " + o))//this will execute only if upstream will send data
+                .map(o -> o.toString())
+                .doOnNext(o -> System.out.println("o--2 = " + o))//this will execute only if upstream will send data
                 .subscribeOn(Schedulers.parallel())
                 .subscribe(
                         data -> System.out.println("data signal= " + data),
@@ -270,7 +283,7 @@ public class MonoPipeline {
                             });
                 })
                 //input : 1,2,-1,4,5
-                .filter(o -> !o.equals(-1))//not required if we are using onErrorContinue coz it will not do processing further for that data
+//                .filter(o -> !o.equals(-1))//not required if we are using onErrorContinue coz it will not do processing further for that data
                 //here : 1,2,4,5
                 .doOnNext(o -> {
                     System.out.println("o = " + o);
@@ -388,6 +401,17 @@ public class MonoPipeline {
 
                 .doOnNext(s -> System.out.println("s = " + s))
                 .subscribe();
+
+
+        Flux.just("1")
+                .flatMap(s -> {
+//                    return Mono.just("11");
+                    return Flux.just("11", "12");
+//                    return Flux.fromIterable(List.of("11", "12"));
+                })
+                .doOnNext(s -> System.out.println("s = " + s))
+                .subscribe();
+
 
     }
 
