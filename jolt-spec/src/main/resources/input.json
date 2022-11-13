@@ -1,0 +1,10 @@
+{
+  "employee": {
+    "age": {
+      "value": 25
+    },
+    "address": {
+      "value": "Pune"
+    }
+  }
+}

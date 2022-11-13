@@ -3,7 +3,7 @@
   "type": "record",
   "name": "Student",
   "fields": [
-    {"name": "name","type": ["null","string"]},
+    {"name": "name","type": ["null","string"], "presentationName": "Student Name - this is optional", "description": "Define Student Name - this is optional"},
     {"name": "phoneNumber","type": ["null","int"]},
     {"name": "address","type": ["null","MyAddress"]}
   ]

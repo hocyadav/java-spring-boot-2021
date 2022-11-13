@@ -18,6 +18,11 @@
 	</properties>
 	<dependencies>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.google.common/google-collect -->
 <!--		<dependency>-->
 <!--			<groupId>com.google.common</groupId>-->
@@ -72,6 +77,13 @@
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-avro</artifactId>
 			<version>2.13.1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>1.0.2</version>
 		</dependency>
 
 

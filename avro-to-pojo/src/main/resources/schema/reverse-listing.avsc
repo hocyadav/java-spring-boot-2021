@@ -1,0 +1,161 @@
+{
+  "type": "record",
+  "name": "reverse_listing",
+  "namespace": "com.flipkart.marketplace.listings.schema",
+  "fields": [
+    {
+      "name": "price",
+      "type": {
+        "type": "record",
+        "name": "price",
+        "namespace": "com.flipkart.marketplace.listings.schema.reverse.listing",
+        "fields": [
+          {
+            "name": "buying_price",
+            "type": {
+              "type": "record",
+              "name": "money",
+              "namespace": "com.flipkart.marketplace.listings.schema.datatypes",
+              "fields": [
+                {
+                  "name": "amount",
+                  "type": "int"
+                },
+                {
+                  "name": "currency",
+                  "type": "string",
+                  "default": "INR"
+                }
+              ]
+            },
+            "presentationName": "Buying Price",
+            "description": "The buying price offered to customers."
+          }
+        ]
+      },
+      "presentationName": "Price",
+      "description": "Define the pricing parameters for your listing."
+    },
+    {
+      "name": "seller_identifier",
+      "type": {
+        "type": "record",
+        "name": "seller_identifier",
+        "namespace": "com.flipkart.marketplace.listings.schema.reverse.listing",
+        "fields": [
+          {
+            "name": "product_id",
+            "type": "string",
+            "presentationName": "FSN",
+            "description": "Catalog product ID"
+          },
+          {
+            "name": "sku_id",
+            "type": "string",
+            "presentationName": "SKU ID",
+            "description": "Seller SKU ID"
+          }
+        ]
+      },
+      "presentationName": "Seller Identifier Information",
+      "description": "Record keeping information for the sellers' use."
+    },
+    {
+      "name": "buying_criteria",
+      "type": {
+        "type": "record",
+        "name": "buying_criteria",
+        "namespace": "com.flipkart.marketplace.listings.schema.reverse.listing",
+        "fields": [
+          {
+            "name": "origin",
+            "type": "string",
+            "presentationName": "Origin",
+            "description": "Origin of the product."
+          },
+          {
+            "name": "tenure",
+            "type": [
+              "null",
+              {
+                "type": "record",
+                "name": "buying_criteria_tenure",
+                "namespace": "com.flipkart.marketplace.listings.schema.reverse.listing",
+                "fields": [
+                  {
+                    "name": "end",
+                    "type": "int",
+                    "presentationName": "Tenure End",
+                    "description": "End of the tenure"
+                  },
+                  {
+                    "name": "start",
+                    "type": "int",
+                    "presentationName": "Tenure Start",
+                    "description": "Start of the tenure"
+                  },
+                  {
+                    "name": "unit",
+                    "type": "string",
+                    "presentationName": "Tenure Unit",
+                    "description": "Unit of the tenure"
+                  }
+                ],
+                "version": "1.0"
+              }
+            ],
+            "default": null,
+            "presentationName": "Tenure",
+            "description": "Criteria tenure."
+          },
+          {
+            "name": "grade",
+            "type": "string",
+            "presentationName": "Grade",
+            "description": "Grade refers to the condition of the product."
+          }
+        ]
+      },
+      "presentationName": "Buying Criteria",
+      "description": "Criteria that is used by FK to buy the old product."
+    },
+    {
+      "name": "order_policy",
+      "type": ["null", {
+          "type": "record",
+          "name": "order_policy",
+          "namespace": "com.flipkart.marketplace.listings.schema.reverse.listing",
+          "fields": [
+            {
+              "name": "independent_sellable",
+              "type": "boolean",
+              "presentationName": "Independently Sellable?",
+              "description": "Whether this product can be sold independently."
+            }
+          ]
+        }],
+      "default": null,
+      "presentationName": "Order Policies",
+      "description": "Policies to control the customer order experience."
+    },
+    {
+      "name": "tax",
+      "type": {
+        "type": "record",
+        "name": "tax",
+        "namespace": "com.flipkart.marketplace.listings.schema.reverse.listing",
+        "fields": [
+          {
+            "name": "hsn",
+            "type": "string",
+            "presentationName": "HSN",
+            "description": "Harmonized System Number as per GoI"
+          }
+        ]
+      },
+      "presentationName": "Tax Information",
+      "description": "Relevant tax information."
+    }
+  ],
+  "version": "1.0"
+}

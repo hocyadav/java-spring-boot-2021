@@ -1,0 +1,136 @@
+{
+  "type": "record",
+  "name": "services_listing",
+  "namespace": "com2.flipkart.marketplace.listings.schema",
+  "fields": [
+    {
+      "name": "seller_identifier",
+      "type": {
+        "type": "record",
+        "name": "seller_identifier",
+        "namespace": "com2.flipkart.marketplace.listings.schema.reverse.listing",
+        "fields": [
+          {
+            "name": "product_id",
+            "type": "string"
+          },
+          {
+            "name": "sku_id",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "price",
+      "type": {
+        "type": "record",
+        "name": "price",
+        "namespace": "com2.flipkart.marketplace.listings.schema.reverse.listing",
+        "fields": [
+          {
+            "name": "mrp",
+            "type": {
+              "type": "record",
+              "name": "money",
+              "namespace": "com2.flipkart.marketplace.listings.schema.datatypes",
+              "fields": [
+                {
+                  "name": "amount",
+                  "type": "int"
+                },
+                {
+                  "name": "currency",
+                  "type": "string",
+                  "default": "INR"
+                }
+              ]
+            }
+          },
+          {
+            "name": "selling_price",
+            "type": ["null", "com2.flipkart.marketplace.listings.schema.datatypes.money"]
+          }
+        ]
+      }
+    },
+    {
+      "name": "tax",
+      "type": {
+        "type": "record",
+        "name": "tax",
+        "namespace": "com2.flipkart.marketplace.listings.schema.reverse.listing",
+        "fields": [
+          {
+            "name": "hsn",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "order_policy",
+      "type": {
+        "namespace": "com2.flipkart.marketplace.listings.schema.reverse.listing",
+        "type": "record",
+        "name": "order_policy",
+        "fields": [
+          {
+            "type": "boolean",
+            "name": "independent_sellable"
+          }
+        ]
+      }
+    },
+    {
+      "name": "fulfilment",
+      "type": {
+        "namespace": "com2.flipkart.marketplace.listings.schema.reverse.listing",
+        "type": "record",
+        "name": "fulfilment",
+        "fields": [
+          {
+            "name": "region_restriction",
+            "type": "string"
+          },
+          {
+            "name": "services_fulfilled_by",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "address_label",
+      "type": {
+        "namespace": "com2.flipkart.marketplace.listings.schema.reverse.listing",
+        "type": "record",
+        "name": "address_label",
+        "fields": [
+          {
+            "type": {
+              "type": "array",
+              "items": "string"
+            },
+            "name": "importer_details"
+          },
+          {
+            "type": {
+              "type": "array",
+              "items": "string"
+            },
+            "name": "packer_details"
+          },
+          {
+            "type": {
+              "type": "array",
+              "items": "string"
+            },
+            "name": "country_of_origin"
+          }
+        ]
+      }
+    }
+  ],
+  "version": "1.0"
+}

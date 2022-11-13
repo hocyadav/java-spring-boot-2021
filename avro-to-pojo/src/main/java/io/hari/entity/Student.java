@@ -11,7 +11,7 @@ import org.apache.avro.specific.SpecificData;
 @org.apache.avro.specific.AvroGenerated
 public class Student extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -2294857752717953210L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Student\",\"namespace\":\"io.hari.entity\",\"fields\":[{\"name\":\"name\",\"type\":[\"null\",\"string\"]},{\"name\":\"phoneNumber\",\"type\":[\"null\",\"int\"]},{\"name\":\"address\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"MyAddress\",\"fields\":[{\"name\":\"street\",\"type\":[\"null\",\"string\"]},{\"name\":\"pinCode\",\"type\":[\"null\",\"int\"]},{\"name\":\"country\",\"type\":[\"null\",\"string\"]}]}]}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Student\",\"namespace\":\"io.hari.entity\",\"fields\":[{\"name\":\"name\",\"type\":[\"null\",\"string\"],\"presentationName\":\"Student Name - this is optional\",\"description\":\"Define Student Name - this is optional\"},{\"name\":\"phoneNumber\",\"type\":[\"null\",\"int\"]},{\"name\":\"address\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"MyAddress\",\"fields\":[{\"name\":\"street\",\"type\":[\"null\",\"string\"]},{\"name\":\"pinCode\",\"type\":[\"null\",\"int\"]},{\"name\":\"country\",\"type\":[\"null\",\"string\"]}]}]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
   @Deprecated public java.lang.CharSequence name;
   @Deprecated public java.lang.Integer phoneNumber;

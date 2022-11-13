@@ -1,9 +1,7 @@
 package guru.learningjournal.kafka.examples.types;
 
-import io.hari.entity.Address;
 import io.hari.entity.MyAddress;
 import io.hari.entity.Student;
-import org.apache.avro.Schema;
 
 public class Test {
     public static void main(String[] args) {
@@ -23,6 +21,12 @@ public class Test {
                 .setPhoneNumber(9887766)
                 .build();
         System.out.println("student1 = " + student1);
+        System.out.println("student1 = " + student1.toString());
+
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        objectMapper.readValue(student1.toString(), new TypeReference(Map<String, Object>){});
+//        final Map<String, Object> facets = objectMapper.readValue(student1, new TypeReference<Map<String, Object>>() {});
+
 
 
     }

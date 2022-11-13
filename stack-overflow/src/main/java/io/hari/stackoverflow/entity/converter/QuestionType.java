@@ -1,2 +1,4 @@
-package io.hari.stackoverflow.entity.converter;public class QuestionType {
+package io.hari.stackoverflow.entity.converter;
+
+public class QuestionType {
 }
