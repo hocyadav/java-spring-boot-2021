@@ -2,6 +2,7 @@ package io.hari.javareactiveframework.reactive_context.josh_simple;
 
 import brave.Tracer;
 import brave.propagation.TraceContext;
+import io.hari.javareactiveframework.reactive_context.second.Temp123;
 import io.vavr.control.Try;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
@@ -16,7 +17,6 @@ import reactor.core.publisher.Signal;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 import reactor.util.context.Context;
-import reactor.util.context.ContextView;
 
 import java.util.List;
 import java.util.Map;
@@ -40,6 +40,9 @@ public class SimpleApplication {
     @GetMapping("/data")
     Mono<String> getData() {
 //        return Flux_publisher_PublishData();//working
+        Temp123.foo();
+        new Thread(() -> Temp123.foo()).start();
+        new Thread(() -> Temp123.foo()).start();
         return monoPublishData();//working
     }
 
